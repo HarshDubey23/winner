@@ -1,0 +1,104 @@
+{
+  "A": {
+    "always_on": {
+      "unaided_probe_mean": 0.558,
+      "unaided_probe_sd": 0.052
+    },
+    "no_guidance": {
+      "unaided_probe_mean": 0.468,
+      "unaided_probe_sd": 0.197
+    },
+    "linear_fade": {
+      "unaided_probe_mean": 0.839,
+      "unaided_probe_sd": 0.087
+    },
+    "adaptive_v1": {
+      "unaided_probe_mean": 0.678,
+      "unaided_probe_sd": 0.102
+    },
+    "adaptive_v2": {
+      "unaided_probe_mean": 0.827,
+      "unaided_probe_sd": 0.089
+    },
+    "controller_v1": {
+      "share_reaching_g0": 0.0,
+      "median_cycle_g0": null,
+      "reversals_per_10_cycles": 0.0,
+      "max_reversals_one_run": 0
+    },
+    "controller_v2": {
+      "share_reaching_g0": 0.294,
+      "median_cycle_g0": 46,
+      "reversals_per_10_cycles": 0.05,
+      "max_reversals_one_run": 4
+    }
+  },
+  "B": {
+    "always_on": {
+      "unaided_probe_mean": 0.462,
+      "unaided_probe_sd": 0.084
+    },
+    "no_guidance": {
+      "unaided_probe_mean": 0.685,
+      "unaided_probe_sd": 0.094
+    },
+    "linear_fade": {
+      "unaided_probe_mean": 0.761,
+      "unaided_probe_sd": 0.092
+    },
+    "adaptive_v1": {
+      "unaided_probe_mean": 0.523,
+      "unaided_probe_sd": 0.139
+    },
+    "adaptive_v2": {
+      "unaided_probe_mean": 0.771,
+      "unaided_probe_sd": 0.099
+    },
+    "controller_v1": {
+      "share_reaching_g0": 0.0,
+      "median_cycle_g0": null,
+      "reversals_per_10_cycles": 0.0,
+      "max_reversals_one_run": 0
+    },
+    "controller_v2": {
+      "share_reaching_g0": 0.112,
+      "median_cycle_g0": 46,
+      "reversals_per_10_cycles": 0.073,
+      "max_reversals_one_run": 4
+    }
+  },
+  "C": {
+    "always_on": {
+      "unaided_probe_mean": 0.673,
+      "unaided_probe_sd": 0.094
+    },
+    "no_guidance": {
+      "unaided_probe_mean": 0.865,
+      "unaided_probe_sd": 0.079
+    },
+    "linear_fade": {
+      "unaided_probe_mean": 0.812,
+      "unaided_probe_sd": 0.088
+    },
+    "adaptive_v1": {
+      "unaided_probe_mean": 0.723,
+      "unaided_probe_sd": 0.115
+    },
+    "adaptive_v2": {
+      "unaided_probe_mean": 0.806,
+      "unaided_probe_sd": 0.098
+    },
+    "controller_v1": {
+      "share_reaching_g0": 0.0,
+      "median_cycle_g0": null,
+      "reversals_per_10_cycles": 0.0,
+      "max_reversals_one_run": 0
+    },
+    "controller_v2": {
+      "share_reaching_g0": 0.228,
+      "median_cycle_g0": 46,
+      "reversals_per_10_cycles": 0.054,
+      "max_reversals_one_run": 4
+    }
+  }
+}
