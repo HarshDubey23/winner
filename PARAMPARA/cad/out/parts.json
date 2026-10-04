@@ -1,0 +1,82 @@
+{
+  "ring_pod_base": {
+    "size_mm": [
+      13.02,
+      14.4,
+      3.41
+    ],
+    "volume_mm3": 234.4
+  },
+  "ring_pod_lid": {
+    "size_mm": [
+      13.01,
+      11.01,
+      1.01
+    ],
+    "volume_mm3": 137.0
+  },
+  "motor_pod_base": {
+    "size_mm": [
+      12.02,
+      15.2,
+      4.22
+    ],
+    "volume_mm3": 279.8
+  },
+  "motor_pod_lid": {
+    "size_mm": [
+      12.01,
+      12.01,
+      1.02
+    ],
+    "volume_mm3": 111.5
+  },
+  "joint_pod_base": {
+    "size_mm": [
+      28.06,
+      23.2,
+      6.63
+    ],
+    "volume_mm3": 1128.6
+  },
+  "joint_pod_lid": {
+    "size_mm": [
+      28.01,
+      20.01,
+      1.41
+    ],
+    "volume_mm3": 758.0
+  },
+  "hand_board_case": {
+    "size_mm": [
+      42.13,
+      32.02,
+      6.48
+    ],
+    "volume_mm3": 2254.2
+  },
+  "hand_board_lid": {
+    "size_mm": [
+      42.01,
+      32.01,
+      1.61
+    ],
+    "volume_mm3": 2101.5
+  },
+  "hub_case": {
+    "size_mm": [
+      62.08,
+      49.8,
+      14.04
+    ],
+    "volume_mm3": 8828.5
+  },
+  "hub_lid": {
+    "size_mm": [
+      62.02,
+      44.02,
+      2.42
+    ],
+    "volume_mm3": 6418.9
+  }
+}

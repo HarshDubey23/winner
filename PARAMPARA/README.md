@@ -1,6 +1,13 @@
 # PARAMPARA: final research dossier (SIH 2026, PS 26214)
 
-**Submit this one: [`PARAMPARA_v4_Final_Solution.docx`](PARAMPARA_v4_Final_Solution.docx)**: the multi-craft edition (29 pages, 78 references: 68 verified live, 6 partly from memory, 4 standard texts).
+**Submit this one: [`PARAMPARA_v5_Final_Solution.docx`](PARAMPARA_v5_Final_Solution.docx)** (PDF: [`PARAMPARA_v5_Final_Solution.pdf`](PARAMPARA_v5_Final_Solution.pdf)): the exact-equipment and real-data edition (36 pages, 92 references: 81 verified live, 7 partly from memory, 4 standard texts).
+- **Equipment, exactly (Section 4):** CAD renders of the sleeve from several angles (isometric, top, palm side, side), exploded views of the finger ring, finger motor, hand board and hub, dimensioned drawings, an electrical block diagram with the I2C address map, datasheet-checked parts (BMI270, DRV2605L, TCA9548A, ESP32-S3-MINI-1, C08-005 LRA, MCP73831, Murata 7BB-27-4L0), data, power, mass and bus budgets, tool kits for tabla, handloom and puppetry, and eight bench tests (H1–H8). STEP/STL files in `cad/out/`.
+- **Evidence today (Section 6):** our confound-controlled method run on real data (Groove MIDI Dataset, 10 drummers): the performer is named at about 3 × chance on a new session and in a new style; with identical grooves, "how they play" names the drummer (63%, chance 25%) while "which notes" does not (26%). In E1-sized trios the new-session test averages 66%, near our unchanged 70% pass mark. `python3 PARAMPARA/sim/gmd_fingerprint.py groove/`.
+- **Tabla is the flagship; handloom and puppetry are generalisation demos.** Graded E1 claims fixed in advance; honest sample-size statement for E5.
+
+Build: `node PARAMPARA/build/build_v5.js`. CAD: `python3 PARAMPARA/cad/parampara_cad.py`, renders: `python3 PARAMPARA/cad/render_all.py && python3 PARAMPARA/cad/compose_figures.py` (needs `cadquery`, `vtk` and an off-screen GL library such as OSMesa).
+
+**v4: [`PARAMPARA_v4_Final_Solution.docx`](PARAMPARA_v4_Final_Solution.docx)**: the multi-craft edition (29 pages, 78 references: 68 verified live, 6 partly from memory, 4 standard texts).
 - **One sensor sleeve per arm, fingers to shoulder:** 9 motion sensors (shoulder, upper arm, forearm, back of hand, a ring on every finger and the thumb) and 8 vibration motors (each finger, wrist, elbow, shoulder). Fingertips and palm stay free.
 - **Three crafts on one platform:** tabla (rhythm), handloom (coordination and force), Kathputli puppetry (fine finger control), each with a small tool sensor.
 - **Confound-proof fingerprint (E1):** masters × 2 days (sleeve re-fitted) × 2 swapped instruments. The fingerprint counts only if it still names the master on a new day and on a new instrument. Code: `python3 PARAMPARA/sim/skilltwin_validation.py demo` (the test rejects a fake, instrument-driven fingerprint).

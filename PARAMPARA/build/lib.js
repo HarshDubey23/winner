@@ -79,7 +79,7 @@ const borders = { top: border, bottom: border, left: border, right: border };
 function cellParas(text, o) {
   return String(text).split("\n").map((line) => new D.Paragraph({
     children: runs(line, { size: o.size, bold: o.bold, color: o.color }),
-    spacing: { after: 30, line: 250 }, alignment: o.align,
+    spacing: { after: 30, line: 250 }, alignment: o.align, keepNext: o.keepNext,
   }));
 }
 
@@ -96,7 +96,8 @@ function T(widths, head, rows, o = {}) {
       : (r % 2 === 1 ? { fill: COLOR.zebra, type: D.ShadingType.CLEAR, color: "auto" } : undefined),
     margins: { top: 60, bottom: 60, left: 90, right: 90 },
     verticalAlign: D.VerticalAlign.TOP,
-    children: cellParas(txt, { size, bold: isHead || (o.boldFirstCol && i === 0), color: isHead ? "FFFFFF" : COLOR.ink }),
+    children: cellParas(txt, { size, bold: isHead || (o.boldFirstCol && i === 0), color: isHead ? "FFFFFF" : COLOR.ink,
+      keepNext: o.keep && r < rows.length - 1 }),
   });
   const trs = [];
   if (head) trs.push(new D.TableRow({ tableHeader: true, cantSplit: true, children: head.map((h, i) => mk(h, i, true, -1)) }));
