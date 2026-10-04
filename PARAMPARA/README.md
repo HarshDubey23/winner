@@ -1,6 +1,13 @@
 # PARAMPARA: final research dossier (SIH 2026, PS 26214)
 
-**Submit this one: [`PARAMPARA_v5_Final_Solution.docx`](PARAMPARA_v5_Final_Solution.docx)** (PDF: [`PARAMPARA_v5_Final_Solution.pdf`](PARAMPARA_v5_Final_Solution.pdf)): the exact-equipment and real-data edition (36 pages, 92 references: 81 verified live, 7 partly from memory, 4 standard texts).
+**Submit this one: [`PARAMPARA_v6_Final_Solution.docx`](PARAMPARA_v6_Final_Solution.docx)** (PDF: [`PARAMPARA_v6_Final_Solution.pdf`](PARAMPARA_v6_Final_Solution.pdf)): v5 plus what works today (39 pages, 92 references).
+- **Working today (Section 5):** PARAMPARA Lite, a phone prototype of the teach, fade and device-off scoring loop on the Teentaal theka ([`lite/index.html`](lite/index.html); open on Android Chrome for vibration), with an automated end-to-end browser test (`python3 PARAMPARA/lite/e2e_test.py`: on time ≈ 100%, 60 ms late = 75%, silent = 0). Sleeve firmware core with 27 passing host unit tests (`make -C PARAMPARA/firmware test`): address map, DRV2605L and BMI270 bring-up, fade rule, scoring, clock sync (63 µs worst error under 50 ppm drift).
+- **Proof ladder** from document to E5, with what is done, what is designed and what is not yet done; wording never claims more than has been done ("defined bench tests", "pre-test on real performers").
+- **E5a:** a learning pilot on phones that can start this week (fading vs always-on cues).
+
+Build: `node PARAMPARA/build/build_v6.js`.
+
+**v5: [`PARAMPARA_v5_Final_Solution.docx`](PARAMPARA_v5_Final_Solution.docx)** (PDF: [`PARAMPARA_v5_Final_Solution.pdf`](PARAMPARA_v5_Final_Solution.pdf)): the exact-equipment and real-data edition (36 pages, 92 references: 81 verified live, 7 partly from memory, 4 standard texts).
 - **Equipment, exactly (Section 4):** CAD renders of the sleeve from several angles (isometric, top, palm side, side), exploded views of the finger ring, finger motor, hand board and hub, dimensioned drawings, an electrical block diagram with the I2C address map, datasheet-checked parts (BMI270, DRV2605L, TCA9548A, ESP32-S3-MINI-1, C08-005 LRA, MCP73831, Murata 7BB-27-4L0), data, power, mass and bus budgets, tool kits for tabla, handloom and puppetry, and eight bench tests (H1–H8). STEP/STL files in `cad/out/`.
 - **Evidence today (Section 6):** our confound-controlled method run on real data (Groove MIDI Dataset, 10 drummers): the performer is named at about 3 × chance on a new session and in a new style; with identical grooves, "how they play" names the drummer (63%, chance 25%) while "which notes" does not (26%). In E1-sized trios the new-session test averages 66%, near our unchanged 70% pass mark. `python3 PARAMPARA/sim/gmd_fingerprint.py groove/`.
 - **Tabla is the flagship; handloom and puppetry are generalisation demos.** Graded E1 claims fixed in advance; honest sample-size statement for E5.

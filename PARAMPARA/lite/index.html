@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"></head><body style="margin:0">
+<title>PARAMPARA Lite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Mukta:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one practice column, phone first; the tal dial is the instrument, pads sit under the thumbs. */
+:root {
+  --bg: #f3f2ee; --surface: #ffffff; --ink: #1c1d22; --muted: #5d606b; --line: #d9d6cc;
+  --brass: #8f6c0c; --brass-soft: #f1e6c6; --cue: #2a5ea8; --cue-soft: #dfe8f6; --check: #9a2f2f; --check-soft: #f6e2e0;
+  --good: #2e6b3a; --pad: #23252b; --pad-ink: #f3efe2; --ring: #e9e2cc;
+  --display: "Rozha One", "Noto Serif Devanagari", Georgia, serif;
+  --body: "Mukta", "Noto Sans Devanagari", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #15161a; --surface: #1e2026; --ink: #ecebe6; --muted: #a3a6b0; --line: #34363e;
+  --brass: #d6b04a; --brass-soft: #3a3220; --cue: #7fa8e6; --cue-soft: #1f2b40; --check: #e07f7a; --check-soft: #3d2423;
+  --good: #7cc48a; --pad: #0e0f12; --pad-ink: #efe7cf; --ring: #4a4536; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #15161a; --surface: #1e2026; --ink: #ecebe6; --muted: #a3a6b0; --line: #34363e;
+  --brass: #d6b04a; --brass-soft: #3a3220; --cue: #7fa8e6; --cue-soft: #1f2b40; --check: #e07f7a; --check-soft: #3d2423;
+  --good: #7cc48a; --pad: #0e0f12; --pad-ink: #efe7cf; --ring: #4a4536; color-scheme: dark }
+* { box-sizing: border-box }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.45; }
+.wrap { max-width: 980px; margin: 0 auto; padding-inline: 16px; padding-block: 18px 40px; }
+header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; margin-bottom: 14px; }
+h1 { font-family: var(--display); font-weight: 400; font-size: 2rem; margin: 0; letter-spacing: .01em; text-wrap: balance }
+h1 span { color: var(--brass) }
+.sub { color: var(--muted); margin: 0; font-size: .95rem }
+.grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 18px; }
+@media (max-width: 760px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px; min-width: 0 }
+.label { font-size: .72rem; text-transform: uppercase; letter-spacing: .09em; color: var(--muted); font-weight: 700 }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px }
+.chip { font-family: var(--mono); font-size: .76rem; border: 1px solid var(--line); border-radius: 999px; padding: 2px 9px; color: var(--muted); white-space: nowrap }
+.chip.on { color: var(--good); border-color: currentColor }
+.chip.warn { color: var(--check); border-color: currentColor }
+.dialbox { position: relative; width: 100%; max-width: 420px; margin: 4px auto 0; aspect-ratio: 1 }
+.dialbox svg { width: 100%; height: 100%; display: block }
+.center { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; text-align: center }
+.bigbol { font-family: var(--display); font-size: clamp(2.6rem, 9vw, 3.6rem); line-height: 1; }
+.biglat { font-family: var(--mono); font-size: .85rem; color: var(--muted); margin-top: 4px }
+.phase { margin-top: 8px; font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 3px 10px; border-radius: 999px }
+.phase.practice { background: var(--cue-soft); color: var(--cue) }
+.phase.check { background: var(--check-soft); color: var(--check) }
+.phase.listen { background: var(--brass-soft); color: var(--brass) }
+.phase.idle { background: transparent; color: var(--muted) }
+.pads { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; touch-action: manipulation; user-select: none; -webkit-user-select: none }
+.pad { aspect-ratio: 1.15; border-radius: 50%; border: 10px solid var(--ring); background: radial-gradient(circle at 50% 50%, var(--pad) 0 34%, #3a3324 35% 37%, var(--pad-ink) 38% 100%);
+  display: grid; place-items: end center; padding-bottom: 10%; font-weight: 700; color: var(--pad); font-size: .95rem; cursor: pointer; transition: transform .05s, box-shadow .12s; position: relative; outline-offset: 4px }
+.pad.bayan { background: radial-gradient(circle at 62% 50%, var(--pad) 0 26%, #3a3324 27% 29%, var(--pad-ink) 30% 100%); }
+.pad:active, .pad.hit { transform: scale(.97) }
+.pad.cue { box-shadow: 0 0 0 6px var(--cue), 0 0 26px 6px var(--cue) }
+.pad .name { background: var(--surface); color: var(--ink); padding: 0 9px; border-radius: 999px; font-size: .85rem }
+.pad .key { position: absolute; top: 8%; font-family: var(--mono); font-size: .72rem; color: var(--muted); font-weight: 400 }
+.pad:focus-visible { outline: 3px solid var(--cue) }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center }
+button.b { font: 600 .95rem var(--body); border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); padding: 8px 14px; cursor: pointer; min-height: 40px }
+button.b:hover { border-color: var(--muted) }
+button.b:focus-visible, select:focus-visible, input:focus-visible { outline: 3px solid var(--cue); outline-offset: 2px }
+button.primary { background: var(--ink); color: var(--bg); border-color: var(--ink) }
+button.b[aria-pressed="true"] { background: var(--brass-soft); border-color: var(--brass); color: var(--ink) }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 10px; overflow: hidden }
+.seg button { border: 0; border-radius: 0; background: transparent; padding: 8px 12px; font: 600 .9rem var(--body); color: var(--muted); cursor: pointer; min-height: 40px }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg) }
+label.f { display: grid; gap: 3px; font-size: .82rem; color: var(--muted) }
+input[type=text], select { font: 500 .95rem var(--body); padding: 7px 9px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); min-height: 38px; min-width: 0 }
+input[type=range] { width: 100%; accent-color: var(--brass) }
+.stack { display: grid; gap: 12px }
+.meter { height: 10px; border-radius: 999px; background: var(--line); overflow: hidden }
+.meter > i { display: block; height: 100%; background: var(--cue); width: 0%; transition: width .4s }
+.kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px }
+.kpi { border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; min-width: 0 }
+.kpi b { display: block; font-family: var(--mono); font-size: 1.35rem; font-variant-numeric: tabular-nums }
+.kpi span { font-size: .75rem; color: var(--muted) }
+canvas.spark { width: 100%; height: 120px; display: block }
+.note { font-size: .82rem; color: var(--muted); margin: 0 }
+table { border-collapse: collapse; width: 100%; font-size: .82rem; font-variant-numeric: tabular-nums }
+th, td { text-align: left; padding: 5px 6px; border-bottom: 1px solid var(--line); white-space: nowrap }
+th { color: var(--muted); font-weight: 600 }
+.tablewrap { overflow-x: auto }
+textarea { width: 100%; min-height: 90px; font: .75rem var(--mono); background: var(--bg); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; padding: 8px }
+.how ol { margin: 6px 0 0; padding-left: 20px } .how li { margin: 3px 0 }
+@media (prefers-reduced-motion: reduce) { .meter > i, .pad { transition: none } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <h1>PARAMPARA <span>Lite</span></h1>
+      <p class="sub">Teentaal practice: cues guide you, then fade, then you play alone and get an honest score.</p>
+    </div>
+    <div class="chips" aria-live="polite">
+      <span class="chip" id="chipVib">vibration: checking</span>
+      <span class="chip" id="chipLat">latency: not calibrated</span>
+      <span class="chip" id="chipBpm">80 bpm</span>
+    </div>
+  </header>
+
+  <div class="grid">
+    <section class="panel" aria-label="Practice">
+      <div class="dialbox">
+        <svg id="dial" viewBox="0 0 400 400" role="img" aria-label="Teentaal cycle of 16 beats"></svg>
+        <div class="center"><div>
+          <div class="bigbol" id="bigBol">धा</div>
+          <div class="biglat" id="bigLat">Dha · beat 1 (sam)</div>
+          <div class="phase idle" id="phase">ready</div>
+        </div></div>
+      </div>
+      <div class="pads">
+        <div class="pad bayan" id="padL" role="button" tabindex="0" aria-label="Bayan, left hand, key F"><span class="key">F</span><span class="name">Bayan</span></div>
+        <div class="pad dayan" id="padR" role="button" tabindex="0" aria-label="Dayan, right hand, key J"><span class="key">J</span><span class="name">Dayan</span></div>
+      </div>
+      <p class="note" style="margin-top:10px">Dha and Dhin: tap both pads. Tin and Ta: tap the dayan only.</p>
+    </section>
+
+    <section class="stack">
+      <div class="panel stack">
+        <div class="row" style="justify-content:space-between">
+          <div class="seg" role="group" aria-label="Mode">
+            <button id="mListen" aria-pressed="false">Listen</button>
+            <button id="mLearn" aria-pressed="true">Learn</button>
+            <button id="mTest" aria-pressed="false">Test, device off</button>
+          </div>
+          <button class="b primary" id="btnStart">Start</button>
+        </div>
+        <div class="row">
+          <label class="f" style="flex:1 1 140px">Master reference
+            <select id="master">
+              <option value="A">Master A (example)</option>
+              <option value="B">Master B (example)</option>
+            </select>
+          </label>
+          <label class="f" style="flex:1 1 140px">Tempo <span id="bpmVal" class="label" style="text-transform:none">80 bpm</span>
+            <input type="range" id="bpm" min="60" max="110" step="5" value="80">
+          </label>
+        </div>
+        <div>
+          <div class="row" style="justify-content:space-between"><span class="label">Guidance</span><span class="label" id="gVal">100%</span></div>
+          <div class="meter" aria-hidden="true"><i id="gBar" style="width:100%"></i></div>
+        </div>
+        <div class="kpis">
+          <div class="kpi"><b id="kLast">–</b><span>last cycle</span></div>
+          <div class="kpi"><b id="kUnaided">–</b><span>last unaided</span></div>
+          <div class="kpi"><b id="kCycles">0</b><span>cycles</span></div>
+        </div>
+        <div>
+          <div class="label">Unaided score by check cycle</div>
+          <canvas class="spark" id="spark" aria-label="Unaided scores over the session"></canvas>
+        </div>
+        <div class="row">
+          <button class="b" id="btnCal">Calibrate latency</button>
+          <span class="note" id="calNote">Tap either pad on each of 8 clicks.</span>
+        </div>
+      </div>
+
+      <div class="panel stack">
+        <div class="label">Pilot record (E5)</div>
+        <div class="row">
+          <label class="f" style="flex:1 1 120px">Participant code<input type="text" id="pid" placeholder="P01" autocomplete="off"></label>
+          <label class="f" style="flex:1 1 120px">Group
+            <select id="group"><option>PARAMPARA</option><option>Video only</option><option>Demo</option></select>
+          </label>
+        </div>
+        <div class="tablewrap"><table id="runs"><thead><tr><th>When</th><th>Code</th><th>Group</th><th>Mode</th><th>Master</th><th>Unaided</th></tr></thead><tbody></tbody></table></div>
+        <div class="row">
+          <button class="b" id="btnExport">Save CSV</button>
+          <button class="b" id="btnCopy">Copy CSV</button>
+          <button class="b" id="btnClear">Clear records</button>
+        </div>
+        <textarea id="csvOut" hidden aria-label="CSV of all records" readonly></textarea>
+      </div>
+    </section>
+  </div>
+
+  <section class="panel how" style="margin-top:18px">
+    <div class="label">How a session runs</div>
+    <ol>
+      <li><b>Listen</b> plays the master's theka with the master's own early and late timing.</li>
+      <li><b>Learn</b> starts with a check cycle: four count-in clicks, then you play 16 beats with no help. Your unaided score sets the guidance: the better you play, the fewer cues. Every fourth cycle is another check cycle.</li>
+      <li>Cues arrive just before each stroke: a phone vibration (one pulse for the dayan, two for both hands), a glowing pad, and the master's sound, which gets quieter as guidance falls.</li>
+      <li><b>Test, device off</b> runs four silent cycles after a count-in. This is the retention score for the pilot.</li>
+    </ol>
+    <p class="note" style="margin-top:8px">Master A and B are example profiles built for this demo, not recordings of real masters. Replace them with a recorded guru's fingerprint. Vibration needs Android Chrome with the page opened directly; inside some viewers the phone blocks it and the pads glow instead. Strength of a stroke is not measured on a touch screen; the tabla kit's piezo adds it.</p>
+  </section>
+</div>
+
+<script>
+(() => {
+  "use strict";
+  // ---- Teentaal theka -------------------------------------------------------------------------
+  const BOLS = [
+    ["धा", "Dha", 1], ["धिं", "Dhin", 1], ["धिं", "Dhin", 1], ["धा", "Dha", 1],
+    ["धा", "Dha", 1], ["धिं", "Dhin", 1], ["धिं", "Dhin", 1], ["धा", "Dha", 1],
+    ["धा", "Dha", 1], ["तिं", "Tin", 0], ["तिं", "Tin", 0], ["ता", "Ta", 0],
+    ["ता", "Ta", 0], ["धिं", "Dhin", 1], ["धिं", "Dhin", 1], ["धा", "Dha", 1]];
+  const VIBHAG = { 0: "X", 4: "2", 8: "0", 12: "3" };
+  // Example master profiles: per-beat timing offset (ms) and loudness (0-1). Synthetic, for the demo.
+  const MASTERS = {
+    A: { off: [-8, 4, 6, 2, -4, 5, 7, 1, 10, -6, -8, -3, 0, 6, 8, 3], amp: [1, .7, .72, .85, .9, .7, .72, .85, .95, .6, .62, .7, .72, .7, .74, .9] },
+    B: { off: [-15, -10, -8, -12, -14, -9, -7, -11, -5, -12, -10, -9, -13, -8, -6, -10], amp: [1, .8, .78, .8, .95, .8, .78, .8, .9, .7, .7, .75, .8, .8, .78, .85] } };
+
+  const $ = (id) => document.getElementById(id);
+  const store = {
+    get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* storage blocked */ } } };
+
+  // ---- dial -----------------------------------------------------------------------------------
+  const svgNS = "http://www.w3.org/2000/svg";
+  const dial = $("dial");
+  const nodes = [];
+  function el(name, attrs, parent) { const e = document.createElementNS(svgNS, name); for (const k in attrs) e.setAttribute(k, attrs[k]); (parent || dial).appendChild(e); return e; }
+  function css(v) { return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+  function drawDial() {
+    dial.textContent = "";
+    nodes.length = 0;
+    el("circle", { cx: 200, cy: 200, r: 168, fill: "none", stroke: css("--line"), "stroke-width": 2 });
+    for (let i = 0; i < 16; i++) {
+      const a = -Math.PI / 2 + (i / 16) * Math.PI * 2;
+      const x = 200 + 168 * Math.cos(a), y = 200 + 168 * Math.sin(a);
+      const g = el("g", {});
+      const c = el("circle", { cx: x, cy: y, r: 19, fill: css("--surface"), stroke: css("--line"), "stroke-width": 2 }, g);
+      const t = el("text", { x, y: y + 6, "text-anchor": "middle", "font-size": 17, "font-family": css("--display"), fill: css("--ink") }, g);
+      t.textContent = BOLS[i][0];
+      if (VIBHAG[i] !== undefined) {
+        const lx = 200 + 128 * Math.cos(a), ly = 200 + 128 * Math.sin(a);
+        const m = el("text", { x: lx, y: ly + 5, "text-anchor": "middle", "font-size": 14, "font-family": css("--mono"), fill: VIBHAG[i] === "0" ? css("--check") : css("--brass"), "font-weight": 600 });
+        m.textContent = VIBHAG[i];
+      }
+      nodes.push(c);
+    }
+  }
+  function highlight(i, kind) {
+    nodes.forEach((c, k) => { c.setAttribute("fill", css("--surface")); c.setAttribute("stroke", css("--line")); });
+    if (i < 0) return;
+    const col = kind === "check" ? css("--check") : kind === "listen" ? css("--brass") : css("--cue");
+    nodes[i].setAttribute("stroke", col); nodes[i].setAttribute("fill", kind === "check" ? css("--check-soft") : kind === "listen" ? css("--brass-soft") : css("--cue-soft"));
+    $("bigBol").textContent = kind === "check" ? "·" : BOLS[i][0];
+    $("bigLat").textContent = kind === "check" ? `beat ${i + 1} · play alone` : `${BOLS[i][1]} · beat ${i + 1}${i === 0 ? " (sam)" : i === 8 ? " (khali)" : ""}`;
+  }
+  drawDial();
+  try { matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { drawDial(); }); } catch (e) {}
+  new MutationObserver(() => drawDial()).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
+  // ---- audio ----------------------------------------------------------------------------------
+  let ctx = null, master = null;
+  function audio() {
+    if (!ctx) { ctx = new (window.AudioContext || window.webkitAudioContext)(); master = ctx.createGain(); master.gain.value = 0.9; master.connect(ctx.destination); }
+    if (ctx.state === "suspended") ctx.resume();
+    return ctx;
+  }
+  function tone(t, f0, f1, dur, gain, type, dest) {
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    o.type = type || "sine"; o.frequency.setValueAtTime(f0, t); if (f1) o.frequency.exponentialRampToValueAtTime(f1, t + dur * 0.6);
+    g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(gain, t + 0.004); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(g); g.connect(dest || master); o.start(t); o.stop(t + dur + 0.02);
+  }
+  function stroke(t, bolIdx, vol) {
+    const [, lat, both] = BOLS[bolIdx];
+    if (vol <= 0.001) return;
+    if (both) tone(t, 92, 118, 0.55, 0.55 * vol, "sine");                 // bayan: low, gliding
+    if (lat === "Tin") { tone(t, 520, 0, 0.42, 0.32 * vol, "sine"); tone(t, 1040, 0, 0.22, 0.12 * vol, "sine"); }
+    else if (lat === "Ta") { tone(t, 470, 0, 0.18, 0.38 * vol, "triangle"); tone(t, 1410, 0, 0.08, 0.1 * vol, "sine"); }
+    else if (lat === "Dhin") { tone(t, 430, 0, 0.5, 0.3 * vol, "sine"); tone(t, 860, 0, 0.3, 0.1 * vol, "sine"); }
+    else { tone(t, 400, 0, 0.3, 0.32 * vol, "triangle"); tone(t, 1200, 0, 0.1, 0.08 * vol, "sine"); }   // Dha
+  }
+  function click(t, accent) { tone(t, accent ? 1600 : 1200, 0, 0.05, accent ? 0.35 : 0.22, "square"); }
+  function ctxToPerf(t) {
+    if (ctx.getOutputTimestamp) { const ts = ctx.getOutputTimestamp(); if (ts && ts.performanceTime) return ts.performanceTime + (t - ts.contextTime) * 1000; }
+    return performance.now() + (t - ctx.currentTime) * 1000 + (ctx.outputLatency || 0) * 1000;
+  }
+
+  // ---- vibration ------------------------------------------------------------------------------
+  let vibOK = typeof navigator.vibrate === "function";
+  function setVibChip() { const c = $("chipVib"); c.textContent = vibOK ? "vibration: available" : "vibration: off, pads glow"; c.className = "chip " + (vibOK ? "on" : "warn"); }
+  setVibChip();
+  function cueAt(perfT, both) {
+    const delay = Math.max(0, perfT - performance.now());
+    setTimeout(() => {
+      if (vibOK) { try { const r = navigator.vibrate(both ? [20, 30, 20] : [35]); if (r === false) { vibOK = false; setVibChip(); } } catch (e) { vibOK = false; setVibChip(); } }
+      const pads = both ? [$("padL"), $("padR")] : [$("padR")];
+      pads.forEach((p) => { p.classList.add("cue"); setTimeout(() => p.classList.remove("cue"), 150); });
+    }, delay);
+  }
+
+  // ---- state ----------------------------------------------------------------------------------
+  let mode = "learn";               // listen | learn | test
+  let running = false, timer = null;
+  let bpm = 80, guidance = 1.0, latency = store.get("pl_latency", 0);
+  let nextBeatTime = 0, beatIdx = 0, cycleIdx = 0, cyclePlan = [];   // plan per cycle: 'countin' | 'check' | 'practice' | 'listen'
+  let taps = [];                    // {t, hand}
+  let cycles = [];                  // {kind, startPerf, strokes:[perfT], score}
+  let unaidedScores = [];
+  let testScores = [];
+  const LEAD = 0.12;                // cue lead time (s)
+  if (latency) $("chipLat").textContent = `latency: ${Math.round(latency)} ms`;
+
+  function period() { return 60 / bpm; }
+  function profile() { return MASTERS[$("master").value]; }
+  function guidanceFromScore(s) { const target = 1 - s / 0.85; const g = Math.min(1, Math.max(0, target)); return Math.min(guidance + 0.2, Math.max(guidance - 0.2, g)); }
+  function cueThisBeat(i) {               // fewer cues as guidance falls
+    if (guidance >= 0.75) return true;
+    if (guidance >= 0.5) return i % 2 === 0;
+    if (guidance >= 0.25) return i % 4 === 0;
+    if (guidance > 0.02) return i === 0;
+    return false;
+  }
+  function setPhase(kind, text) { const p = $("phase"); p.className = "phase " + kind; p.textContent = text; }
+  function setGuidance(g) { guidance = g; $("gVal").textContent = Math.round(g * 100) + "%"; $("gBar").style.width = Math.round(g * 100) + "%"; }
+
+  // ---- scheduler ------------------------------------------------------------------------------
+  function planNextCycle() {
+    if (mode === "listen") return "listen";
+    if (mode === "test") return cycleIdx === 0 ? "countin" : (cycleIdx <= 4 ? "check" : "end");
+    // learn: count-in, check, 3 practice, check, ...
+    if (cycleIdx === 0) return "countin";
+    return ((cycleIdx - 1) % 4 === 0) ? "check" : "practice";
+  }
+  let current = null;
+  function startCycle(t) {
+    const kind = planNextCycle();
+    if (kind === "end") { stop(true); return false; }
+    current = { kind, start: t, strokes: [], perfStrokes: [] };
+    const P = period(), prof = profile();
+    for (let i = 0; i < 16; i++) {
+      // count-in uses only beats 13-16; check cycles are scored against the master's own timing
+      const st = kind === "countin" ? t + (i - 12) * P : t + i * P + prof.off[i] / 1000;
+      current.strokes.push(st);
+    }
+    current.perfPlan = current.strokes.map(ctxToPerf);
+    return true;
+  }
+  function schedule() {
+    if (!running) return;
+    const ahead = ctx.currentTime + 0.12;
+    while (running && nextBeatTime < ahead) {
+      if (beatIdx === 0) { if (!startCycle(nextBeatTime)) return; if (current.kind === "countin") beatIdx = 12; }
+      const i = beatIdx, t = current.strokes[i], kind = current.kind, prof = profile();
+      if (kind === "countin") {
+        click(nextBeatTime, i === 12);
+        if (i === 12) setTimeoutAt(nextBeatTime, () => setPhase("check", "count-in · then play alone"));
+      } else if (kind === "listen") {
+        stroke(t, i, prof.amp[i]);
+      } else if (kind === "practice") {
+        const vol = (0.25 + 0.75 * guidance) * prof.amp[i];
+        stroke(t, i, vol);
+        if (cueThisBeat(i)) cueAt(ctxToPerf(t - LEAD), BOLS[i][2] === 1);
+      }
+      const k = kind;
+      setTimeoutAt(nextBeatTime, () => {
+        if (k === "countin") { highlight(-1); $("bigBol").textContent = i >= 12 ? String(i - 11) : "·"; $("bigLat").textContent = i >= 12 ? "count-in" : "wait"; }
+        else highlight(i, k === "check" ? "check" : k === "listen" ? "listen" : "practice");
+        if (i === 0) setPhase(k === "check" ? "check" : k === "listen" ? "listen" : k === "countin" ? "idle" : "practice",
+          k === "check" ? "check cycle · no help" : k === "listen" ? "listening" : k === "countin" ? "count-in" : "practice · cues on");
+      });
+      nextBeatTime += period();
+      beatIdx++;
+      if (beatIdx === 16) {
+        const done = current; done.perfStrokes = done.strokes.map(ctxToPerf);
+        if (done.kind === "check" || done.kind === "practice") {
+          const endPerf = ctxToPerf(nextBeatTime) + period() * 500;
+          setTimeout(() => finishCycle(done), Math.max(0, endPerf - performance.now()));
+        }
+        beatIdx = 0; cycleIdx++;
+      }
+    }
+  }
+  function setTimeoutAt(ctxT, fn) { setTimeout(fn, Math.max(0, ctxToPerf(ctxT) - performance.now())); }
+
+  // ---- scoring --------------------------------------------------------------------------------
+  function scoreCycle(perfStrokes) {
+    const P = period() * 1000;
+    let total = 0;
+    const offsets = [];
+    for (let i = 0; i < 16; i++) {
+      const T = perfStrokes[i];
+      const inWin = taps.filter((x) => Math.abs(x.t - T) <= P / 2);
+      const R = inWin.filter((x) => x.hand === "R"), Lh = inWin.filter((x) => x.hand === "L");
+      const needL = BOLS[i][2] === 1;
+      let hand = needL ? (R.length ? 0.5 : 0) + (Lh.length ? 0.5 : 0) : (R.length ? (Lh.length ? 0.5 : 1) : 0);
+      const ref = R.length ? R : Lh;
+      let timing = 0;
+      if (ref.length) {
+        const best = ref.reduce((a, b) => (Math.abs(b.t - T) < Math.abs(a.t - T) ? b : a));
+        const err = best.t - T; offsets.push(err);
+        timing = Math.max(0, 1 - Math.abs(err) / 120);
+      } else offsets.push(null);
+      total += 0.5 * hand + 0.5 * timing;
+    }
+    return { score: total / 16, offsets };
+  }
+  function finishCycle(c) {
+    const r = scoreCycle(c.perfStrokes);
+    cycles.push({ kind: c.kind, score: r.score });
+    $("kLast").textContent = Math.round(r.score * 100) + "%";
+    $("kCycles").textContent = cycles.length;
+    if (c.kind === "check") {
+      $("kUnaided").textContent = Math.round(r.score * 100) + "%";
+      if (mode === "test") testScores.push(r.score);
+      else { unaidedScores.push(r.score); setGuidance(guidanceFromScore(r.score)); }
+      drawSpark();
+    }
+    const cutoff = performance.now() - 30000; taps = taps.filter((x) => x.t > cutoff);
+  }
+
+  // ---- input ----------------------------------------------------------------------------------
+  function tap(hand, ts) {
+    const t = (ts || performance.now()) - latency;
+    taps.push({ t, hand });
+    if (calibrating) calTaps.push(t);
+    else if (!running && ctx) { const t0 = ctx.currentTime; if (hand === "L") tone(t0, 92, 118, 0.5, 0.5, "sine"); else tone(t0, 470, 0, 0.18, 0.38, "triangle"); }
+    const p = hand === "L" ? $("padL") : $("padR");
+    p.classList.add("hit"); setTimeout(() => p.classList.remove("hit"), 90);
+  }
+  [["padL", "L"], ["padR", "R"]].forEach(([id, h]) => {
+    const p = $(id);
+    p.addEventListener("pointerdown", (e) => { e.preventDefault(); audio(); tap(h, e.timeStamp); });
+    p.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); audio(); tap(h, e.timeStamp); } });
+  });
+  window.addEventListener("keydown", (e) => {
+    if (e.repeat || e.target.tagName === "INPUT" || e.target.tagName === "SELECT" || e.target.tagName === "TEXTAREA") return;
+    const k = e.key.toLowerCase();
+    if (k === "f") { audio(); tap("L", e.timeStamp); }
+    if (k === "j") { audio(); tap("R", e.timeStamp); }
+  });
+
+  // ---- controls -------------------------------------------------------------------------------
+  function setMode(m) {
+    if (running) stop(false);
+    mode = m;
+    ["mListen", "mLearn", "mTest"].forEach((id) => $(id).setAttribute("aria-pressed", String(id === { listen: "mListen", learn: "mLearn", test: "mTest" }[m])));
+    setPhase("idle", m === "test" ? "4 silent cycles" : m === "listen" ? "press start" : "ready");
+  }
+  $("mListen").onclick = () => setMode("listen");
+  $("mLearn").onclick = () => setMode("learn");
+  $("mTest").onclick = () => setMode("test");
+  $("bpm").oninput = (e) => { bpm = +e.target.value; $("bpmVal").textContent = bpm + " bpm"; $("chipBpm").textContent = bpm + " bpm"; };
+  function start() {
+    audio();
+    running = true; cycleIdx = 0; beatIdx = 0; taps = []; testScores = [];
+    if (mode === "learn") { cycles = []; unaidedScores = []; setGuidance(1); drawSpark(); $("kCycles").textContent = "0"; }
+    nextBeatTime = ctx.currentTime + 0.25;
+    timer = setInterval(schedule, 25); schedule();
+    $("btnStart").textContent = "Stop";
+  }
+  function stop(completed) {
+    running = false; clearInterval(timer); timer = null;
+    $("btnStart").textContent = "Start"; highlight(-1); setPhase("idle", "stopped");
+    setTimeout(() => {
+      if (mode === "test" && testScores.length) saveRun("test", testScores);
+      else if (mode === "learn" && unaidedScores.length) saveRun("learn", unaidedScores);
+    }, period() * 1000 + 200);
+  }
+  $("btnStart").onclick = () => (running ? stop(false) : start());
+
+  // ---- calibration ----------------------------------------------------------------------------
+  let calibrating = false, calTaps = [];
+  $("btnCal").onclick = () => {
+    if (running) stop(false);
+    audio(); calibrating = true; calTaps = [];
+    const P = 60 / 90, t0 = ctx.currentTime + 0.4, clicks = [];
+    for (let i = 0; i < 8; i++) { click(t0 + i * P, i === 0); clicks.push(t0 + i * P); }
+    $("calNote").textContent = "Tap on each click…";
+    setTimeout(() => {
+      calibrating = false;
+      const perf = clicks.map(ctxToPerf), offs = [];
+      calTaps.forEach((t) => { const raw = t + latency; const near = perf.reduce((a, b) => (Math.abs(b - raw) < Math.abs(a - raw) ? b : a)); if (Math.abs(near - raw) < 250) offs.push(raw - near); });
+      if (offs.length >= 5) {
+        offs.sort((a, b) => a - b); latency = offs[Math.floor(offs.length / 2)]; store.set("pl_latency", latency);
+        $("chipLat").textContent = `latency: ${Math.round(latency)} ms`; $("chipLat").className = "chip on";
+        $("calNote").textContent = `Done: your taps land ${Math.round(latency)} ms after the click; scores correct for it.`;
+      } else $("calNote").textContent = "Too few taps. Try again and tap on every click.";
+    }, (0.4 + 8 * P + 0.5) * 1000);
+  };
+
+  // ---- spark chart ----------------------------------------------------------------------------
+  function drawSpark() {
+    const cv = $("spark"), dpr = window.devicePixelRatio || 1, w = cv.clientWidth || 300, h = cv.clientHeight || 120;
+    cv.width = w * dpr; cv.height = h * dpr;
+    const g = cv.getContext("2d"); g.scale(dpr, dpr); g.clearRect(0, 0, w, h);
+    const padL = 40, padB = 18, padT = 10, W = w - padL - 10, H = h - padB - padT;
+    g.strokeStyle = css("--line"); g.fillStyle = css("--muted"); g.font = "11px " + css("--mono"); g.lineWidth = 1;
+    [0, 0.5, 0.85, 1].forEach((v) => { const y = padT + H * (1 - v); g.beginPath(); g.moveTo(padL, y); g.lineTo(padL + W, y); g.stroke(); g.fillText(Math.round(v * 100) + "%", 0, y + 4); });
+    const data = mode === "test" ? testScores : unaidedScores;
+    if (!data.length) { g.fillText("Scores appear after the first check cycle", padL + 6, padT + H / 2); return; }
+    const x = (i) => padL + (data.length === 1 ? W / 2 : (i / (data.length - 1)) * W);
+    g.strokeStyle = css("--cue"); g.lineWidth = 2; g.beginPath();
+    data.forEach((v, i) => { const y = padT + H * (1 - v); i ? g.lineTo(x(i), y) : g.moveTo(x(i), y); }); g.stroke();
+    data.forEach((v, i) => { g.fillStyle = css("--cue"); g.beginPath(); g.arc(x(i), padT + H * (1 - v), i === data.length - 1 ? 4.5 : 3, 0, 7); g.fill(); });
+    g.fillStyle = css("--muted"); g.fillText("target 85%", padL + 6, padT + H * 0.15 + 14);
+  }
+  addEventListener("resize", drawSpark); drawSpark();
+
+  // ---- records and export ---------------------------------------------------------------------
+  let runs = store.get("pl_runs", []);
+  function saveRun(kind, scores) {
+    const mean = scores.reduce((a, b) => a + b, 0) / scores.length;
+    runs.push({ when: new Date().toISOString(), code: $("pid").value.trim() || "–", group: $("group").value, mode: kind === "test" ? "test (device off)" : "learn",
+      master: $("master").value, bpm, latency_ms: Math.round(latency), scores: scores.map((s) => +s.toFixed(3)), unaided: +(kind === "test" ? mean : scores[scores.length - 1]).toFixed(3) });
+    store.set("pl_runs", runs); renderRuns();
+  }
+  function renderRuns() {
+    const tb = $("runs").querySelector("tbody"); tb.textContent = "";
+    if (!runs.length) { const tr = document.createElement("tr"); const td = document.createElement("td"); td.colSpan = 6; td.textContent = "No records yet. Run Learn or Test to add one."; tr.appendChild(td); tb.appendChild(tr); return; }
+    runs.slice().reverse().forEach((r) => {
+      const tr = document.createElement("tr");
+      [new Date(r.when).toLocaleString([], { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" }), r.code, r.group, r.mode, r.master, Math.round(r.unaided * 100) + "%"].forEach((v) => { const td = document.createElement("td"); td.textContent = v; tr.appendChild(td); });
+      tb.appendChild(tr);
+    });
+  }
+  renderRuns();
+  function csv() {
+    const head = "when,participant,group,mode,master,bpm,latency_ms,unaided,cycle_scores";
+    return [head, ...runs.map((r) => [r.when, r.code, r.group, r.mode, r.master, r.bpm, r.latency_ms, r.unaided, r.scores.join(" ")].map((v) => `"${String(v).replace(/"/g, '""')}"`).join(","))].join("\n");
+  }
+  let downloads = null;
+  if (window.claude && window.claude.use) window.claude.use("downloads").then((d) => { downloads = d; }).catch(() => {});
+  $("btnExport").onclick = async () => {
+    const data = csv();
+    if (downloads) { try { await downloads.save({ filename: "parampara-lite-records.csv", data }); return; } catch (e) { /* declined or unavailable */ } }
+    const ta = $("csvOut"); ta.hidden = false; ta.value = data; ta.focus(); ta.select();
+  };
+  $("btnCopy").onclick = async () => {
+    const data = csv(), ta = $("csvOut");
+    try { await navigator.clipboard.writeText(data); $("btnCopy").textContent = "Copied"; setTimeout(() => ($("btnCopy").textContent = "Copy CSV"), 1500); }
+    catch (e) { ta.hidden = false; ta.value = data; ta.focus(); ta.select(); }
+  };
+  let clearArmed = false;
+  $("btnClear").onclick = () => {
+    if (!clearArmed) { clearArmed = true; $("btnClear").textContent = "Tap again to clear"; setTimeout(() => { clearArmed = false; $("btnClear").textContent = "Clear records"; }, 3000); return; }
+    runs = []; store.set("pl_runs", runs); renderRuns(); clearArmed = false; $("btnClear").textContent = "Clear records";
+  };
+  // Read-only hook used by the automated end-to-end test (scripted taps); not used by the page itself.
+  window.__plTest = { current: () => current && { kind: current.kind, plan: current.perfPlan, cycle: cycleIdx },
+    tap: (hand, t) => tap(hand, t), unaided: () => unaidedScores.slice(), guidance: () => guidance, setLatency: (v) => { latency = v; } };
+  highlight(0, "listen"); setPhase("idle", "ready");
+})();
+</script>
+
+</body></html>
