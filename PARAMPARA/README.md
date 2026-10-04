@@ -1,6 +1,11 @@
 # PARAMPARA: final research dossier (SIH 2026, PS 26214)
 
-**Latest deliverable: [`PARAMPARA_v2_Final_Research_Dossier.docx`](PARAMPARA_v2_Final_Research_Dossier.docx)** (version 2.0, red-team revision, 43 pages, 133 references: 82 V, 20 P, 31 S).
+**Submit this one: [`PARAMPARA_v3_Final_Solution.docx`](PARAMPARA_v3_Final_Solution.docx)**: the judge edition (21 pages, 53 references, 49 verified live, 4 standard textbooks or statutes).
+It keeps one innovation (a measurable, consented fingerprint of a master's style used as a teaching reference), a five-step story (Sense → Fingerprint → Teach → Fade → Measure), a three-item SIH build, and an execution kit (guru outreach and consent form, E1–E4 protocols, demo checklist). Build: `node PARAMPARA/build/build_v3.js`.
+
+The longer research versions below hold the full evidence base.
+
+**Research dossier v2: [`PARAMPARA_v2_Final_Research_Dossier.docx`](PARAMPARA_v2_Final_Research_Dossier.docx)** (version 2.0, red-team revision, 43 pages, 133 references: 82 V, 20 P, 31 S).
 
 Version 2 answers all 14 attacks from our own harsh SIH-judge review of v1 (about 59/100):
 - **Gharana Fingerprint:** a measurable per-matra timing and accent signature of each master (experiment E1, analysis code `sim/fingerprint.py`).

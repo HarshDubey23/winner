@@ -143,4 +143,13 @@ function Fig(file, wpx, hpx, caption) {
 function spacer(after = 120) { return new D.Paragraph({ children: [], spacing: { after } }); }
 function PB() { return new D.Paragraph({ children: [new D.PageBreak()] }); }
 
-module.exports = { D, W, COLOR, FONT, refs, keyNum, cited, runs, P, H1, H2, H3, BL, NL, T, Box, Code, Fig, spacer, PB };
+// Replace the reference list (used to renumber after filtering to cited entries).
+function setRefs(list) {
+  refs.splice(0, refs.length, ...list);
+  for (const k of Object.keys(keyNum)) delete keyNum[k];
+  counter = 0;
+  for (const r of refs) if (r.key) { counter += 1; keyNum[r.key] = counter; r.n = counter; }
+  cited.clear();
+}
+
+module.exports = { D, W, COLOR, FONT, refs, keyNum, cited, setRefs, runs, P, H1, H2, H3, BL, NL, T, Box, Code, Fig, spacer, PB };
