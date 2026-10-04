@@ -1,7 +1,15 @@
 # PARAMPARA: final research dossier (SIH 2026, PS 26214)
 
-**Submit this one: [`PARAMPARA_v3_Final_Solution.docx`](PARAMPARA_v3_Final_Solution.docx)**: the judge edition (21 pages, 53 references, 49 verified live, 4 standard textbooks or statutes).
-It keeps one innovation (a measurable, consented fingerprint of a master's style used as a teaching reference), a five-step story (Sense → Fingerprint → Teach → Fade → Measure), a three-item SIH build, and an execution kit (guru outreach and consent form, E1–E4 protocols, demo checklist). Build: `node PARAMPARA/build/build_v3.js`.
+**Submit this one: [`PARAMPARA_v4_Final_Solution.docx`](PARAMPARA_v4_Final_Solution.docx)**: the multi-craft edition (29 pages, 78 references: 68 verified live, 6 partly from memory, 4 standard texts).
+- **One sensor sleeve per arm, fingers to shoulder:** 9 motion sensors (shoulder, upper arm, forearm, back of hand, a ring on every finger and the thumb) and 8 vibration motors (each finger, wrist, elbow, shoulder). Fingertips and palm stay free.
+- **Three crafts on one platform:** tabla (rhythm), handloom (coordination and force), Kathputli puppetry (fine finger control), each with a small tool sensor.
+- **Confound-proof fingerprint (E1):** masters × 2 days (sleeve re-fitted) × 2 swapped instruments. The fingerprint counts only if it still names the master on a new day and on a new instrument. Code: `python3 PARAMPARA/sim/skilltwin_validation.py demo` (the test rejects a fake, instrument-driven fingerprint).
+- **E0–E5 with pass rules fixed in advance:** sleeve invasiveness (equivalence test), fingerprint, cue perception, discrimination, cue reading, and a device-off learning pilot.
+- **Evidence status stated plainly:** real recordings and E0–E5 results do not exist yet; the document says so and gives result templates.
+
+Build: `node PARAMPARA/build/build_v4.js`. Figures: `python3 PARAMPARA/sim/make_figures_v3.py` (sleeve, pipeline) and `python3 PARAMPARA/sim/make_confound_figure.py`.
+
+The previous judge edition, tabla only: [`PARAMPARA_v3_Final_Solution.docx`](PARAMPARA_v3_Final_Solution.docx) (21 pages, 53 references). Build: `node PARAMPARA/build/build_v3.js`.
 
 The longer research versions below hold the full evidence base.
 

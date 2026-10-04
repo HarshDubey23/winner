@@ -104,7 +104,7 @@ function T(widths, head, rows, o = {}) {
   return [new D.Table({ width: { size: W, type: D.WidthType.DXA }, columnWidths: cols, rows: trs }), spacer(80)];
 }
 
-function Box(title, lines, color = COLOR.maroon, fill = COLOR.cream) {
+function Box(title, lines, color = COLOR.maroon, fill = COLOR.cream, keep = false) {
   const kids = [];
   if (title) kids.push(new D.Paragraph({ children: runs(title, { bold: true, color, size: 21 }), spacing: { after: 80 } }));
   for (const l of lines) {
@@ -115,7 +115,7 @@ function Box(title, lines, color = COLOR.maroon, fill = COLOR.cream) {
   const thin = { style: D.BorderStyle.SINGLE, size: 4, color: COLOR.line };
   return [new D.Table({
     width: { size: W, type: D.WidthType.DXA }, columnWidths: [W],
-    rows: [new D.TableRow({ cantSplit: false, children: [new D.TableCell({
+    rows: [new D.TableRow({ cantSplit: keep, children: [new D.TableCell({
       width: { size: W, type: D.WidthType.DXA }, borders: { left: thick, top: thin, bottom: thin, right: thin },
       shading: { fill, type: D.ShadingType.CLEAR, color: "auto" }, margins: { top: 120, bottom: 100, left: 200, right: 160 },
       children: kids })] })],
