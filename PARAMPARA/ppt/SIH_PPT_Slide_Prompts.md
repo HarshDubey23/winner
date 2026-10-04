@@ -1,5 +1,7 @@
 # PARAMPARA · SIH 2026 PS 26214 · Slide-by-slide PPT prompts
 
+> **Superseded for the six idea-submission slides by `SIH_PPT_Master_Prompts.md`** (exact part positions, wireframes, copy-ready content and one master prompt per slide). Keep this file only for the finale slides 7–12.
+
 Use this file to build the SIH idea-submission deck (6 slides, the official limit) and, if you reach the finale, the jury deck (6 more slides). Every slide has:
 
 1. **The 5-second test**: what a judge must understand at a glance.

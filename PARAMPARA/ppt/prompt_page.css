@@ -26,10 +26,16 @@ table { border-collapse:collapse; width:100%; font-size:13.5px }
 th { background:var(--head); color:var(--headfg); text-align:left; padding:6px 8px; font-weight:600 }
 td { border-bottom:1px solid var(--line); padding:6px 8px; vertical-align:top }
 tr:nth-child(even) td { background:var(--card) }
-.promptbox { margin:12px 0 18px; border:1px solid var(--line); border-left:5px solid var(--brass); border-radius:8px; background:var(--code); overflow:hidden }
-.promptbox pre { margin:0; padding:6px 14px 14px; white-space:pre-wrap; word-break:break-word; font:12.5px/1.55 var(--mono); color:var(--codefg) }
+.promptbox { margin:12px 0 18px; border:1px solid var(--line); border-radius:8px; background:var(--code); overflow:hidden }
+.pbar { display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 8px 6px 14px; border-bottom:1px solid var(--line) }
+.pbar span { font:600 11px var(--body); letter-spacing:.08em; text-transform:uppercase; color:var(--muted) }
+.promptbox pre { margin:0; padding:10px 14px 14px; white-space:pre-wrap; word-break:break-word; font:12.5px/1.55 var(--mono); color:var(--codefg) }
 .promptbox pre code { background:none; padding:0; font-size:inherit }
-.copy { display:block; margin:8px 8px 0 auto; font:600 12px var(--body); background:var(--blue); color:var(--bg); border:0; border-radius:6px; padding:6px 12px; cursor:pointer; min-height:32px }
+.copy { display:block; margin:0; font:600 12px var(--body); background:var(--blue); color:var(--bg); border:0; border-radius:6px; padding:6px 12px; cursor:pointer; min-height:32px }
 .copy:focus-visible { outline:3px solid var(--brass); outline-offset:2px }
 .copy.done { background:var(--ok) }
 li.todo::before { content:"☐ "; color:var(--muted) }
+figure { margin:14px 0 18px } figure img { display:block; width:100%; max-width:100%; height:auto; border:1px solid var(--line); border-radius:8px; background:#fff }
+figcaption { font:12px var(--body); color:var(--muted); margin-top:4px }
+a { overflow-wrap:anywhere }
+li, p, td { overflow-wrap:break-word; min-width:0 }

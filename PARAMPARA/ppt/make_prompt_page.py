@@ -1,12 +1,13 @@
-"""Builds slide_prompts_page.html (copy-button page) from SIH_PPT_Slide_Prompts.md. Run: python3 make_prompt_page.py"""
+"""Builds slide_prompts_page.html (copy-button page) from SIH_PPT_Master_Prompts.md, which helper/build_helper.py writes.
+Publish it with the files under helper/wireframes/. Run: python3 make_prompt_page.py"""
 import html, os, re
 import markdown
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-md = open(os.path.join(HERE, "SIH_PPT_Slide_Prompts.md")).read()
+md = open(os.path.join(HERE, "SIH_PPT_Master_Prompts.md")).read()
 body = markdown.markdown(md, extensions=["tables", "fenced_code", "sane_lists"])
-NAV = ["Rules", "Design system", "Assets", "S1 Title", "S2 Idea", "S3 Technical", "S4 Feasibility", "S5 Impact",
-       "S6 References", "Finale S7-12", "Image prompts", "QA checklist"]
+NAV = ["Start", "Design", "Images", "S1 Title", "S2 Idea", "S3 Technical", "S4 Feasibility", "S5 Impact",
+       "S6 References", "AI image prompts", "Real photos", "References", "Final check"]
 toc = []
 def h2(m):
     s = f"sec{len(toc)}"; toc.append(s)
@@ -15,11 +16,12 @@ body = re.sub(r"<h2>(.*?)</h2>", h2, body)
 count = [0]
 def pre(m):
     count[0] += 1
-    return (f'<div class="promptbox"><button class="copy" type="button" data-target="p{count[0]}">Copy prompt</button>'
+    return (f'<div class="promptbox"><div class="pbar"><span>Prompt</span><button class="copy" type="button" data-target="p{count[0]}">Copy prompt</button></div>'
             f'<pre id="p{count[0]}"><code>{m.group(1)}</code></pre></div>')
 body = re.sub(r'<pre><code(?: class="[^"]*")?>(.*?)</code></pre>', pre, body, flags=re.S)
 body = body.replace("<table>", '<div class="tw"><table>').replace("</table>", "</table></div>")
 body = body.replace("<li>[ ]", '<li class="todo">')
+body = re.sub(r'<p><img alt="([^"]*)" src="([^"]+)" ?/?></p>', r'<figure><a href="\2" target="_blank" rel="noopener"><img alt="\1" src="\2" loading="lazy"></a><figcaption>\1 · tap to open full size</figcaption></figure>', body)
 nav = "".join(f'<a href="#{s}">{html.escape(NAV[i] if i < len(NAV) else s)}</a>' for i, s in enumerate(toc))
 css = open(os.path.join(HERE, "prompt_page.css")).read()
 page = f'''<title>PARAMPARA Slide Prompts</title>
