@@ -1,0 +1,186 @@
+{
+  "assumptions": {
+    "L_mm": 600,
+    "source_mm": 20,
+    "screen_blur_mm": 0.4,
+    "camera_noise": 0.015,
+    "puppet_transmission": 0.4,
+    "puppet_height_mm": 400,
+    "calibration_distances_mm": [
+      0,
+      25,
+      50,
+      100,
+      150,
+      200
+    ],
+    "note": "Simulation of the stated geometry; real rigs must be calibrated and tested (see README)."
+  },
+  "E1_depth_accuracy": {
+    "1080p": {
+      "rmse_mm": {
+        "edge_blur": 7.668909696544711,
+        "perforation_scale": 0.09833475717642493,
+        "area": 0.36649164822326924,
+        "fused": 0.163590940899851
+      },
+      "fused_mae_by_range_mm": {
+        "0-50": 0.18231014114449967,
+        "50-100": 0.18338152484159206,
+        "100-200": 0.04527500561922082
+      },
+      "contact_detection(<10mm)": {
+        "pressed_detected": "15/15",
+        "away_detected": "42/42",
+        "accuracy": 1.0
+      },
+      "n_tests": 60
+    },
+    "4K": {
+      "rmse_mm": {
+        "edge_blur": 8.660447603023599,
+        "perforation_scale": 0.025483057794211162,
+        "area": 0.40401804071761543,
+        "fused": 0.15427388266184516
+      },
+      "fused_mae_by_range_mm": {
+        "0-50": 0.13760623268657424,
+        "50-100": 0.10025578413866043,
+        "100-200": 0.129363121058273
+      },
+      "contact_detection(<10mm)": {
+        "pressed_detected": "15/15",
+        "away_detected": "42/42",
+        "accuracy": 1.0
+      },
+      "n_tests": 60
+    }
+  },
+  "E2_articulation_rmse_mm": {
+    "edge_blur": 7.365185011110938,
+    "perforation_scale": 0.05872628501780785,
+    "area": 2.152042469902891,
+    "fused": 0.11886382490623194
+  },
+  "E3_tilt": {
+    "cases": [
+      {
+        "d0": 30,
+        "yaw_deg_true": 0.0,
+        "yaw_deg_est": 0.1,
+        "pitch_deg_true": 0.0,
+        "pitch_deg_est": -0.0
+      },
+      {
+        "d0": 60,
+        "yaw_deg_true": 10.2,
+        "yaw_deg_est": 10.0,
+        "pitch_deg_true": 0.0,
+        "pitch_deg_est": 0.3
+      },
+      {
+        "d0": 60,
+        "yaw_deg_true": -10.2,
+        "yaw_deg_est": -10.6,
+        "pitch_deg_true": 0.0,
+        "pitch_deg_est": 0.5
+      },
+      {
+        "d0": 40,
+        "yaw_deg_true": 0.0,
+        "yaw_deg_est": -0.4,
+        "pitch_deg_true": 15.1,
+        "pitch_deg_est": 14.6
+      },
+      {
+        "d0": 80,
+        "yaw_deg_true": 0.0,
+        "yaw_deg_est": -0.3,
+        "pitch_deg_true": -15.1,
+        "pitch_deg_est": -14.7
+      },
+      {
+        "d0": 50,
+        "yaw_deg_true": 6.8,
+        "yaw_deg_est": 9.7,
+        "pitch_deg_true": 6.8,
+        "pitch_deg_est": 10.8
+      },
+      {
+        "d0": 50,
+        "yaw_deg_true": 15.1,
+        "yaw_deg_est": 14.5,
+        "pitch_deg_true": 0.0,
+        "pitch_deg_est": 0.4
+      }
+    ],
+    "mean_abs_angle_error_deg": 0.7857142857142857,
+    "max_abs_angle_error_deg": 4.000000000000001
+  },
+  "E7_tilted_puppet_depth_rmse_mm": {
+    "perforation_homography": 5.622876547342177,
+    "area": 6.240092020189498,
+    "edge_blur": 6.004632933886592
+  },
+  "E4_motion_300mm_s_rmse_mm": {
+    "1/60 s": {
+      "edge_blur": 67.05192174772178,
+      "perforation_scale": 0.036919187172812756
+    },
+    "1/250 s": {
+      "edge_blur": 10.481997907278533,
+      "perforation_scale": 0.03900800193611668
+    }
+  },
+  "E5_light": {
+    "source_20mm_to_30mm_without_recalibration_rmse_mm": {
+      "edge_blur": 30.63082135519527,
+      "perforation_scale": 0.08740422640163711
+    },
+    "tube_light_15x150mm_with_own_calibration": {
+      "L=600mm": {
+        "fused_rmse_mm": 26.004609921977988,
+        "perforation_cue_available": "5/12"
+      },
+      "L=1500mm": {
+        "fused_rmse_mm": 7.314560467980367,
+        "perforation_cue_available": "11/12"
+      }
+    }
+  },
+  "E6_scoring": {
+    "depth_noise_used_mm": 2.0,
+    "scores": {
+      "correct": {
+        "timing_lag_ms": 0,
+        "contact_agreement": 0.997,
+        "shape_p99_mm": 3.95,
+        "flags": []
+      },
+      "late_180ms": {
+        "timing_lag_ms": 167,
+        "contact_agreement": 0.994,
+        "shape_p99_mm": 9.69,
+        "flags": [
+          "TIMING"
+        ]
+      },
+      "contact_lapse": {
+        "timing_lag_ms": 0,
+        "contact_agreement": 0.707,
+        "shape_p99_mm": 4.26,
+        "flags": [
+          "CONTACT"
+        ]
+      },
+      "missed_bow": {
+        "timing_lag_ms": 0,
+        "contact_agreement": 0.997,
+        "shape_p99_mm": 34.95,
+        "flags": [
+          "SHAPE"
+        ]
+      }
+    }
+  }
+}
