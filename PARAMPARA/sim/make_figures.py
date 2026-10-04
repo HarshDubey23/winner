@@ -76,3 +76,33 @@ def lineage():
 
 if __name__ == "__main__":
     architecture(); lineage()
+
+
+def cue_timeline():
+    """Movement-aware cue timing for one stroke (illustrative values; t_prep is measured per user)."""
+    fig, ax = plt.subplots(figsize=(8.2, 3.0), dpi=200)
+    ax.set_xlim(-470, 110); ax.set_ylim(0, 1); ax.set_yticks([])
+    for s in ["top", "right", "left"]:
+        ax.spines[s].set_visible(False)
+    t_prep, margin = 200, 60
+    lift = -t_prep
+    ax.axvspan(lift - 45, 0, ymin=0.08, ymax=0.40, color="#B5523B", alpha=0.18, lw=0)
+    ax.text((lift - 45) / 2, 0.24, "tactile suppression zone on the moving arm\n(peaks ~25–45 ms before movement onset,\ncontinues during movement)",
+            ha="center", va="center", fontsize=7.6, color="#7A1F1F")
+    ax.axvspan(lift, 0, ymin=0.46, ymax=0.68, color="#1F4E79", alpha=0.15, lw=0)
+    ax.text(lift / 2, 0.57, "student's preparatory lift + downstroke\n(t_prep measured per user from wrist IMU)", ha="center", va="center", fontsize=7.6, color="#1F4E79")
+    cue_end = lift - 45 - margin
+    ax.add_patch(plt.Rectangle((cue_end - 60, 0.74), 60, 0.16, color="#B8901A"))
+    ax.text(cue_end - 30, 0.95, "tacton (≤ 60 ms, ≥ 3× threshold)", ha="center", fontsize=7.6, color="#7A5A00")
+    ax.annotate("", xy=(cue_end, 0.78), xytext=(lift - 45, 0.78), arrowprops=dict(arrowstyle="<->", color="#555", lw=0.8))
+    ax.text((cue_end + lift - 45) / 2, 0.70, "safety margin", ha="center", fontsize=7.2, color="#555")
+    ax.axvline(0, color="#222", lw=1.6); ax.text(4, 0.88, "strike = master's\nexpected time E_i", fontsize=7.6, color="#222", va="center")
+    ax.axvline(lift, color="#1F4E79", lw=0.8, ls="--"); ax.text(lift + 3, 0.71, "lift onset", fontsize=7.2, color="#1F4E79")
+    ax.set_xlabel("Time relative to the expected stroke (ms)", fontsize=8); ax.tick_params(labelsize=7.5)
+    ax.text(-465, 0.015, "c_i = E_i − t_prep − 45 ms − margin − d_tacton − ℓ_a. Illustrative: t_prep 200 ms, margin 60 ms, d_tacton 60 ms.",
+            fontsize=6.6, color="#555", style="italic")
+    fig.tight_layout()
+    fig.savefig(os.path.join(OUT, "cue_timeline.png"))
+
+if __name__ == "__main__":
+    cue_timeline()

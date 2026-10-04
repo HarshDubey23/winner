@@ -1,0 +1,167 @@
+{
+  "A": {
+    "always_on": {
+      "retention_mean": 0.479,
+      "retention_sd": 0.095,
+      "slow_mid_fast": [
+        0.383,
+        0.481,
+        0.572
+      ]
+    },
+    "no_guidance": {
+      "retention_mean": 0.464,
+      "retention_sd": 0.249,
+      "slow_mid_fast": [
+        0.259,
+        0.402,
+        0.731
+      ]
+    },
+    "linear_fade": {
+      "retention_mean": 0.673,
+      "retention_sd": 0.177,
+      "slow_mid_fast": [
+        0.466,
+        0.707,
+        0.845
+      ]
+    },
+    "adaptive_v2": {
+      "retention_mean": 0.681,
+      "retention_sd": 0.165,
+      "slow_mid_fast": [
+        0.492,
+        0.704,
+        0.846
+      ]
+    },
+    "adaptive_v21": {
+      "retention_mean": 0.688,
+      "retention_sd": 0.167,
+      "slow_mid_fast": [
+        0.496,
+        0.712,
+        0.854
+      ]
+    },
+    "v21_minus_linear": {
+      "mean": 0.015,
+      "ci95": [
+        0.013,
+        0.017
+      ],
+      "share_learners_better": 0.668
+    }
+  },
+  "B": {
+    "always_on": {
+      "retention_mean": 0.424,
+      "retention_sd": 0.149,
+      "slow_mid_fast": [
+        0.289,
+        0.399,
+        0.583
+      ]
+    },
+    "no_guidance": {
+      "retention_mean": 0.58,
+      "retention_sd": 0.17,
+      "slow_mid_fast": [
+        0.399,
+        0.577,
+        0.764
+      ]
+    },
+    "linear_fade": {
+      "retention_mean": 0.63,
+      "retention_sd": 0.166,
+      "slow_mid_fast": [
+        0.446,
+        0.639,
+        0.804
+      ]
+    },
+    "adaptive_v2": {
+      "retention_mean": 0.637,
+      "retention_sd": 0.175,
+      "slow_mid_fast": [
+        0.442,
+        0.661,
+        0.808
+      ]
+    },
+    "adaptive_v21": {
+      "retention_mean": 0.645,
+      "retention_sd": 0.173,
+      "slow_mid_fast": [
+        0.452,
+        0.669,
+        0.815
+      ]
+    },
+    "v21_minus_linear": {
+      "mean": 0.016,
+      "ci95": [
+        0.013,
+        0.018
+      ],
+      "share_learners_better": 0.662
+    }
+  },
+  "C": {
+    "always_on": {
+      "retention_mean": 0.572,
+      "retention_sd": 0.17,
+      "slow_mid_fast": [
+        0.392,
+        0.567,
+        0.757
+      ]
+    },
+    "no_guidance": {
+      "retention_mean": 0.708,
+      "retention_sd": 0.153,
+      "slow_mid_fast": [
+        0.533,
+        0.735,
+        0.855
+      ]
+    },
+    "linear_fade": {
+      "retention_mean": 0.676,
+      "retention_sd": 0.163,
+      "slow_mid_fast": [
+        0.491,
+        0.695,
+        0.841
+      ]
+    },
+    "adaptive_v2": {
+      "retention_mean": 0.663,
+      "retention_sd": 0.175,
+      "slow_mid_fast": [
+        0.465,
+        0.682,
+        0.842
+      ]
+    },
+    "adaptive_v21": {
+      "retention_mean": 0.676,
+      "retention_sd": 0.174,
+      "slow_mid_fast": [
+        0.479,
+        0.697,
+        0.853
+      ]
+    },
+    "v21_minus_linear": {
+      "mean": 0.001,
+      "ci95": [
+        -0.001,
+        0.003
+      ],
+      "share_learners_better": 0.51
+    }
+  }
+}

@@ -1,7 +1,7 @@
 // Small helpers on top of docx-js so the content file reads like a document.
 const fs = require("fs");
 const D = require("docx");
-const refs = require("./refs");
+const refs = require(process.env.PARAMPARA_REFS || "./refs");
 
 const W = 9026; // A4 width (11906) minus two 1-inch margins, in DXA
 const COLOR = { maroon: "7A1F1F", blue: "1F4E79", gold: "B8901A", ink: "222222", grey: "5E5E5E",
