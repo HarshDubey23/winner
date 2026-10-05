@@ -1,0 +1,9 @@
+Claim area,Available evidence,Boundary
+3D equipment design,8 GLB scenes; 9 viewer views; 20 housing STEP/STL files,CAD geometry; no manufacturability approval
+Firmware core,"27 existing host checks; 1,000 scoring cases and 425 timing/fade checks passed",Mock/host execution; no full ESP32-S3 sleeve deployment
+Virtual circuit,ESP32 sketch compiled and executed in Wokwi; serial logs retained,MPU6050/LED substitutes; one channel
+Phone practice,"On-time, late and silent scripted input tests; CSV output",Synthetic example profiles; browser timing
+Performer information,"47.6% held-session balanced accuracy, 7 electronic-drum performers","Not tabla, not wearable, not skill quality"
+Same-groove experiment,"63.125% balanced unit accuracy; 25% chance, 4 performers",158 units from 40 performances on one electronic kit
+Learning benefit,Protocol and controller fixture exist,No measured human retention improvement
+Physical prototype,"Planned CAD, architecture and bench protocol",No assembled device claimed

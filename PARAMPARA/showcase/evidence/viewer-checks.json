@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-05T09:53:01.695Z",
+  "scenes": [
+    {
+      "view": "sleeve_iso",
+      "meshes": 79
+    },
+    {
+      "view": "hand",
+      "meshes": 79
+    },
+    {
+      "view": "ring_exploded",
+      "meshes": 8
+    },
+    {
+      "view": "motor_exploded",
+      "meshes": 4
+    },
+    {
+      "view": "hand_exploded",
+      "meshes": 16
+    },
+    {
+      "view": "hub_exploded",
+      "meshes": 14
+    },
+    {
+      "view": "tabla_iso",
+      "meshes": 38
+    },
+    {
+      "view": "puppet_iso",
+      "meshes": 46
+    },
+    {
+      "view": "loom_iso",
+      "meshes": 36
+    }
+  ],
+  "errors": [],
+  "mobileOverflow": false,
+  "pngExport": true
+}

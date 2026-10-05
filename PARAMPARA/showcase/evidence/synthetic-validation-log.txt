@@ -1,0 +1,24 @@
+{
+  "master_driven": {
+    "naive_random_cv_master_acc": 0.963,
+    "T-a_leave_one_session_out_master_acc": 0.846,
+    "T-b_leave_one_instrument_out_master_acc": 0.958,
+    "T-c_confound_gap": 0.772,
+    "T-c_permutation_p": 0.002,
+    "control_instrument_acc_leave_one_master_out": 0.658,
+    "chance_master": 0.333,
+    "chance_instrument": 0.5,
+    "verdict": "PASS: style claim supported"
+  },
+  "instrument_driven": {
+    "naive_random_cv_master_acc": 0.608,
+    "T-a_leave_one_session_out_master_acc": 0.292,
+    "T-b_leave_one_instrument_out_master_acc": 0.517,
+    "T-c_confound_gap": -1.922,
+    "T-c_permutation_p": 0.002,
+    "control_instrument_acc_leave_one_master_out": 1.0,
+    "chance_master": 0.333,
+    "chance_instrument": 0.5,
+    "verdict": "FAIL: drop the style claim"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "runDate": "2026-10-05T09:39:45.637Z",
+  "method": "Repository scripted-player methodology, run in three isolated Chromium pages",
+  "pass": true,
+  "results": {
+    "silent": {
+      "unaided": [
+        0
+      ],
+      "guidance": 1
+    },
+    "late_60ms": {
+      "unaided": [
+        0.7529041666651058,
+        0.7523041666697625
+      ],
+      "guidance": 0.6000000000000001
+    },
+    "on_time": {
+      "unaided": [
+        0.9987041666651145,
+        0.9986250000015219
+      ],
+      "guidance": 0.6000000000000001
+    }
+  }
+}

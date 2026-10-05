@@ -1,0 +1,10 @@
+{
+  "width": 1280,
+  "height": 720,
+  "fps": 20,
+  "duration_seconds": 72,
+  "frames": 1440,
+  "renderer": "VTK off-screen rendering of actual GLB meshes",
+  "audio": "None; captions included",
+  "scope": "CAD and controller visualization; not physical or biomechanical simulation"
+}

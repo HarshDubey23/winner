@@ -1,0 +1,162 @@
+1
+00:00:15,000 --> 00:00:20,358
+This is more than the sound of a tabla.
+
+2
+00:00:20,358 --> 00:00:23,931
+These hands carry years of practice.
+
+3
+00:00:23,931 --> 00:00:26,908
+A single stroke sounds simple.
+
+4
+00:00:26,908 --> 00:00:30,480
+Playing it well is another story.
+
+5
+00:00:34,000 --> 00:00:35,962
+A puppet string.
+
+6
+00:00:35,962 --> 00:00:38,578
+Hands working a loom.
+
+7
+00:00:38,578 --> 00:00:47,080
+Three different arts share a difficult learning challenge: the finer details
+of movement.
+
+8
+00:00:49,000 --> 00:00:53,704
+A teacher can spot a mistake in person.
+
+9
+00:00:53,704 --> 00:00:57,232
+But what happens during solo practice?
+
+10
+00:00:57,232 --> 00:01:00,172
+You can replay a video.
+
+11
+00:01:00,172 --> 00:01:04,288
+Who points out your own timing error?
+
+12
+00:01:07,000 --> 00:01:21,040
+That question led to PARAMPARA: a wearable practice companion, designed to
+support exercises taught by a teacher.
+
+13
+00:01:22,000 --> 00:01:25,431
+This is our proposed design.
+
+14
+00:01:25,431 --> 00:01:28,176
+Sensors would record movement.
+
+15
+00:01:28,176 --> 00:01:32,979
+Small vibration motors would give practice cues.
+
+16
+00:01:32,979 --> 00:01:37,096
+A hub would connect the system.
+
+17
+00:01:41,000 --> 00:01:45,484
+The screen shows source images of the selected components.
+
+18
+00:01:45,484 --> 00:01:49,470
+The internal 3D structure comes from our CAD.
+
+19
+00:01:49,470 --> 00:01:53,456
+The physical sleeve has not been built yet.
+
+20
+00:01:57,000 --> 00:02:03,799
+Imagine a short exercise recorded with the teacher’s permission.
+
+21
+00:02:03,799 --> 00:02:06,065
+You repeat it.
+
+22
+00:02:06,065 --> 00:02:12,864
+The system would compare timing and adapt its cues.
+
+23
+00:02:14,000 --> 00:02:18,222
+As practice improves, guidance fades.
+
+24
+00:02:18,222 --> 00:02:23,290
+Then comes an attempt without cues.
+
+25
+00:02:23,290 --> 00:02:27,512
+The aim is independent learning.
+
+26
+00:02:30,000 --> 00:02:32,749
+What works so far?
+
+27
+00:02:32,749 --> 00:02:39,622
+A phone practice demo, scoring code and a circuit simulation.
+
+28
+00:02:39,622 --> 00:02:41,684
+Software checks passed.
+
+29
+00:02:41,684 --> 00:02:45,120
+These are not hardware tests.
+
+30
+00:02:47,000 --> 00:02:55,475
+We reproduced a method on public drum data and found useful signals.
+
+31
+00:02:55,475 --> 00:03:01,832
+This does not establish tabla accuracy or improved learning.
+
+32
+00:03:06,000 --> 00:03:11,387
+Next: build one real sensor-and-motor channel.
+
+33
+00:03:11,387 --> 00:03:14,979
+Test timing and comfort.
+
+34
+00:03:14,979 --> 00:03:21,264
+Then study it with teachers and learners.
+
+35
+00:03:22,000 --> 00:03:23,948
+Tabla comes first.
+
+36
+00:03:23,948 --> 00:03:29,792
+Puppetry and weaving need their own exercises and validation.
+
+37
+00:03:29,792 --> 00:03:33,688
+One score cannot define every craft.
+
+38
+00:03:39,000 --> 00:03:43,057
+Teachers’ consent and credit come first.
+
+39
+00:03:43,057 --> 00:03:52,523
+Our question is simple: can technology make the next practice session a
+little better?
+
+40
+00:03:52,523 --> 00:03:54,552
+This is PARAMPARA.

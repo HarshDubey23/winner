@@ -1,0 +1,311 @@
+{
+  "sleeve_iso": {
+    "file": "sleeve_iso.glb",
+    "meshes": 79,
+    "bytes": 1702916,
+    "sha256": "57e6262c9abfcf4caba63567d7cc452d310035d19cf3b61f0b55d6c0bda124ca",
+    "anchors": {
+      "shoulder pod (IMU + motor)": [
+        0.01,
+        0.061,
+        -0.0
+      ],
+      "upper-arm pod (IMU)": [
+        0.15,
+        0.0496,
+        -0.0
+      ],
+      "elbow motor": [
+        0.302,
+        0.044,
+        -0.0
+      ],
+      "hub (ESP32-S3, battery)": [
+        0.4,
+        0.041,
+        -0.0
+      ],
+      "wrist pod (forearm IMU + motor)": [
+        0.532,
+        0.025,
+        -0.0
+      ],
+      "hand board (IMU, 5 drivers)": [
+        0.607,
+        0.02,
+        -0.0
+      ],
+      "middle motor": [
+        0.676,
+        0.015700000000000002,
+        -0.01
+      ],
+      "middle ring (IMU)": [
+        0.715,
+        0.013642000000000001,
+        -0.01
+      ],
+      "thumb motor": [
+        0.6015846157077913,
+        0.0019357964012076429,
+        -0.05493285505642072
+      ],
+      "thumb ring (IMU)": [
+        0.6297063553862199,
+        -0.008339157527179399,
+        -0.0802537831955689
+      ]
+    }
+  },
+  "ring_exploded": {
+    "file": "ring_exploded.glb",
+    "meshes": 8,
+    "bytes": 76692,
+    "sha256": "61bbeb13356561bf3a10dd062eef4aa73813003220f4410072d83437ce06cfc9",
+    "anchors": {
+      "lid (PA12, blue = motion sensor)": [
+        0.0,
+        0.019399999999999997,
+        -0.003
+      ],
+      "BMI270 IMU 3.0 x 2.5 mm": [
+        0.0008,
+        0.0098,
+        -0.0
+      ],
+      "board 10 x 8 x 0.8 mm": [
+        -0.0035,
+        0.009,
+        0.0035
+      ],
+      "4-pin cable connector": [
+        -0.0038,
+        0.01,
+        -0.0
+      ],
+      "base with finger saddle (R 9 mm)": [
+        0.0055,
+        0.0015,
+        0.0045
+      ],
+      "strap slot 5.2 x 0.9 mm": [
+        0.0,
+        0.0015,
+        0.0067
+      ],
+      "silicone strap": [
+        0.0,
+        -0.01,
+        0.0095
+      ]
+    }
+  },
+  "motor_exploded": {
+    "file": "motor_exploded.glb",
+    "meshes": 4,
+    "bytes": 69700,
+    "sha256": "c7c3ebf13c232111d2b493594d53370f742f23e3e844d4c3575b5abf0a3841a2",
+    "anchors": {
+      "lid (gold = vibration motor)": [
+        0.0,
+        0.0192,
+        -0.003
+      ],
+      "coin LRA 8 x 3.3 mm, 235 Hz": [
+        0.0,
+        0.0104,
+        0.004
+      ],
+      "base, saddle R 10 mm": [
+        0.005,
+        0.002,
+        0.004
+      ],
+      "silicone strap": [
+        0.0,
+        -0.01,
+        0.0105
+      ]
+    }
+  },
+  "hand_exploded": {
+    "file": "hand_exploded.glb",
+    "meshes": 16,
+    "bytes": 66124,
+    "sha256": "7edb41bce216b42d82ac680924005973281dfe519fbc4f80f14509811f9bfe51",
+    "anchors": {
+      "TCA9548A I2C switch": [
+        -0.009,
+        0.015,
+        -0.006
+      ],
+      "5 x DRV2605L haptic drivers": [
+        0.009,
+        0.015,
+        0.006
+      ],
+      "BMI270 (back-of-hand IMU)": [
+        -0.01,
+        0.015,
+        0.006
+      ],
+      "5 finger-cable ports": [
+        0.021,
+        0.0045,
+        -0.0
+      ],
+      "lid": [
+        0.0,
+        0.0339,
+        -0.008
+      ],
+      "case 42 x 32 x 8 mm": [
+        -0.014,
+        0.003,
+        0.014
+      ]
+    }
+  },
+  "hub_exploded": {
+    "file": "hub_exploded.glb",
+    "meshes": 14,
+    "bytes": 84356,
+    "sha256": "9b42f0aa9a0da05f366a316f0fe68c26c0def0af81cbe9b3af9bf9e59002a531",
+    "anchors": {
+      "ESP32-S3-MINI-1 15.4 x 20.5 mm": [
+        -0.016,
+        0.0444,
+        -0.007
+      ],
+      "microSD (full-rate backup log)": [
+        -0.015,
+        0.0434,
+        0.01
+      ],
+      "3 x DRV2605L + TCA9548A": [
+        0.01,
+        0.042800000000000005,
+        -0.006
+      ],
+      "USB-C charging": [
+        0.026,
+        0.044800000000000006,
+        -0.006
+      ],
+      "MCP73831 charger": [
+        0.02,
+        0.0427,
+        0.004
+      ],
+      "LiPo 1,000 mAh, 50 x 34 x 6 mm": [
+        0.0,
+        0.0242,
+        0.012
+      ],
+      "case 62 x 44 x 16 mm, strap loops": [
+        -0.02,
+        0.004,
+        0.024
+      ],
+      "lid with LED window": [
+        0.024,
+        0.0644,
+        0.015
+      ]
+    }
+  },
+  "tabla_iso": {
+    "file": "tabla_iso.glb",
+    "meshes": 38,
+    "bytes": 463944,
+    "sha256": "c6927ef67c9436981675be7cadacba3df5684f45f490878c0e83ed56d374bcee",
+    "anchors": {
+      "piezo clip on dayan shell (27 mm disc)": [
+        0.13,
+        0.245,
+        0.083
+      ],
+      "piezo clip on bayan shell": [
+        -0.15,
+        0.23,
+        0.13
+      ],
+      "base unit 86 x 56 x 24 mm": [
+        -0.005,
+        0.025,
+        0.17
+      ],
+      "dayan 140 mm head": [
+        0.13,
+        0.3,
+        -0.0
+      ],
+      "bayan 229 mm head": [
+        -0.15,
+        0.29,
+        -0.0
+      ]
+    }
+  },
+  "puppet_iso": {
+    "file": "puppet_iso.glb",
+    "meshes": 46,
+    "bytes": 943204,
+    "sha256": "5504cdd3ccd68ae13c58abb52e1ab9afba38111fde76966177fb7e98601e6eef",
+    "anchors": {
+      "sensor pod in torso (30 x 20 x 10 mm)": [
+        0.0,
+        0.365,
+        -0.045
+      ],
+      "strings looped on fingers": [
+        0.053,
+        0.71,
+        -0.03
+      ],
+      "finger rings (IMU)": [
+        0.07,
+        0.84,
+        -0.01
+      ],
+      "Kathputli, about 55 cm tall": [
+        0.12,
+        0.15,
+        -0.0
+      ]
+    }
+  },
+  "loom_iso": {
+    "file": "loom_iso.glb",
+    "meshes": 36,
+    "bytes": 65892,
+    "sha256": "ebbb1198969d672d74d56ef297127813709dd4ead6e7335be765fad0a61e0f83",
+    "anchors": {
+      "beater sensor (IMU)": [
+        0.0,
+        1.1,
+        0.04
+      ],
+      "treadle switches": [
+        0.11,
+        0.022,
+        0.26
+      ],
+      "loom node (ESP32, battery)": [
+        0.541,
+        0.7,
+        0.47
+      ],
+      "phone camera over the cloth": [
+        0.34,
+        1.3,
+        0.32
+      ],
+      "woven cloth (picks per cm)": [
+        -0.2,
+        0.925,
+        0.39
+      ]
+    }
+  }
+}

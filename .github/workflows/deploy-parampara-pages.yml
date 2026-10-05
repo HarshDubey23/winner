@@ -1,0 +1,63 @@
+name: Deploy PARAMPARA proof site
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - PARAMPARA/submission/**
+      - PARAMPARA/showcase/**
+      - PARAMPARA/pages-index.html
+      - .github/workflows/deploy-parampara-pages.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: parampara-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Prepare lean proof site
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p _site/submission/results _site/submission/film-v3
+          cp PARAMPARA/pages-index.html _site/index.html
+          cp PARAMPARA/submission/index.html _site/submission/index.html
+          cp PARAMPARA/submission/simulation.js _site/submission/simulation.js
+          cp PARAMPARA/submission/START_HERE.md _site/submission/START_HERE.md
+          cp -R PARAMPARA/submission/docs _site/submission/docs
+          cp -R PARAMPARA/submission/video _site/submission/video
+          cp PARAMPARA/submission/results/teaching-trace.json _site/submission/results/teaching-trace.json
+          cp PARAMPARA/submission/film-v3/PARAMPARA-4min-Jury-Film.mp4 _site/submission/film-v3/
+          cp PARAMPARA/submission/film-v3/PARAMPARA-Jury-Poster.jpg _site/submission/film-v3/
+          cp PARAMPARA/submission/film-v3/PARAMPARA-Jury-English.srt _site/submission/film-v3/
+          cp PARAMPARA/submission/film-v3/CREDITS.md _site/submission/film-v3/
+          cp PARAMPARA/submission/film-v3/README.md _site/submission/film-v3/
+          cp -R PARAMPARA/showcase _site/showcase
+          touch _site/.nojekyll
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload proof-site artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+      - name: Deploy proof site
+        id: deployment
+        uses: actions/deploy-pages@v4
