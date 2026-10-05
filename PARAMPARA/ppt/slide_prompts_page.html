@@ -1,0 +1,2090 @@
+<title>PARAMPARA Slide Prompts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one reading column with a sticky section index; every prompt is a copyable block. */
+:root { --bg:#ffffff; --fg:#222222; --muted:#5e5e5e; --line:#d9cfc0; --card:#faf7f0; --maroon:#7a1f1f; --blue:#1f4e79; --brass:#8f6c0c;
+  --code:#f6f3ec; --codefg:#2a2a2a; --head:#7a1f1f; --headfg:#ffffff; --ok:#2e6b3a;
+  --display:"Poppins", system-ui, sans-serif; --body:"Inter", system-ui, sans-serif; --mono:"JetBrains Mono", ui-monospace, monospace; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#16171b; --fg:#ebe9e4; --muted:#a6a8b0; --line:#3a3b42; --card:#1f2026;
+  --maroon:#e08a84; --blue:#8fb4e8; --brass:#d6b04a; --code:#22232a; --codefg:#e6e3dc; --head:#5a1d1d; --headfg:#ffffff; --ok:#7cc48a; color-scheme:dark } }
+:root[data-theme="dark"] { --bg:#16171b; --fg:#ebe9e4; --muted:#a6a8b0; --line:#3a3b42; --card:#1f2026;
+  --maroon:#e08a84; --blue:#8fb4e8; --brass:#d6b04a; --code:#22232a; --codefg:#e6e3dc; --head:#5a1d1d; --headfg:#ffffff; --ok:#7cc48a; color-scheme:dark }
+* { box-sizing:border-box }
+body { background:var(--bg); color:var(--fg); font:15px/1.6 var(--body); }
+.wrap { max-width:1000px; margin:0 auto; padding-inline:16px; padding-block:12px 60px; }
+nav { position:sticky; top:env(safe-area-inset-top, 0px); z-index:5; background:var(--bg); border-bottom:1px solid var(--line);
+  display:flex; gap:6px; overflow-x:auto; padding:8px 0; margin-bottom:8px }
+nav a { flex:none; font:600 12px var(--body); color:var(--blue); text-decoration:none; border:1px solid var(--line); border-radius:999px; padding:3px 10px; white-space:nowrap }
+nav a:hover, nav a:focus-visible { border-color:var(--blue); outline:none }
+h1 { font:600 30px/1.2 var(--display); color:var(--maroon); margin:14px 0 6px; text-wrap:balance }
+h2 { font:600 22px/1.3 var(--display); color:var(--maroon); margin:40px 0 10px; padding-top:12px; border-top:2px solid var(--brass); text-wrap:balance; scroll-margin-top:56px }
+h3 { font:600 17px/1.3 var(--display); color:var(--blue); margin:24px 0 6px; scroll-margin-top:56px }
+p, li { max-width:75ch }
+li { margin:2px 0 }
+strong { font-weight:600 }
+code { font-family:var(--mono); font-size:.86em; background:var(--code); color:var(--codefg); padding:1px 4px; border-radius:4px }
+a { color:var(--blue) }
+.tw { overflow-x:auto; margin:10px 0 }
+table { border-collapse:collapse; width:100%; font-size:13.5px }
+th { background:var(--head); color:var(--headfg); text-align:left; padding:6px 8px; font-weight:600 }
+td { border-bottom:1px solid var(--line); padding:6px 8px; vertical-align:top }
+tr:nth-child(even) td { background:var(--card) }
+.promptbox { margin:12px 0 18px; border:1px solid var(--line); border-radius:8px; background:var(--code); overflow:hidden }
+.pbar { display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 8px 6px 14px; border-bottom:1px solid var(--line) }
+.pbar span { font:600 11px var(--body); letter-spacing:.08em; text-transform:uppercase; color:var(--muted) }
+.promptbox pre { margin:0; padding:10px 14px 14px; white-space:pre-wrap; word-break:break-word; font:12.5px/1.55 var(--mono); color:var(--codefg) }
+.promptbox pre code { background:none; padding:0; font-size:inherit }
+.copy { display:block; margin:0; font:600 12px var(--body); background:var(--blue); color:var(--bg); border:0; border-radius:6px; padding:6px 12px; cursor:pointer; min-height:32px }
+.copy:focus-visible { outline:3px solid var(--brass); outline-offset:2px }
+.copy.done { background:var(--ok) }
+li.todo::before { content:"☐ "; color:var(--muted) }
+figure { margin:14px 0 18px } figure img { display:block; width:100%; max-width:100%; height:auto; border:1px solid var(--line); border-radius:8px; background:#fff }
+figcaption { font:12px var(--body); color:var(--muted); margin-top:4px }
+a { overflow-wrap:anywhere }
+li, p, td { overflow-wrap:break-word; min-width:0 }
+
+</style>
+<div class="wrap">
+<nav aria-label="Sections"><a href="#sec0">Start</a><a href="#sec1">Design</a><a href="#sec2">Images</a><a href="#sec3">S1 Title</a><a href="#sec4">S2 Idea</a><a href="#sec5">S3 Technical</a><a href="#sec6">S4 Feasibility</a><a href="#sec7">S5 Impact</a><a href="#sec8">S6 References</a><a href="#sec9">AI image prompts</a><a href="#sec10">Real photos</a><a href="#sec11">References</a><a href="#sec12">Final check</a></nav>
+<h1>PARAMPARA · SIH 2026 PS 26214 · Master prompts and helper for the 6-slide hardware PPT</h1>
+<p>This file gives you, for each of the six official slides: how many parts the slide has and exactly where each part goes, the exact words for every part, a picture of the layout (wireframe), one copy-paste prompt that builds the slide, and the GPT image prompts for that slide. Everything comes from one source (<code>ppt/helper/spec.py</code>), so the wireframes, the positions and the prompts always match. Every text box was checked in the real fonts (Poppins and Inter): nothing overflows at the sizes given.</p>
+<h2 id="sec0">0. Read this first</h2>
+<p><strong>About winner decks.</strong> National-winner idea PPTs are not published officially, and the decks circulating on GitHub and Telegram as 'SIH winner PPTs' cannot be verified, so this layout does not copy any of them. It follows two things that are verifiable: the official SIH idea template (6 slides, PDF, the fixed questions on each slide) and the way hardware teams present at international design reviews (product render, exploded view, block diagram, parts list with datasheet numbers, engineering budgets, test plan, risk register, and an honest done/next/not-yet line).</p>
+<p><strong>How the slides are split.</strong> Every slide has 5 or 6 numbered parts (the number badge is part of the design). Each part answers one question the template asks, so a judge can tick off the template while reading. The table <em>Template question → where it is answered</em> on each slide proves nothing is missing.</p>
+<p><strong>How to use this (pick one):</strong></p>
+<ol>
+<li><strong>ChatGPT (fastest):</strong> open a new chat, upload the images listed in the slide's prompt (all are in <code>helper/PARAMPARA_slide_assets.zip</code>), paste the slide's master prompt, and ask for a .pptx. Do one slide per chat. Then paste all six slides into the official SIH template.</li>
+<li><strong>Canva or Google Slides:</strong> set a custom size of 13.333 × 7.5 in, keep the wireframe image open beside you, and place each part at the x, y, w, h given in the part table. Copy the text from <em>Exact content</em>.</li>
+<li><strong>PowerPoint by hand:</strong> same as 2; use <em>Shape Format → Size and Position</em> to type the exact numbers.</li>
+</ol>
+<p><strong>Honesty rules (keep them, they protect you in the evaluation):</strong> CAD renders are labelled 'CAD render'. AI images are labelled 'Concept illustration (AI)'. Say 'eight defined bench tests', 'pre-test on real performers', 'phone prototype working'. Never write 'validated end to end', 'proven fingerprint' or 'improves learning'. Master A and B in PARAMPARA Lite are example profiles.</p>
+<p><strong>Fill before export:</strong> the exact PS title from the portal, the theme (check it on the portal), your Team ID and Team Name. Make the QR on slides 3 and 6 point to a public link (host <code>PARAMPARA/lite/index.html</code> on GitHub Pages, then regenerate the QR).</p>
+<h2 id="sec1">1. Global design system</h2>
+<figure><a href="helper/wireframes/all_slides.png" target="_blank" rel="noopener"><img alt="All six layout guides" src="helper/wireframes/all_slides.png" loading="lazy"></a><figcaption>All six layout guides · tap to open full size</figcaption></figure>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Canvas</td>
+<td>16:9, 13.333 × 7.5 in (PowerPoint 'Widescreen'), white background</td>
+</tr>
+<tr>
+<td>Template zones</td>
+<td>Header y 0 to 0.95 in (team logo left, SIH logo right, slide title between); footer y 6.98 to 7.5 in. Our parts live in x 0.40 to 12.93, y 1.05 to 6.95</td>
+</tr>
+<tr>
+<td>Slide title</td>
+<td>x 1.75, y 0.13, 9.60 × 0.74 in; Poppins SemiBold 20 pt; #7A1F1F; 1 or 2 lines</td>
+</tr>
+<tr>
+<td>Panel</td>
+<td>White, 1 pt #D9CFC0 border, corner radius 0.06 in, no shadow; 0.15 in gap between panels</td>
+</tr>
+<tr>
+<td>Panel header</td>
+<td>0.27 in number badge (panel colour, white Poppins Bold 10 pt) + UPPERCASE Poppins SemiBold 11 pt title in the panel colour; content starts 0.42 in below the panel top</td>
+</tr>
+<tr>
+<td>Fonts</td>
+<td>Poppins (titles, big numbers), Inter (all other text). Fallback: Calibri for both</td>
+</tr>
+<tr>
+<td>Sizes</td>
+<td>Big numbers 16 to 40 pt; body 8.5 to 10 pt; tables 8.5 pt; captions and tags 7.5 to 8.5 pt. Nothing below 7.5 pt</td>
+</tr>
+<tr>
+<td>Images</td>
+<td>Transparent PNGs, aspect ratio kept, never cropped; each CAD image tagged 'CAD render'</td>
+</tr>
+<tr>
+<td>Motif</td>
+<td>Numbered panel badges + colour per meaning (no side bars, no gradients, no clip art)</td>
+</tr>
+</tbody>
+</table></div>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Colour</th>
+<th>Hex</th>
+<th>Use it for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Maroon</td>
+<td><code>#7A1F1F</code></td>
+<td>Idea, problem, risks, slide titles, the product name</td>
+</tr>
+<tr>
+<td>Indigo blue</td>
+<td><code>#1F4E79</code></td>
+<td>Everything technical: hardware, electronics, budgets, datasheets</td>
+</tr>
+<tr>
+<td>Brass</td>
+<td><code>#B8901A</code></td>
+<td>Money and value: cost, viability, economic benefit; badge on dark panels</td>
+</tr>
+<tr>
+<td>Green</td>
+<td><code>#2E6B3A</code></td>
+<td>Proof that already works: 'Working today', done items, environmental benefit</td>
+</tr>
+<tr>
+<td>Text</td>
+<td><code>#1E1E1E</code></td>
+<td>All body text</td>
+</tr>
+<tr>
+<td>Muted grey</td>
+<td><code>#5A5A5A</code></td>
+<td>Captions, image tags, units</td>
+</tr>
+<tr>
+<td>Panel border</td>
+<td><code>#D9CFC0</code></td>
+<td>1 pt border of every white panel</td>
+</tr>
+<tr>
+<td>Maroon tint</td>
+<td><code>#F6ECEC</code></td>
+<td>Highlight column of the comparison table, gap labels</td>
+</tr>
+<tr>
+<td>Blue tint</td>
+<td><code>#EAF1F8</code></td>
+<td>Technical boxes in diagrams, 'next' band</td>
+</tr>
+<tr>
+<td>Brass tint</td>
+<td><code>#FBF5E6</code></td>
+<td>Cost and viability highlights, tool-node boxes</td>
+</tr>
+<tr>
+<td>Green tint</td>
+<td><code>#EEF6EF</code></td>
+<td>'Working today' panels, 'done' band</td>
+</tr>
+<tr>
+<td>Neutral tint</td>
+<td><code>#F4F4F4</code></td>
+<td>Craft tiles, 'not claimed yet' band</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="sec2">2. Images used, and where</h2>
+<p>All files are in <code>PARAMPARA/ppt/assets/</code> and <code>PARAMPARA/figures/</code>, and together in <code>PARAMPARA/ppt/helper/PARAMPARA_slide_assets.zip</code>. These are our own CAD renders, charts and screenshots, not AI images.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>File</th>
+<th>What it shows</th>
+<th>Slide · part</th>
+<th>Tag to print</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hand_iso_transparent.png</code></td>
+<td>Hand end of the sleeve, 3/4 view (CAD)</td>
+<td>1·3, 3·1</td>
+<td>CAD render</td>
+</tr>
+<tr>
+<td><code>tabla_iso_transparent.png</code></td>
+<td>Tabla kit: piezo clips + base unit (CAD)</td>
+<td>1·4</td>
+<td>CAD</td>
+</tr>
+<tr>
+<td><code>puppet_iso_transparent.png</code></td>
+<td>Kathputli kit: pod in the torso (CAD)</td>
+<td>1·4</td>
+<td>CAD</td>
+</tr>
+<tr>
+<td><code>loom_iso_transparent.png</code></td>
+<td>Handloom kit: beater IMU, treadle switches (CAD)</td>
+<td>1·4</td>
+<td>CAD</td>
+</tr>
+<tr>
+<td><code>sleeve_dorsal_transparent.png</code></td>
+<td>Whole sleeve, back view (CAD)</td>
+<td>2·2</td>
+<td>CAD render</td>
+</tr>
+<tr>
+<td><code>sleeve_iso_transparent.png</code></td>
+<td>Whole right-arm sleeve, 3/4 view (CAD)</td>
+<td>3·1</td>
+<td>CAD render</td>
+</tr>
+<tr>
+<td><code>hand_palmar_transparent.png</code></td>
+<td>Palm side: palm and fingertips free (CAD)</td>
+<td>3·1</td>
+<td>(none)</td>
+</tr>
+<tr>
+<td><code>ring_exploded_transparent.png</code></td>
+<td>Finger ring IMU pod, exploded (CAD)</td>
+<td>3·5</td>
+<td>(none)</td>
+</tr>
+<tr>
+<td><code>motor_exploded_transparent.png</code></td>
+<td>Finger motor pod, exploded (CAD)</td>
+<td>3·5</td>
+<td>(none)</td>
+</tr>
+<tr>
+<td><code>hand_exploded_transparent.png</code></td>
+<td>Hand board, exploded (CAD)</td>
+<td>3·5</td>
+<td>(none)</td>
+</tr>
+<tr>
+<td><code>hub_exploded_transparent.png</code></td>
+<td>Forearm hub, exploded (CAD)</td>
+<td>3·5</td>
+<td>(none)</td>
+</tr>
+<tr>
+<td><code>v6_lite_screenshot.png</code></td>
+<td>PARAMPARA Lite running (real screenshot)</td>
+<td>3·6</td>
+<td>Screenshot</td>
+</tr>
+<tr>
+<td><code>qr_parampara_lite.png</code></td>
+<td>QR to the phone prototype</td>
+<td>3·6, 6·5</td>
+<td>(none)</td>
+</tr>
+<tr>
+<td><code>v5_gmd_results.png</code></td>
+<td>Our pre-test on real drummer data (chart)</td>
+<td>6·1</td>
+<td>(none)</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="sec3">Slide 1 · Title  (5 parts)</h2>
+<p><strong>The template asks:</strong> Problem Statement ID; Problem Statement Title; Theme; PS Category; Team ID; Team Name.</p>
+<p><strong>What a judge must take away in 5 seconds:</strong> PARAMPARA is a wearable for India's living crafts, entered as hardware for PS 26214, and it already has working proof.</p>
+<p><strong>Reading order:</strong> Z-pattern: name (top-left), then the official fields, then the hero render (right), then the craft strip and proof (bottom).</p>
+<figure><a href="helper/wireframes/slide1_wireframe.png" target="_blank" rel="noopener"><img alt="Slide 1 layout guide" src="helper/wireframes/slide1_wireframe.png" loading="lazy"></a><figcaption>Slide 1 layout guide · tap to open full size</figcaption></figure>
+<h3>Template question → where it is answered</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Template question</th>
+<th>Answered in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Problem Statement ID, Title, Theme, PS Category, Team ID, Team Name</td>
+<td>Part 2 (exact fields table)</td>
+</tr>
+<tr>
+<td>(not asked, but judges decide in 5 seconds) What is it?</td>
+<td>Part 1 (name + one-line definition)</td>
+</tr>
+<tr>
+<td>(not asked) Is it real hardware?</td>
+<td>Part 3 (hero CAD render with dimensions)</td>
+</tr>
+<tr>
+<td>(not asked) Scope</td>
+<td>Part 4 (three crafts, tabla flagship)</td>
+</tr>
+<tr>
+<td>(not asked) Any proof yet?</td>
+<td>Part 5 (working today)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>The parts: position and purpose</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Name</th>
+<th>x, y (in)</th>
+<th>w × h (in)</th>
+<th>Colour</th>
+<th>What goes here and why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Our solution</td>
+<td>0.40, 1.05</td>
+<td>6.55 × 1.80</td>
+<td><code>#7A1F1F</code></td>
+<td>The product name, big, and one sentence that says what it does. A judge who reads only this knows the idea.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Official SIH fields</td>
+<td>0.40, 3.00</td>
+<td>6.55 × 2.30</td>
+<td><code>#7A1F1F</code></td>
+<td>Exactly the fields the template asks for, in the same order, copied character by character from the portal.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>The equipment · CAD render</td>
+<td>7.10, 1.05</td>
+<td>5.83 × 4.25</td>
+<td><code>#1F4E79</code></td>
+<td>The hero image: our own CAD render of the hand end of the sleeve, with four dimension call-outs. Labelled 'CAD render' so no judge mistakes it for a photo.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Three crafts, one sleeve</td>
+<td>0.40, 5.45</td>
+<td>8.30 × 1.50</td>
+<td><code>#7A1F1F</code></td>
+<td>Three small CAD renders of the tool kits so the judge sees one sleeve generalises, and that tabla is the focus.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Working today</td>
+<td>8.85, 5.45</td>
+<td>4.08 × 1.50</td>
+<td><code>#2E6B3A</code></td>
+<td>Three facts that are true today and checkable in the repository. Green = already working.</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Exact content (copy-ready)</h3>
+<p><strong>Slide title:</strong> PARAMPARA: a Skill Fingerprint sleeve for India's living crafts</p>
+<p><strong>Part 1 · Our solution</strong></p>
+<ul>
+<li>PARAMPARA</li>
+<li>Captures how a master's fingers, wrist, elbow and shoulder move, teaches it back by touch, then fades away until the learner plays alone.</li>
+<li>SKILL FINGERPRINT SLEEVE  ·  TABLA FLAGSHIP  ·  HANDLOOM &amp; KATHPUTLI DEMOS</li>
+</ul>
+<p><strong>Part 2 · Official SIH fields</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Problem Statement ID</th>
+<th>26214</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Problem Statement Title</td>
+<td>[paste the exact title from the SIH portal]</td>
+</tr>
+<tr>
+<td>Theme</td>
+<td>Heritage &amp; Culture  [check on portal]</td>
+</tr>
+<tr>
+<td>PS Category</td>
+<td>Hardware</td>
+</tr>
+<tr>
+<td>Team ID</td>
+<td>[Team ID]</td>
+</tr>
+<tr>
+<td>Team Name</td>
+<td>[Team Name]</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Part 3 · The equipment · CAD render</strong></p>
+<ul>
+<li>Image: <code>hand_iso_transparent.png</code> (tag: "CAD render")</li>
+<li>Call-out label: Ring motion sensor 13 × 11 × 4.4 mm</li>
+<li>Call-out label: Coin motor pod Ø12 × 5.2 mm</li>
+<li>Call-out label: Hand board 42 × 32 × 8 mm</li>
+<li>Call-out label: Wrist pod 28 × 20 × 8 mm</li>
+<li>CAD render of our design (CadQuery): one sleeve per arm with 9 BMI270 motion sensors and 8 coin vibration motors. Palm and fingertips stay free.</li>
+</ul>
+<p><strong>Part 4 · Three crafts, one sleeve</strong></p>
+<ul>
+<li>Image: <code>tabla_iso_transparent.png</code> (tag: "CAD")</li>
+<li><strong>TABLA</strong> | Flagship · about 80% of our effort · full test plan</li>
+<li>Image: <code>puppet_iso_transparent.png</code> (tag: "CAD")</li>
+<li><strong>KATHPUTLI</strong> | Demo · strings stay on the fingers, pod in the torso</li>
+<li>Image: <code>loom_iso_transparent.png</code> (tag: "CAD")</li>
+<li><strong>HANDLOOM</strong> | Demo · beater and treadle sensing at a weaving centre</li>
+</ul>
+<p><strong>Part 5 · Working today</strong></p>
+<ul>
+<li>✓ Phone prototype: teach, fade, device-off score (automated test PASS)</li>
+<li>✓ Firmware core: 27 of 27 unit checks pass</li>
+<li>✓ Pre-test on real drummer data: 7 drummers, 4,118 units</li>
+</ul>
+<h3>Master prompt for this slide</h3>
+<p>Paste this whole block into ChatGPT (after uploading the images it names), or follow it by hand in Canva or PowerPoint.</p>
+<div class="promptbox"><div class="pbar"><span>Prompt</span><button class="copy" type="button" data-target="p1">Copy prompt</button></div><pre id="p1"><code>You are a senior presentation designer who builds hardware design-review slides. Build slide 1 of 6 of an SIH 2026 idea-submission deck (problem statement 26214, PARAMPARA). Make exactly ONE slide. Output a .pptx file (python-pptx) or, in Canva or Gamma, place everything by hand at the positions below.
+UPLOAD THESE IMAGES FIRST: hand_iso_transparent.png, tabla_iso_transparent.png, puppet_iso_transparent.png, loom_iso_transparent.png (from the PARAMPARA slide asset pack).
+
+GLOBAL STYLE (same on all six slides)
+- Canvas: 16:9, 13.333 × 7.5 in, white background (#FFFFFF). All positions are in inches from the top-left corner.
+- Keep the official SIH 2026 template header (y 0 to 0.95 in: team logo/name left, SIH logo right) and footer (y 6.98 to 7.5 in) exactly as the template has them. Put nothing of ours there except the slide title.
+- Slide title: text box x 1.75, y 0.13, 9.60 × 0.74 in, Poppins SemiBold 20 pt, #7A1F1F, left-aligned, vertically centred, at most 2 lines.
+- Panels (&quot;parts&quot;): white fill, 1 pt #D9CFC0 border, corner radius 0.06 in, no shadow. Gap between panels 0.15 in.
+- Panel header: a 0.27 in circle badge at (panel x + 0.12, panel y + 0.09) with the part number in white Poppins Bold 10 pt, filled with the panel colour; header text at (panel x + 0.47, panel y + 0.07), height 0.32 in, Poppins SemiBold 11 pt, UPPERCASE, letter spacing 0.4 pt, in the panel colour. Panel content starts 0.42 in below the panel top.
+- Fonts: Poppins (headings, big numbers) and Inter (everything else). If PowerPoint lacks them, install both from Google Fonts or use Calibri for both. Nothing smaller than 7.5 pt; body text 8.5 to 10 pt.
+- Colours: maroon #7A1F1F (idea, problem, risks), blue #1F4E79 (technical), brass #B8901A (money, value), green #2E6B3A (proof that works today), text #1E1E1E, muted #5A5A5A. Tints: #F6ECEC, #EAF1F8, #FBF5E6, #EEF6EF, #F4F4F4.
+- Images: transparent PNGs placed exactly as given, aspect ratio kept, never stretched or cropped. Every CAD image keeps a small &quot;CAD render&quot; tag; never present a render as a photograph.
+- Text: use the words given, word for word. &quot;**x**&quot; means bold, &quot; | &quot; means a line break. Do not add sentences, numbers, emojis or clip art.
+- Before finishing: no text overflows its box, nothing overlaps, every element sits inside its panel, all six (or five) parts are visible and evenly spaced.
+
+SLIDE TITLE: &quot;PARAMPARA: a Skill Fingerprint sleeve for India's living crafts&quot;
+
+LAYOUT: 5 parts. Reading order: Z-pattern: name (top-left), then the official fields, then the hero render (right), then the craft strip and proof (bottom).
+
+PART 1: OUR SOLUTION  (answers: Identity (not a template field, but the first thing a judge reads))
+  Panel: x 0.40, y 1.05, 6.55 × 1.80 in; fill #FFFFFF; 1 pt #D9CFC0 border; badge #7A1F1F; header text #7A1F1F.
+  - Text at x 0.52, y 1.38, 6.30 × 0.74 in: &quot;PARAMPARA&quot; (Poppins Bold 40 pt, #7A1F1F).
+  - Text at x 0.52, y 2.12, 6.30 × 0.46 in: &quot;Captures how a master's fingers, wrist, elbow and shoulder move, teaches it back by touch, then fades away until the learner plays alone.&quot; (Inter 12.5 pt, #1E1E1E).
+  - Text at x 0.52, y 2.59, 6.30 × 0.22 in: &quot;SKILL FINGERPRINT SLEEVE  ·  TABLA FLAGSHIP  ·  HANDLOOM &amp; KATHPUTLI DEMOS&quot; (Inter Bold 9.5 pt, #B8901A).
+
+PART 2: OFFICIAL SIH FIELDS  (answers: All six template fields: PS ID, PS Title, Theme, PS Category, Team ID, Team Name)
+  Panel: x 0.40, y 3.00, 6.55 × 2.30 in; fill #FFFFFF; 1 pt #D9CFC0 border; badge #7A1F1F; header text #7A1F1F.
+  - Table at x 0.52, y 3.42, width 6.31 in, max height 1.82 in; column widths 2.05, 4.26 in; Inter 12 pt; 0.75 pt #D9CFC0 line under every row, no vertical lines; cell margins 0.03 in top/bottom, 0.05 in left/right; no header row; first column bold. Rows:
+      | Problem Statement ID | 26214 |
+      | Problem Statement Title | [paste the exact title from the SIH portal] |
+      | Theme | Heritage &amp; Culture  [check on portal] |
+      | PS Category | Hardware |
+      | Team ID | [Team ID] |
+      | Team Name | [Team Name] |
+
+PART 3: THE EQUIPMENT · CAD RENDER  (answers: Shows it is real hardware with real dimensions)
+  Panel: x 7.10, y 1.05, 5.83 × 4.25 in; fill #FFFFFF; 1 pt #D9CFC0 border; badge #1F4E79; header text #1F4E79.
+  - Image `hand_iso_transparent.png` at x 7.25, y 1.50, fitted inside 5.53 × 3.36 in (keep aspect ratio, no crop); small tag &quot;CAD render&quot; on its bottom-left corner (Inter 7.5 pt #5A5A5A on white at 85%).
+  - Label &quot;Ring motion sensor 13 × 11 × 4.4 mm&quot; at x 7.40, y 1.58, 2.28 × 0.24 in (white box, 1 pt #1F4E79 border, Inter 8.5 pt #1E1E1E, vertically centred) with a 0.75 pt #1F4E79 line to a 0.06 in #1F4E79 dot at (9.79, 1.98) in, on that part of the render.
+  - Label &quot;Coin motor pod Ø12 × 5.2 mm&quot; at x 7.40, y 1.92, 2.00 × 0.24 in (white box, 1 pt #1F4E79 border, Inter 8.5 pt #1E1E1E, vertically centred) with a 0.75 pt #1F4E79 line to a 0.06 in #1F4E79 dot at (9.49, 2.24) in, on that part of the render.
+  - Label &quot;Hand board 42 × 32 × 8 mm&quot; at x 10.45, y 3.45, 2.20 × 0.24 in (white box, 1 pt #1F4E79 border, Inter 8.5 pt #1E1E1E, vertically centred) with a 0.75 pt #1F4E79 line to a 0.06 in #1F4E79 dot at (10.05, 2.54) in, on that part of the render.
+  - Label &quot;Wrist pod 28 × 20 × 8 mm&quot; at x 7.40, y 4.40, 2.10 × 0.24 in (white box, 1 pt #1F4E79 border, Inter 8.5 pt #1E1E1E, vertically centred) with a 0.75 pt #1F4E79 line to a 0.06 in #1F4E79 dot at (8.43, 3.02) in, on that part of the render.
+  - Text at x 7.25, y 4.88, 5.53 × 0.36 in: &quot;CAD render of our design (CadQuery): one sleeve per arm with 9 BMI270 motion sensors and 8 coin vibration motors. Palm and fingertips stay free.&quot; (Inter 8.5 pt, #5A5A5A, italic).
+
+PART 4: THREE CRAFTS, ONE SLEEVE  (answers: Scope: which crafts, and which one is the flagship)
+  Panel: x 0.40, y 5.45, 8.30 × 1.50 in; fill #FFFFFF; 1 pt #D9CFC0 border; badge #7A1F1F; header text #7A1F1F.
+  - Image `tabla_iso_transparent.png` at x 0.52, y 5.87, fitted inside 0.95 × 0.98 in (keep aspect ratio, no crop); small tag &quot;CAD&quot; on its bottom-left corner (Inter 7.5 pt #5A5A5A on white at 85%).
+  - Text at x 1.52, y 5.90, 1.62 × 0.95 in: &quot;**TABLA** | Flagship · about 80% of our effort · full test plan&quot; (Inter 9.5 pt, #1E1E1E).
+  - Image `puppet_iso_transparent.png` at x 3.24, y 5.87, fitted inside 0.95 × 0.98 in (keep aspect ratio, no crop); small tag &quot;CAD&quot; on its bottom-left corner (Inter 7.5 pt #5A5A5A on white at 85%).
+  - Text at x 4.24, y 5.90, 1.62 × 0.95 in: &quot;**KATHPUTLI** | Demo · strings stay on the fingers, pod in the torso&quot; (Inter 9.5 pt, #1E1E1E).
+  - Image `loom_iso_transparent.png` at x 5.96, y 5.87, fitted inside 0.95 × 0.98 in (keep aspect ratio, no crop); small tag &quot;CAD&quot; on its bottom-left corner (Inter 7.5 pt #5A5A5A on white at 85%).
+  - Text at x 6.96, y 5.90, 1.62 × 0.95 in: &quot;**HANDLOOM** | Demo · beater and treadle sensing at a weaving centre&quot; (Inter 9.5 pt, #1E1E1E).
+
+PART 5: WORKING TODAY  (answers: Proof (sets this team apart on slide 1))
+  Panel: x 8.85, y 5.45, 4.08 × 1.50 in; fill #EEF6EF; 1 pt #2E6B3A border; badge #2E6B3A; header text #2E6B3A.
+  - Bullet list at x 8.97, y 5.86, 3.84 × 1.04 in, Inter 9.5 pt #1E1E1E, bullet character &quot;✓&quot; in #2E6B3A, 2 pt after each item: (1) &quot;Phone prototype: teach, fade, device-off score (automated test PASS)&quot; (2) &quot;Firmware core: 27 of 27 unit checks pass&quot; (3) &quot;Pre-test on real drummer data: 7 drummers, 4,118 units&quot;.
+
+DO NOT: Do not shrink the official fields; they are what the screening team checks first. Do not replace the CAD render with an AI picture of the device. Do not write 'proven' or 'validated' anywhere on this slide.
+SPEAKER NOTES (put in the notes pane, not on the slide): We are Team [name], problem statement 26214, hardware. PARAMPARA is a sensor sleeve from the fingers to the shoulder. It records how a master moves, teaches it back by touch, and then steps away until the learner plays alone. Tabla is our flagship; Kathputli and handloom show the same sleeve generalises. Three things already work today: the phone prototype, the firmware core and a pre-test on real performer data.
+</code></pre></div>
+<h3>Images for this slide</h3>
+<p>Use our own files listed in the prompt. Optional AI images (prompts in section 9): IMG-1 (concept_tabla_sleeve.png), IMG-3 (concept_kathputli.png), IMG-4 (concept_handloom.png), IMG-5 (studio_ring_pod.png).</p>
+<h3>Speaker notes (about 40 seconds)</h3>
+<p>We are Team [name], problem statement 26214, hardware. PARAMPARA is a sensor sleeve from the fingers to the shoulder. It records how a master moves, teaches it back by touch, and then steps away until the learner plays alone. Tabla is our flagship; Kathputli and handloom show the same sleeve generalises. Three things already work today: the phone prototype, the firmware core and a pre-test on real performer data.</p>
+<h3>Don't</h3>
+<ul>
+<li>Do not shrink the official fields; they are what the screening team checks first.</li>
+<li>Do not replace the CAD render with an AI picture of the device.</li>
+<li>Do not write 'proven' or 'validated' anywhere on this slide.</li>
+</ul>
+<h2 id="sec4">Slide 2 · Idea  (6 parts)</h2>
+<p><strong>The template asks:</strong> Detailed explanation of the proposed solution; How it addresses the problem; Innovation and uniqueness of the solution.</p>
+<p><strong>What a judge must take away in 5 seconds:</strong> Skill lives in the hands and is disappearing; PARAMPARA records it as a fingerprint, teaches it by touch, then fades, and nothing else does all of that.</p>
+<p><strong>Reading order:</strong> Row 1: problem → solution. Row 2: the 6-step flow across the full width. Row 3: why it solves the problem → how it differs → the one-line USP.</p>
+<figure><a href="helper/wireframes/slide2_wireframe.png" target="_blank" rel="noopener"><img alt="Slide 2 layout guide" src="helper/wireframes/slide2_wireframe.png" loading="lazy"></a><figcaption>Slide 2 layout guide · tap to open full size</figcaption></figure>
+<h3>Template question → where it is answered</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Template question</th>
+<th>Answered in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Detailed explanation of the proposed solution</td>
+<td>Part 2 (what it is) + Part 3 (how it works, 6 steps)</td>
+</tr>
+<tr>
+<td>How it addresses the problem</td>
+<td>Part 1 (the problem, with numbers) + Part 4 (gap → our answer)</td>
+</tr>
+<tr>
+<td>Innovation and uniqueness</td>
+<td>Part 5 (comparison table) + Part 6 (our test of success)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>The parts: position and purpose</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Name</th>
+<th>x, y (in)</th>
+<th>w × h (in)</th>
+<th>Colour</th>
+<th>What goes here and why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>The problem</td>
+<td>0.40, 1.05</td>
+<td>4.05 × 2.35</td>
+<td><code>#7A1F1F</code></td>
+<td>One sentence of context and three numbers with sources. Numbers in maroon so the eye lands on them first.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Proposed solution</td>
+<td>4.60, 1.05</td>
+<td>8.33 × 2.35</td>
+<td><code>#7A1F1F</code></td>
+<td>The whole sleeve (CAD render) on the left so the judge sees the device; three verbs on the right say what it does.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>How it works</td>
+<td>0.40, 3.55</td>
+<td>12.53 × 1.20</td>
+<td><code>#7A1F1F</code></td>
+<td>Six arrow shapes across the full width: the pipeline in one glance. Full width because it is the spine of the idea.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>How it solves the problem</td>
+<td>0.40, 4.90</td>
+<td>4.05 × 2.05</td>
+<td><code>#7A1F1F</code></td>
+<td>Three gaps, each with an arrow to our answer. This is the sentence judges look for under 'how it addresses the problem'.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Innovation &amp; uniqueness</td>
+<td>4.60, 4.90</td>
+<td>5.25 × 2.05</td>
+<td><code>#7A1F1F</code></td>
+<td>A ✓/✗ comparison against the three closest alternatives, with our column tinted maroon. Judges read uniqueness from tables faster than from sentences.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Our test of success</td>
+<td>10.00, 4.90</td>
+<td>2.93 × 2.05</td>
+<td><code>#7A1F1F</code></td>
+<td>The one sentence we want judges to repeat, on the only dark panel of the slide so it is remembered.</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Exact content (copy-ready)</h3>
+<p><strong>Slide title:</strong> Proposed solution: a master's Skill Fingerprint, captured and taught by touch</p>
+<p><strong>Part 1 · The problem</strong></p>
+<ul>
+<li>Craft skill lives in the hands. It passes on only face to face, over years.</li>
+<li>35.22 lakh</li>
+<li>handloom weavers and allied workers in 2019–20, down from 43.32 lakh [1]</li>
+<li>≈ 2,800</li>
+<li>Kathputli and folk-artist families moved out of Delhi's colony in 2017 [2]</li>
+<li>3 lakh+ hrs</li>
+<li>of heritage audio-video found by NCAA: sound and sight, not movement [3]</li>
+</ul>
+<p><strong>Part 2 · Proposed solution</strong></p>
+<ul>
+<li>Image: <code>sleeve_dorsal_transparent.png</code> (tag: "CAD render")</li>
+<li>Right-arm sleeve, back view: 9 motion sensors (blue), 8 vibration motors (brass), forearm hub (green).</li>
+<li><strong>One sleeve per arm + one sensor kit per craft tool + an app.</strong></li>
+<li>• <strong>Captures:</strong> 9 motion sensors from fingers to shoulder, plus the tool (drum strokes, beater, puppet)</li>
+<li>• <strong>Teaches:</strong> 8 coin motors pulse the finger or joint that should move next</li>
+<li>• <strong>Fades:</strong> cues drop as the unaided score rises; the final test is device-off</li>
+</ul>
+<p><strong>Part 3 · How it works</strong></p>
+<ul>
+<li>Arrow step: <strong>1 SENSE</strong> | Sleeve and tool sensor record the master, 200 samples/s</li>
+<li>Arrow step: <strong>2 FINGERPRINT</strong> | Timing, strength, joint order and spread over ≥ 20 cycles</li>
+<li>Arrow step: <strong>3 TEACH</strong> | A pulse on the right finger or joint, just before each stroke</li>
+<li>Arrow step: <strong>4 FADE</strong> | A check every 4th cycle; cues drop as the score rises</li>
+<li>Arrow step: <strong>5 MEASURE</strong> | Device-off test: the unaided score is the result</li>
+<li>Arrow step: <strong>6 OWN</strong> | Master consents, approves, is credited; data stays local</li>
+</ul>
+<p><strong>Part 4 · How it solves the problem</strong></p>
+<ul>
+<li>Skill can't be written down</li>
+<li>Recorded as a measurable fingerprint, fingers to shoulder</li>
+<li>A master's time = one room</li>
+<li>The kit guides practice between lessons; the master approves</li>
+<li>No fair check of learning</li>
+<li>Same device-off test for everyone, 48 h later</li>
+</ul>
+<p><strong>Part 5 · Innovation &amp; uniqueness</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th>Video apps</th>
+<th>Mocap or haptic suit</th>
+<th>TIKL lab suit [4]</th>
+<th>PARAMPARA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Measures the learner</td>
+<td>✗</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Teaches one master's style</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Finger and joint cues</td>
+<td>✗</td>
+<td>partial</td>
+<td>joints only</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Fades, tests device-off</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Cost</td>
+<td>low</td>
+<td>US$5–12k+ [5,6]</td>
+<td>optical lab</td>
+<td>₹20–32k</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Part 6 · Our test of success</strong></p>
+<ul>
+<li>“The device succeeds only when the learner no longer needs it.”</li>
+<li>Confound-proof: a fingerprint counts only if it names the master on a new day and a new instrument (≥ 70%, chance 33%).</li>
+</ul>
+<h3>Master prompt for this slide</h3>
+<p>Paste this whole block into ChatGPT (after uploading the images it names), or follow it by hand in Canva or PowerPoint.</p>
+<div class="promptbox"><div class="pbar"><span>Prompt</span><button class="copy" type="button" data-target="p2">Copy prompt</button></div><pre id="p2"><code>You are a senior presentation designer who builds hardware design-review slides. Build slide 2 of 6 of an SIH 2026 idea-submission deck (problem statement 26214, PARAMPARA). Make exactly ONE slide. Output a .pptx file (python-pptx) or, in Canva or Gamma, place everything by hand at the positions below.
+UPLOAD THESE IMAGES FIRST: sleeve_dorsal_transparent.png (from the PARAMPARA slide asset pack).
+
+GLOBAL STYLE (same on all six slides)
+- Canvas: 16:9, 13.333 × 7.5 in, white background (#FFFFFF). All positions are in inches from the top-left corner.
+- Keep the official SIH 2026 template header (y 0 to 0.95 in: team logo/name left, SIH logo right) and footer (y 6.98 to 7.5 in) exactly as the template has them. Put nothing of ours there except the slide title.
+- Slide title: text box x 1.75, y 0.13, 9.60 × 0.74 in, Poppins SemiBold 20 pt, #7A1F1F, left-aligned, vertically centred, at most 2 lines.
+- Panels (&quot;parts&quot;): white fill, 1 pt #D9CFC0 border, corner radius 0.06 in, no shadow. Gap between panels 0.15 in.
+- Panel header: a 0.27 in circle badge at (panel x + 0.12, panel y + 0.09) with the part number in white Poppins Bold 10 pt, filled with the panel colour; header text at (panel x + 0.47, panel y + 0.07), height 0.32 in, Poppins SemiBold 11 pt, UPPERCASE, letter spacing 0.4 pt, in the panel colour. Panel content starts 0.42 in below the panel top.
+- Fonts: Poppins (headings, big numbers) and Inter (everything else). If PowerPoint lacks them, install both from Google Fonts or use Calibri for both. Nothing smaller than 7.5 pt; body text 8.5 to 10 pt.
+- Colours: maroon #7A1F1F (idea, problem, risks), blue #1F4E79 (technical), brass #B8901A (money, value), green #2E6B3A (proof that works today), text #1E1E1E, muted #5A5A5A. Tints: #F6ECEC, #EAF1F8, #FBF5E6, #EEF6EF, #F4F4F4.
+- Images: transparent PNGs placed exactly as given, aspect ratio kept, never stretched or cropped. Every CAD image keeps a small &quot;CAD render&quot; tag; never present a render as a photograph.
+- Text: use the words given, word for word. &quot;**x**&quot; means bold, &quot; | &quot; means a line break. Do not add sentences, numbers, emojis or clip art.
+- Before finishing: no text overflows its box, nothing overlaps, every element sits inside its panel, all six (or five) parts are visible and evenly spaced.
+
+SLIDE TITLE: &quot;Proposed solution: a master's Skill Fingerprint, captured and taught by touch&quot;
+
+LAYOUT: 6 parts. Reading order: Row 1: problem → solution. Row 2: the 6-step flow across the full width. Row 3: why it solves the problem → how it differs → the one-line USP.
+
+PART 1: THE PROBLEM  (answers: How it addresses the problem (the problem side, with numbers))
+  Panel: x 0.40, y 1.05, 4.05 × 2.35 in; fill #FFFFFF; 1 pt #D9CFC0 border; badge #7A1F1F; header text #7A1F1F.
+  - Text at x 0.52, y 1.45, 3.81 × 0.40 in: &quot;Craft skill lives in the hands. It passes on only face to face, over years.&quot; (Inter 10 pt, #1E1E1E, italic).
+  - Text at x 0.52, y 1.88, 1.30 × 0.46 in: &quot;35.22 lakh&quot; (Poppins SemiBold 16 pt, #7A1F1F, vertically centred).
+  - Text at x 1.86, y 1.88, 2.47 × 0.46 in: &quot;handloom weavers and allied workers in 2019–20, down from 43.32 lakh [1]&quot; (Inter 9 pt, #1E1E1E).
+  - Text at x 0.52, y 2.37, 1.30 × 0.46 in: &quot;≈ 2,800&quot; (Poppins SemiBold 16 pt, #7A1F1F, vertically centred).
+  - Text at x 1.86, y 2.37, 2.47 × 0.46 in: &quot;Kathputli and folk-artist families moved out of Delhi's colony in 2017 [2]&quot; (Inter 9 pt, #1E1E1E).
+  - Text at x 0.52, y 2.86, 1.30 × 0.46 in: &quot;3 lakh+ hrs&quot; (Poppins SemiBold 16 pt, #7A1F1F, vertically centred).
+  - Text at x 1.86, y 2.86, 2.47 × 0.46 in: &quot;of heritage audio-video found by NCAA: sound and sight, not movement [3]&quot; (Inter 9 pt, #1E1E1E).
+
+PART 2: PROPOSED SOLUTION  (answers: Detailed explanation of the proposed solution)
+  Panel: x 4.60, y 1.05, 8.33 × 2.35 in; fill #FFFFFF; 1 pt #D9CFC0 border; badge #7A1F1F; header text #7A1F1F.
+  - Image `sleeve_dorsal_transparent.png` at x 4.72, y 1.50, fitted inside 4.75 × 1.33 in (keep aspect ratio, no crop); small tag &quot;CAD render&quot; on its bottom-left corner (Inter 7.5 pt #5A5A5A on white at 85%).
+  - Text at x 4.72, y 2.90, 4.75 × 0.44 in: &quot;Right-arm sleeve, back view: 9 motion sensors (blue), 8 vibration motors (brass), forearm hub (green).&quot; (Inter 8.5 pt, #5A5A5A, italic).
+  - Text at x 9.62, y 1.46, 3.19 × 0.42 in: &quot;**One sleeve per arm + one sensor kit per craft tool + an app.**&quot; (Inter 10 pt, #1E1E1E).
+  - Bullet list at x 9.62, y 1.92, 3.19 × 1.42 in, Inter 9 pt #1E1E1E, bullet character &quot;•&quot; in #1E1E1E, 3 pt after each item: (1) &quot;**Captures:** 9 motion sensors from fingers to shoulder, plus the tool (drum strokes, beater, puppet)&quot; (2) &quot;**Teaches:** 8 coin motors pulse the finger or joint that should move next&quot; (3) &quot;**Fades:** cues drop as the unaided score rises; the final test is device-off&quot;.
+
+PART 3: HOW IT WORKS  (answers: Detailed explanation (the process, as a flow))
+  Panel: x 0.40, y 3.55, 12.53 × 1.20 in; fill #FFFFFF; 1 pt #D9CFC0 border; badge #7A1F1F; header text #7A1F1F.
+  - Pentagon arrow (flat left end) shape at x 0.52, y 3.94, 2.00 × 0.72 in, fill #F6ECEC, no outline; text &quot;**1 SENSE** | Sleeve and tool sensor record the master, 200 samples/s&quot; Inter 8.5 pt #1E1E1E, centred.
+  - Chevron arrow shape at x 2.58, y 3.94, 2.00 × 0.72 in, fill #EAF1F8, no outline; text &quot;**2 FINGERPRINT** | Timing, strength, joint order and spread over ≥ 20 cycles&quot; Inter 8.5 pt #1E1E1E, centred.
+  - Chevron arrow shape at x 4.64, y 3.94, 2.00 × 0.72 in, fill #FBF5E6, no outline; text &quot;**3 TEACH** | A pulse on the right finger or joint, just before each stroke&quot; Inter 8.5 pt #1E1E1E, centred.
+  - Chevron arrow shape at x 6.70, y 3.94, 2.00 × 0.72 in, fill #EEF6EF, no outline; text &quot;**4 FADE** | A check every 4th cycle; cues drop as the score rises&quot; Inter 8.5 pt #1E1E1E, centred.
+  - Chevron arrow shape at x 8.76, y 3.94, 2.00 × 0.72 in, fill #EAF1F8, no outline; text &quot;**5 MEASURE** | Device-off test: the unaided score is the result&quot; Inter 8.5 pt #1E1E1E, centred.
+  - Chevron arrow shape at x 10.82, y 3.94, 2.00 × 0.72 in, fill #F6ECEC, no outline; text &quot;**6 OWN** | Master consents, approves, is credited; data stays local&quot; Inter 8.5 pt #1E1E1E, centred.
+
+PART 4: HOW IT SOLVES THE PROBLEM  (answers: How it addresses the problem (gap → answer))
+  Panel: x 0.40, y 4.90, 4.05 × 2.05 in; fill #FFFFFF; 1 pt #D9CFC0 border; badge #7A1F1F; header text #7A1F1F.
+  - Text at x 0.52, y 5.31, 1.55 × 0.46 in: &quot;Skill can't be written down&quot; (Inter Bold 9 pt, #7A1F1F, fill #F6ECEC, vertically centred, inner margin 0.06 in).
+  - Arrow line from (2.09, 5.54) to (2.21, 5.54) in, 1.25 pt #7A1F1F, triangle head at the end.
+  - Text at x 2.25, y 5.31, 2.08 × 0.46 in: &quot;Recorded as a measurable fingerprint, fingers to shoulder&quot; (Inter 9 pt, #1E1E1E, vertically centred).
+  - Text at x 0.52, y 5.84, 1.55 × 0.46 in: &quot;A master's time = one room&quot; (Inter Bold 9 pt, #7A1F1F, fill #F6ECEC, vertically centred, inner margin 0.06 in).
+  - Arrow line from (2.09, 6.07) to (2.21, 6.07) in, 1.25 pt #7A1F1F, triangle head at the end.
+  - Text at x 2.25, y 5.84, 2.08 × 0.46 in: &quot;The kit guides practice between lessons; the master approves&quot; (Inter 9 pt, #1E1E1E, vertically centred).
+  - Text at x 0.52, y 6.37, 1.55 × 0.46 in: &quot;No fair check of learning&quot; (Inter Bold 9 pt, #7A1F1F, fill #F6ECEC, vertically centred, inner margin 0.06 in).
+  - Arrow line from (2.09, 6.60) to (2.21, 6.60) in, 1.25 pt #7A1F1F, triangle head at the end.
+  - Text at x 2.25, y 6.37, 2.08 × 0.46 in: &quot;Same device-off test for everyone, 48 h later&quot; (Inter 9 pt, #1E1E1E, vertically centred).
+
+PART 5: INNOVATION &amp; UNIQUENESS  (answers: Innovation and uniqueness)
+  Panel: x 4.60, y 4.90, 5.25 × 2.05 in; fill #FFFFFF; 1 pt #D9CFC0 border; badge #7A1F1F; header text #7A1F1F.
+  - Table at x 4.70, y 5.28, width 5.05 in, max height 1.62 in; column widths 1.42, 0.78, 1.02, 0.85, 0.98 in; Inter 8.5 pt; 0.75 pt #D9CFC0 line under every row, no vertical lines; cell margins 0.03 in top/bottom, 0.05 in left/right; first row is the header: fill #F4F4F4, bold, text #1E1E1E; first column bold; column 5 (our column) fill #F6ECEC, bold, text #7A1F1F; columns 2 onwards centred. Rows:
+      | (empty) | Video apps | Mocap or haptic suit | TIKL lab suit [4] | PARAMPARA |
+      | Measures the learner | ✗ | ✓ | ✓ | ✓ |
+      | Teaches one master's style | ✗ | ✗ | ✗ | ✓ |
+      | Finger and joint cues | ✗ | partial | joints only | ✓ |
+      | Fades, tests device-off | ✗ | ✗ | ✗ | ✓ |
+      | Cost | low | US$5–12k+ [5,6] | optical lab | ₹20–32k |
+
+PART 6: OUR TEST OF SUCCESS  (answers: Innovation (the single unique selling point))
+  Panel: x 10.00, y 4.90, 2.93 × 2.05 in; fill #7A1F1F; no border; badge #B8901A; header text #FFFFFF.
+  - Text at x 10.12, y 5.30, 2.69 × 0.88 in: &quot;“The device succeeds only when the learner no longer needs it.”&quot; (Poppins SemiBold 13 pt, #FFFFFF).
+  - Text at x 10.12, y 6.20, 2.69 × 0.68 in: &quot;Confound-proof: a fingerprint counts only if it names the master on a new day and a new instrument (≥ 70%, chance 33%).&quot; (Inter 8.5 pt, #F3E3C0).
+
+DO NOT: No paragraph longer than two lines. Do not claim the sleeve improves learning; say it measures and tests it. Every number keeps its [n] source marker.
+SPEAKER NOTES (put in the notes pane, not on the slide): Craft skill lives in the hands, and the numbers show it is thinning out. PARAMPARA is one sleeve per arm, a sensor kit for the tool and an app. It senses the master, builds a fingerprint, teaches it by pulses on the right finger or joint, fades the cues, and measures the learner with the device off. The master owns the data. Video apps don't measure the learner, motion-capture suits cost lakhs and don't teach one master's style, and lab suits like TIKL need an optical lab. Our test of success: the device succeeds only when the learner no longer needs it.
+</code></pre></div>
+<h3>Images for this slide</h3>
+<p>Use our own files listed in the prompt. Optional AI images (prompts in section 9): IMG-1 (concept_tabla_sleeve.png), IMG-2 (context_guru_shishya.png), IMG-6 (icons_set.png).</p>
+<h3>Speaker notes (about 40 seconds)</h3>
+<p>Craft skill lives in the hands, and the numbers show it is thinning out. PARAMPARA is one sleeve per arm, a sensor kit for the tool and an app. It senses the master, builds a fingerprint, teaches it by pulses on the right finger or joint, fades the cues, and measures the learner with the device off. The master owns the data. Video apps don't measure the learner, motion-capture suits cost lakhs and don't teach one master's style, and lab suits like TIKL need an optical lab. Our test of success: the device succeeds only when the learner no longer needs it.</p>
+<h3>Don't</h3>
+<ul>
+<li>No paragraph longer than two lines.</li>
+<li>Do not claim the sleeve improves learning; say it measures and tests it.</li>
+<li>Every number keeps its [n] source marker.</li>
+</ul>
+<h2 id="sec5">Slide 3 · Technical approach  (6 parts)</h2>
+<p><strong>The template asks:</strong> Technologies to be used (programming languages, frameworks, hardware); Methodology and process for implementation (flow charts, images, working prototype).</p>
+<p><strong>What a judge must take away in 5 seconds:</strong> Every part is named, sized and wired; the method is a clear six-step flow; and a prototype already runs.</p>
+<p><strong>Reading order:</strong> Left column = the device (what it looks like, then how it is taught). Middle = what it is made of. Right = how it is wired, then proof it works.</p>
+<figure><a href="helper/wireframes/slide3_wireframe.png" target="_blank" rel="noopener"><img alt="Slide 3 layout guide" src="helper/wireframes/slide3_wireframe.png" loading="lazy"></a><figcaption>Slide 3 layout guide · tap to open full size</figcaption></figure>
+<h3>Template question → where it is answered</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Template question</th>
+<th>Answered in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Technologies: hardware</td>
+<td>Part 1 (CAD of the equipment) + Part 2 (exact components) + Part 3 (electronics)</td>
+</tr>
+<tr>
+<td>Technologies: languages and frameworks</td>
+<td>Part 5 (tech-stack chips)</td>
+</tr>
+<tr>
+<td>Methodology / process, as a flow chart</td>
+<td>Part 4 (6-step teaching process)</td>
+</tr>
+<tr>
+<td>Images</td>
+<td>Parts 1 and 5 (CAD renders, exploded views)</td>
+</tr>
+<tr>
+<td>Working prototype</td>
+<td>Part 6 (phone prototype screenshot, QR, test results)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>The parts: position and purpose</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Name</th>
+<th>x, y (in)</th>
+<th>w × h (in)</th>
+<th>Colour</th>
+<th>What goes here and why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>The equipment · CAD, to scale</td>
+<td>0.40, 1.05</td>
+<td>5.20 × 3.45</td>
+<td><code>#1F4E79</code></td>
+<td>The full sleeve on top, the hand end below, the palm side as an inset. Letters A–E on the renders match the rows of the parts table in Part 2.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Exact components (per arm)</td>
+<td>5.75, 1.05</td>
+<td>3.85 × 3.45</td>
+<td><code>#1F4E79</code></td>
+<td>Every chip by part number with the datasheet fact that made us choose it. Letters link each row to the render; T = tabla kit.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Electronics</td>
+<td>9.75, 1.05</td>
+<td>3.18 × 3.45</td>
+<td><code>#1F4E79</code></td>
+<td>A simple block diagram drawn with native shapes (not a pasted picture): two I2C buses → hub → radio → tool node and app.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Methodology · teaching process</td>
+<td>0.40, 4.65</td>
+<td>5.20 × 2.30</td>
+<td><code>#7A1F1F</code></td>
+<td>Six boxes in two rows with arrows: record → extract → confound test (row 1, building the fingerprint), teach → fade → score (row 2, teaching it).</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Inside the pods · tech stack</td>
+<td>5.75, 4.65</td>
+<td>3.85 × 2.30</td>
+<td><code>#1F4E79</code></td>
+<td>Four exploded CAD views prove every housing is designed down to the board; six chips list the software stack.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Working today</td>
+<td>9.75, 4.65</td>
+<td>3.18 × 2.30</td>
+<td><code>#2E6B3A</code></td>
+<td>A real screenshot of running software, a QR to try it, and the automated test numbers. Green = it works today.</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Exact content (copy-ready)</h3>
+<p><strong>Slide title:</strong> Technical approach: the sleeve hardware, firmware and teaching method</p>
+<p><strong>Part 1 · The equipment · CAD, to scale</strong></p>
+<ul>
+<li>Image: <code>sleeve_iso_transparent.png</code> (tag: "CAD render")</li>
+<li>Image: <code>hand_iso_transparent.png</code> (tag: "CAD render")</li>
+<li>Image: <code>hand_palmar_transparent.png</code></li>
+<li>Palm side: palm and fingertips free</li>
+<li>Letters on the renders (they match the parts table): D on the render at (0.87, 1.95) in; D on the render at (4.15, 1.72) in; E on the render at (3.37, 1.74) in; A on the render at (2.77, 2.98) in; B on the render at (2.46, 3.07) in; C on the render at (1.89, 3.31) in</li>
+</ul>
+<p><strong>Part 2 · Exact components (per arm)</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th></th>
+<th>Part · datasheet facts</th>
+<th>Qty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A D</td>
+<td><strong>BMI270</strong> IMU · 2.5 × 3.0 × 0.83 mm · 16-bit · 2 KB FIFO [8]</td>
+<td>9</td>
+</tr>
+<tr>
+<td>B D</td>
+<td><strong>C08-005</strong> coin LRA · Ø8 × 3.3 mm · 235 Hz · 1.8 V [12]</td>
+<td>8</td>
+</tr>
+<tr>
+<td>B D</td>
+<td><strong>DRV2605L</strong> haptic driver · closed loop · I2C 0x5A [9]</td>
+<td>8</td>
+</tr>
+<tr>
+<td>C E</td>
+<td><strong>TCA9548A</strong> I2C switch · 8 channels · 400 kHz [10]</td>
+<td>2</td>
+</tr>
+<tr>
+<td>E</td>
+<td><strong>ESP32-S3-MINI-1</strong> · 240 MHz dual core · Wi-Fi · BLE 5 [11]</td>
+<td>1</td>
+</tr>
+<tr>
+<td>E</td>
+<td><strong>MCP73831</strong> charger [13] + 1,000 mAh LiPo + microSD</td>
+<td>1</td>
+</tr>
+<tr>
+<td>T</td>
+<td><strong>Tabla kit:</strong> 2 × Murata 7BB-27-4L0 piezo, Ø27 mm [14] + base unit</td>
+<td>1</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Part 3 · Electronics</strong></p>
+<ul>
+<li><strong>Hand bus · I2C1 · 400 kHz</strong> | TCA9548A → 6 IMUs + 5 drivers</li>
+<li><strong>Arm bus · I2C0 · 400 kHz</strong> | TCA9548A → 3 IMUs + 3 drivers</li>
+<li><strong>Forearm hub · ESP32-S3</strong> | 1,000 mAh LiPo · microSD log · USB-C</li>
+<li>ESP-NOW + shared clock</li>
+<li><strong>Tool node</strong> | piezo · loom · puppet</li>
+<li><strong>App</strong> | phone or laptop</li>
+<li>Driver address is fixed (0x5A), so one switch channel per finger; each segment &lt; 100 pF vs 400 pF limit [15].</li>
+</ul>
+<p><strong>Part 4 · Methodology · teaching process</strong></p>
+<ul>
+<li><strong>1 RECORD</strong> | 3 masters × 2 days × 2 instruments × 20 cycles</li>
+<li><strong>2 EXTRACT</strong> | Body · tool · rhythm · consistency features</li>
+<li><strong>3 CONFOUND TEST</strong> | New day ≥ 70% · new instrument ≥ 70% · p &lt; 0.01</li>
+<li><strong>4 TEACH</strong> | 40 ms pulse ending 80 ms before the stroke</li>
+<li><strong>5 FADE</strong> | Check every 4th cycle; guidance ± 0.2 per check</li>
+<li><strong>6 SCORE</strong> | Device-off unaided score; move on at ≥ 85% on 2 days</li>
+</ul>
+<p><strong>Part 5 · Inside the pods · tech stack</strong></p>
+<ul>
+<li>Image: <code>ring_exploded_transparent.png</code></li>
+<li>Image: <code>motor_exploded_transparent.png</code></li>
+<li>Image: <code>hand_exploded_transparent.png</code></li>
+<li>Image: <code>hub_exploded_transparent.png</code></li>
+<li>Ring IMU</li>
+<li>Motor pod</li>
+<li>Hand board</li>
+<li>Hub</li>
+<li>C++17 firmware · ESP32-S3</li>
+<li>ESP-NOW radio · clock sync</li>
+<li>Python · NumPy · mido</li>
+<li>HTML5 · Web Audio app</li>
+<li>CadQuery → STEP / STL</li>
+<li>Unit + Playwright E2E tests</li>
+</ul>
+<p><strong>Part 6 · Working today</strong></p>
+<ul>
+<li>Image: <code>v6_lite_screenshot.png</code> (tag: "Screenshot")</li>
+<li>Image: <code>qr_parampara_lite.png</code></li>
+<li>Scan: try the phone prototype</li>
+<li><strong>E2E test PASS:</strong> on time 99.96% · 60 ms late 75.0% · silent 0% | <strong>Firmware:</strong> 27/27 checks · clock sync 63 µs</li>
+</ul>
+<h3>Master prompt for this slide</h3>
+<p>Paste this whole block into ChatGPT (after uploading the images it names), or follow it by hand in Canva or PowerPoint.</p>
+<div class="promptbox"><div class="pbar"><span>Prompt</span><button class="copy" type="button" data-target="p3">Copy prompt</button></div><pre id="p3"><code>You are a senior presentation designer who builds hardware design-review slides. Build slide 3 of 6 of an SIH 2026 idea-submission deck (problem statement 26214, PARAMPARA). Make exactly ONE slide. Output a .pptx file (python-pptx) or, in Canva or Gamma, place everything by hand at the positions below.
+UPLOAD THESE IMAGES FIRST: sleeve_iso_transparent.png, hand_iso_transparent.png, hand_palmar_transparent.png, ring_exploded_transparent.png, motor_exploded_transparent.png, hand_exploded_transparent.png, hub_exploded_transparent.png, v6_lite_screenshot.png, qr_parampara_lite.png (from the PARAMPARA slide asset pack).
+
+GLOBAL STYLE (same on all six slides)
+- Canvas: 16:9, 13.333 × 7.5 in, white background (#FFFFFF). All positions are in inches from the top-left corner.
+- Keep the official SIH 2026 template header (y 0 to 0.95 in: team logo/name left, SIH logo right) and footer (y 6.98 to 7.5 in) exactly as the template has them. Put nothing of ours there except the slide title.
+- Slide title: text box x 1.75, y 0.13, 9.60 × 0.74 in, Poppins SemiBold 20 pt, #7A1F1F, left-aligned, vertically centred, at most 2 lines.
+- Panels (&quot;parts&quot;): white fill, 1 pt #D9CFC0 border, corner radius 0.06 in, no shadow. Gap between panels 0.15 in.
+- Panel header: a 0.27 in circle badge at (panel x + 0.12, panel y + 0.09) with the part number in white Poppins Bold 10 pt, filled with the panel colour; header text at (panel x + 0.47, panel y + 0.07), height 0.32 in, Poppins SemiBold 11 pt, UPPERCASE, letter spacing 0.4 pt, in the panel colour. Panel content starts 0.42 in below the panel top.
+- Fonts: Poppins (headings, big numbers) and Inter (everything else). If PowerPoint lacks them, install both from Google Fonts or use Calibri for both. Nothing smaller than 7.5 pt; body text 8.5 to 10 pt.
+- Colours: maroon #7A1F1F (idea, problem, risks), blue #1F4E79 (technical), brass #B8901A (money, value), green #2E6B3A (proof that works today), text #1E1E1E, muted #5A5A5A. Tints: #F6ECEC, #EAF1F8, #FBF5E6, #EEF6EF, #F4F4F4.
+- Images: transparent PNGs placed exactly as given, aspect ratio kept, never stretched or cropped. Every CAD image keeps a small &quot;CAD render&quot; tag; never present a render as a photograph.
+- Text: use the words given, word for word. &quot;**x**&quot; means bold, &quot; | &quot; means a line break. Do not add sentences, numbers, emojis or clip art.
+- Before finishing: no text overflows its box, nothing overlaps, every element sits inside its panel, all six (or five) parts are visible and evenly spaced.
+
+SLIDE TITLE: &quot;Technical approach: the sleeve hardware, firmware and teaching method&quot;
+
+LAYOUT: 6 parts. Reading order: Left column = the device (what it looks like, then how it is taught). Middle = what it is made of. Right = how it is wired, then proof it works.
+
+PART 1: THE EQUIPMENT · CAD, TO SCALE  (answers: Technologies: hardware (what the equipment looks like))
+  Panel: x 0.40, y 1.05, 5.20 × 3.45 in; fill #FFFFFF; 1 pt #D9CFC0 border; badge #1F4E79; header text #1F4E79.
+  - Image `sleeve_iso_transparent.png` at x 0.52, y 1.48, fitted inside 4.96 × 1.27 in (keep aspect ratio, no crop); small tag &quot;CAD render&quot; on its bottom-left corner (Inter 7.5 pt #5A5A5A on white at 85%).
+  - Image `hand_iso_transparent.png` at x 0.52, y 2.80, fitted inside 2.70 × 1.64 in (keep aspect ratio, no crop); small tag &quot;CAD render&quot; on its bottom-left corner (Inter 7.5 pt #5A5A5A on white at 85%).
+  - Image `hand_palmar_transparent.png` at x 3.40, y 2.85, fitted inside 2.08 × 1.34 in (keep aspect ratio, no crop).
+  - Text at x 3.40, y 4.20, 2.08 × 0.24 in: &quot;Palm side: palm and fingertips free&quot; (Inter 8.5 pt, #5A5A5A, italic, centred).
+  - Callout circle &quot;D&quot; centred at (0.87, 1.95) in on the render: 0.22 in diameter, fill #1F4E79, white 1 pt outline, white Inter Bold 8 pt letter.
+  - Callout circle &quot;D&quot; centred at (4.15, 1.72) in on the render: 0.22 in diameter, fill #1F4E79, white 1 pt outline, white Inter Bold 8 pt letter.
+  - Callout circle &quot;E&quot; centred at (3.37, 1.74) in on the render: 0.22 in diameter, fill #1F4E79, white 1 pt outline, white Inter Bold 8 pt letter.
+  - Callout circle &quot;A&quot; centred at (2.77, 2.98) in on the render: 0.22 in diameter, fill #1F4E79, white 1 pt outline, white Inter Bold 8 pt letter.
+  - Callout circle &quot;B&quot; centred at (2.46, 3.07) in on the render: 0.22 in diameter, fill #1F4E79, white 1 pt outline, white Inter Bold 8 pt letter.
+  - Callout circle &quot;C&quot; centred at (1.89, 3.31) in on the render: 0.22 in diameter, fill #1F4E79, white 1 pt outline, white Inter Bold 8 pt letter.
+
+PART 2: EXACT COMPONENTS (PER ARM)  (answers: Technologies: hardware (exact parts with datasheet numbers))
+  Panel: x 5.75, y 1.05, 3.85 × 3.45 in; fill #FFFFFF; 1 pt #D9CFC0 border; badge #1F4E79; header text #1F4E79.
+  - Table at x 5.85, y 1.46, width 3.65 in, max height 2.98 in; column widths 0.32, 2.85, 0.48 in; Inter 8.5 pt; 0.75 pt #D9CFC0 line under every row, no vertical lines; cell margins 0.03 in top/bottom, 0.05 in left/right; first row is the header: fill #EAF1F8, bold, text #1F4E79. Rows:
+      | (empty) | Part · datasheet facts | Qty |
+      | A D | **BMI270** IMU · 2.5 × 3.0 × 0.83 mm · 16-bit · 2 KB FIFO [8] | 9 |
+      | B D | **C08-005** coin LRA · Ø8 × 3.3 mm · 235 Hz · 1.8 V [12] | 8 |
+      | B D | **DRV2605L** haptic driver · closed loop · I2C 0x5A [9] | 8 |
+      | C E | **TCA9548A** I2C switch · 8 channels · 400 kHz [10] | 2 |
+      | E | **ESP32-S3-MINI-1** · 240 MHz dual core · Wi-Fi · BLE 5 [11] | 1 |
+      | E | **MCP73831** charger [13] + 1,000 mAh LiPo + microSD | 1 |
+      | T | **Tabla kit:** 2 × Murata 7BB-27-4L0 piezo, Ø27 mm [14] + base unit | 1 |
+
+PART 3: ELECTRONICS  (answers: Technologies: hardware (how it is wired))
+  Panel: x 9.75, y 1.05, 3.18 × 3.45 in; fill #FFFFFF; 1 pt #D9CFC0 border; badge #1F4E79; header text #1F4E79.
+  - Text at x 9.87, y 1.46, 2.94 × 0.50 in: &quot;**Hand bus · I2C1 · 400 kHz** | TCA9548A → 6 IMUs + 5 drivers&quot; (Inter 8.5 pt, #1E1E1E, fill #EAF1F8, 1 pt #1F4E79 border, corner radius 0.05 in, centred, inner margin 0.05 in).
+  - Text at x 9.87, y 2.03, 2.94 × 0.50 in: &quot;**Arm bus · I2C0 · 400 kHz** | TCA9548A → 3 IMUs + 3 drivers&quot; (Inter 8.5 pt, #1E1E1E, fill #EAF1F8, 1 pt #1F4E79 border, corner radius 0.05 in, centred, inner margin 0.05 in).
+  - Arrow line from (11.34, 2.55) to (11.34, 2.70) in, 1.25 pt #1F4E79, triangle head at the end.
+  - Text at x 9.87, y 2.72, 2.94 × 0.52 in: &quot;**Forearm hub · ESP32-S3** | 1,000 mAh LiPo · microSD log · USB-C&quot; (Inter 8.5 pt, #1E1E1E, fill #EEF6EF, 1 pt #2E6B3A border, corner radius 0.05 in, centred, inner margin 0.05 in).
+  - Arrow line from (11.34, 3.26) to (11.34, 3.52) in, 1.25 pt #2E6B3A, triangle head at the end.
+  - Text at x 11.42, y 3.27, 1.40 × 0.24 in: &quot;ESP-NOW + shared clock&quot; (Inter 7.5 pt, #5A5A5A, italic).
+  - Text at x 9.87, y 3.54, 1.42 × 0.52 in: &quot;**Tool node** | piezo · loom · puppet&quot; (Inter 8.5 pt, #1E1E1E, fill #FBF5E6, 1 pt #B8901A border, corner radius 0.05 in, centred, inner margin 0.04 in).
+  - Text at x 11.39, y 3.54, 1.42 × 0.52 in: &quot;**App** | phone or laptop&quot; (Inter 8.5 pt, #1E1E1E, fill #FBF5E6, 1 pt #B8901A border, corner radius 0.05 in, centred, inner margin 0.04 in).
+  - Text at x 9.87, y 4.10, 2.94 × 0.36 in: &quot;Driver address is fixed (0x5A), so one switch channel per finger; each segment &lt; 100 pF vs 400 pF limit [15].&quot; (Inter 7.5 pt, #5A5A5A, italic).
+
+PART 4: METHODOLOGY · TEACHING PROCESS  (answers: Methodology and process (flow chart))
+  Panel: x 0.40, y 4.65, 5.20 × 2.30 in; fill #FFFFFF; 1 pt #D9CFC0 border; badge #7A1F1F; header text #7A1F1F.
+  - Text at x 0.52, y 5.06, 1.55 × 0.82 in: &quot;**1 RECORD** | 3 masters × 2 days × 2 instruments × 20 cycles&quot; (Inter 8.5 pt, #1E1E1E, fill #F6ECEC, corner radius 0.05 in, inner margin 0.06 in).
+  - Arrow line from (2.08, 5.47) to (2.22, 5.47) in, 1.25 pt #7A1F1F, triangle head at the end.
+  - Text at x 2.23, y 5.06, 1.55 × 0.82 in: &quot;**2 EXTRACT** | Body · tool · rhythm · consistency features&quot; (Inter 8.5 pt, #1E1E1E, fill #F6ECEC, corner radius 0.05 in, inner margin 0.06 in).
+  - Arrow line from (3.79, 5.47) to (3.93, 5.47) in, 1.25 pt #7A1F1F, triangle head at the end.
+  - Text at x 3.94, y 5.06, 1.55 × 0.82 in: &quot;**3 CONFOUND TEST** | New day ≥ 70% · new instrument ≥ 70% · p &lt; 0.01&quot; (Inter 8.5 pt, #1E1E1E, fill #F6ECEC, corner radius 0.05 in, inner margin 0.06 in).
+  - Arrow line from (4.71, 5.89) to (1.30, 6.03) in, 1.25 pt #7A1F1F, triangle head at the end.
+  - Text at x 0.52, y 6.05, 1.55 × 0.82 in: &quot;**4 TEACH** | 40 ms pulse ending 80 ms before the stroke&quot; (Inter 8.5 pt, #1E1E1E, fill #FBF5E6, corner radius 0.05 in, inner margin 0.06 in).
+  - Arrow line from (2.08, 6.46) to (2.22, 6.46) in, 1.25 pt #7A1F1F, triangle head at the end.
+  - Text at x 2.23, y 6.05, 1.55 × 0.82 in: &quot;**5 FADE** | Check every 4th cycle; guidance ± 0.2 per check&quot; (Inter 8.5 pt, #1E1E1E, fill #FBF5E6, corner radius 0.05 in, inner margin 0.06 in).
+  - Arrow line from (3.79, 6.46) to (3.93, 6.46) in, 1.25 pt #7A1F1F, triangle head at the end.
+  - Text at x 3.94, y 6.05, 1.55 × 0.82 in: &quot;**6 SCORE** | Device-off unaided score; move on at ≥ 85% on 2 days&quot; (Inter 8.5 pt, #1E1E1E, fill #EEF6EF, corner radius 0.05 in, inner margin 0.06 in).
+
+PART 5: INSIDE THE PODS · TECH STACK  (answers: Images (exploded views) + technologies: languages and frameworks)
+  Panel: x 5.75, y 4.65, 3.85 × 2.30 in; fill #FFFFFF; 1 pt #D9CFC0 border; badge #1F4E79; header text #1F4E79.
+  - Image `ring_exploded_transparent.png` at x 5.92, y 5.04, fitted inside 0.42 × 0.92 in (keep aspect ratio, no crop).
+  - Image `motor_exploded_transparent.png` at x 6.52, y 5.04, fitted inside 0.42 × 0.92 in (keep aspect ratio, no crop).
+  - Image `hand_exploded_transparent.png` at x 7.12, y 5.04, fitted inside 0.92 × 0.92 in (keep aspect ratio, no crop).
+  - Image `hub_exploded_transparent.png` at x 8.30, y 5.04, fitted inside 0.80 × 0.92 in (keep aspect ratio, no crop).
+  - Text at x 5.80, y 5.97, 0.70 × 0.18 in: &quot;Ring IMU&quot; (Inter 7.5 pt, #5A5A5A, centred).
+  - Text at x 6.40, y 5.97, 0.70 × 0.18 in: &quot;Motor pod&quot; (Inter 7.5 pt, #5A5A5A, centred).
+  - Text at x 7.10, y 5.97, 0.96 × 0.18 in: &quot;Hand board&quot; (Inter 7.5 pt, #5A5A5A, centred).
+  - Text at x 8.22, y 5.97, 0.96 × 0.18 in: &quot;Hub&quot; (Inter 7.5 pt, #5A5A5A, centred).
+  - Text at x 5.87, y 6.20, 1.78 × 0.21 in: &quot;C++17 firmware · ESP32-S3&quot; (Inter 8 pt, #1F4E79, fill #EAF1F8, corner radius 0.10 in, centred, vertically centred).
+  - Text at x 7.72, y 6.20, 1.78 × 0.21 in: &quot;ESP-NOW radio · clock sync&quot; (Inter 8 pt, #1F4E79, fill #EAF1F8, corner radius 0.10 in, centred, vertically centred).
+  - Text at x 5.87, y 6.44, 1.78 × 0.21 in: &quot;Python · NumPy · mido&quot; (Inter 8 pt, #1F4E79, fill #EAF1F8, corner radius 0.10 in, centred, vertically centred).
+  - Text at x 7.72, y 6.44, 1.78 × 0.21 in: &quot;HTML5 · Web Audio app&quot; (Inter 8 pt, #1F4E79, fill #EAF1F8, corner radius 0.10 in, centred, vertically centred).
+  - Text at x 5.87, y 6.68, 1.78 × 0.21 in: &quot;CadQuery → STEP / STL&quot; (Inter 8 pt, #1F4E79, fill #EAF1F8, corner radius 0.10 in, centred, vertically centred).
+  - Text at x 7.72, y 6.68, 1.78 × 0.21 in: &quot;Unit + Playwright E2E tests&quot; (Inter 8 pt, #1F4E79, fill #EAF1F8, corner radius 0.10 in, centred, vertically centred).
+
+PART 6: WORKING TODAY  (answers: Working prototype)
+  Panel: x 9.75, y 4.65, 3.18 × 2.30 in; fill #EEF6EF; 1 pt #2E6B3A border; badge #2E6B3A; header text #2E6B3A.
+  - Image `v6_lite_screenshot.png` at x 9.87, y 5.05, fitted inside 1.45 × 1.29 in (keep aspect ratio, no crop); small tag &quot;Screenshot&quot; on its bottom-left corner (Inter 7.5 pt #5A5A5A on white at 85%).
+  - Image `qr_parampara_lite.png` at x 11.47, y 5.05, fitted inside 0.85 × 0.85 in (keep aspect ratio, no crop).
+  - Text at x 11.42, y 5.92, 1.42 × 0.40 in: &quot;Scan: try the phone prototype&quot; (Inter 8 pt, #5A5A5A).
+  - Text at x 9.87, y 6.38, 2.94 × 0.52 in: &quot;**E2E test PASS:** on time 99.96% · 60 ms late 75.0% · silent 0% | **Firmware:** 27/27 checks · clock sync 63 µs&quot; (Inter 8 pt, #1E1E1E).
+
+DO NOT: Do not paste the block diagram as a tiny picture; draw it with shapes so it stays readable. Do not label CAD renders as photos. Keep part numbers exact (BMI270, DRV2605L, TCA9548A, ESP32-S3-MINI-1, C08-005, MCP73831, 7BB-27-4L0).
+SPEAKER NOTES (put in the notes pane, not on the slide): Each arm wears nine BMI270 motion sensors and eight coin vibration motors, each motor with its own DRV2605L driver. Because that driver has a fixed address, we use two TCA9548A switches, one per bus. An ESP32-S3 hub logs everything at full rate to microSD and talks to the tool node and the app by radio with a shared clock. The method: record three masters on two days and two instruments, extract features, and keep only what survives the confound test; then teach with pulses just before each stroke, fade, and score the learner with the device off. The teaching loop already runs on a phone and passes automated tests, and the firmware core passes 27 of 27 checks.
+</code></pre></div>
+<h3>Images for this slide</h3>
+<p>Use our own files listed in the prompt. Optional AI images (prompts in section 9): IMG-5 (studio_ring_pod.png).</p>
+<h3>Speaker notes (about 40 seconds)</h3>
+<p>Each arm wears nine BMI270 motion sensors and eight coin vibration motors, each motor with its own DRV2605L driver. Because that driver has a fixed address, we use two TCA9548A switches, one per bus. An ESP32-S3 hub logs everything at full rate to microSD and talks to the tool node and the app by radio with a shared clock. The method: record three masters on two days and two instruments, extract features, and keep only what survives the confound test; then teach with pulses just before each stroke, fade, and score the learner with the device off. The teaching loop already runs on a phone and passes automated tests, and the firmware core passes 27 of 27 checks.</p>
+<h3>Don't</h3>
+<ul>
+<li>Do not paste the block diagram as a tiny picture; draw it with shapes so it stays readable.</li>
+<li>Do not label CAD renders as photos.</li>
+<li>Keep part numbers exact (BMI270, DRV2605L, TCA9548A, ESP32-S3-MINI-1, C08-005, MCP73831, 7BB-27-4L0).</li>
+</ul>
+<h2 id="sec6">Slide 4 · Feasibility and viability  (6 parts)</h2>
+<p><strong>The template asks:</strong> Analysis of the feasibility of the idea; Potential challenges and risks; Strategies for overcoming these challenges.</p>
+<p><strong>What a judge must take away in 5 seconds:</strong> It is buildable from off-the-shelf parts for about ₹20–32 thousand, the numbers add up, every risk has a fallback, and institutions already pay for this kind of teaching.</p>
+<p><strong>Reading order:</strong> Row 1: can it be built (technical) → can it be afforded (cost) → how far along is it (proof ladder). Row 2: what could go wrong → when it happens → who pays.</p>
+<figure><a href="helper/wireframes/slide4_wireframe.png" target="_blank" rel="noopener"><img alt="Slide 4 layout guide" src="helper/wireframes/slide4_wireframe.png" loading="lazy"></a><figcaption>Slide 4 layout guide · tap to open full size</figcaption></figure>
+<h3>Template question → where it is answered</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Template question</th>
+<th>Answered in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Feasibility analysis: technical</td>
+<td>Part 1 (engineering budgets)</td>
+</tr>
+<tr>
+<td>Feasibility analysis: economic</td>
+<td>Part 2 (prototype cost and comparison)</td>
+</tr>
+<tr>
+<td>Feasibility analysis: what is already done</td>
+<td>Part 3 (proof ladder: done / next / not claimed)</td>
+</tr>
+<tr>
+<td>Potential challenges and risks</td>
+<td>Part 4 (left column of the table)</td>
+</tr>
+<tr>
+<td>Strategies for overcoming them</td>
+<td>Part 4 (strategy + fallback columns) + Part 5 (8-week plan)</td>
+</tr>
+<tr>
+<td>Viability (who pays)</td>
+<td>Part 6 (institutions first, the model, the year-1 test)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>The parts: position and purpose</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Name</th>
+<th>x, y (in)</th>
+<th>w × h (in)</th>
+<th>Colour</th>
+<th>What goes here and why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Technical feasibility · budgets</td>
+<td>0.40, 1.05</td>
+<td>4.30 × 2.70</td>
+<td><code>#1F4E79</code></td>
+<td>Five engineering budgets with the calculation shown. This is what a hardware reviewer checks first: does data, power, weight, bus and timing fit?</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Economic feasibility · cost</td>
+<td>4.85, 1.05</td>
+<td>3.90 × 2.70</td>
+<td><code>#B8901A</code></td>
+<td>One big number, a bar per cost group (draw it as a native bar chart), and the comparison with commercial suits.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Proof ladder · done vs next</td>
+<td>8.90, 1.05</td>
+<td>4.03 × 2.70</td>
+<td><code>#2E6B3A</code></td>
+<td>Three bands: done (green), next 8 weeks (blue), not claimed yet (grey). Honesty here earns trust everywhere else.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Challenges → strategies → fallback</td>
+<td>0.40, 3.90</td>
+<td>6.10 × 3.05</td>
+<td><code>#7A1F1F</code></td>
+<td>Six real risks, each with what we do and what we fall back to. Three columns answer two template questions at once.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>8-week build plan</td>
+<td>6.65, 3.90</td>
+<td>2.95 × 3.05</td>
+<td><code>#1F4E79</code></td>
+<td>A vertical week-by-week timeline: judges see the team has a dated plan, not a wish.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Viability · who pays</td>
+<td>9.75, 3.90</td>
+<td>3.18 × 3.05</td>
+<td><code>#B8901A</code></td>
+<td>Who pays and why they would: existing state schemes and institutions, the business model, and a measurable first-year test.</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Exact content (copy-ready)</h3>
+<p><strong>Slide title:</strong> Feasibility &amp; viability: buildable now, and every risk has a fallback</p>
+<p><strong>Part 1 · Technical feasibility · budgets</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Budget</th>
+<th>Calculation</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data</td>
+<td>9 IMUs × 12 B × 200 per s</td>
+<td>21.6 kB/s · hand bus 36% used ✓</td>
+</tr>
+<tr>
+<td>Battery</td>
+<td>≈ 142 mA from 1,000 mAh × 80%</td>
+<td>≈ 5.6 h (est.) vs ≥ 3 h ✓</td>
+</tr>
+<tr>
+<td>Mass</td>
+<td>CAD volumes + parts</td>
+<td>≈ 160 g per arm, ≈ 30 g on hand (est.)</td>
+</tr>
+<tr>
+<td>I2C load</td>
+<td>45 cm cable + 2 devices</td>
+<td>&lt; 100 pF vs 400 pF limit ✓</td>
+</tr>
+<tr>
+<td>Sync</td>
+<td>Timestamp exchange + drift fit</td>
+<td>≤ 2 ms target · 63 µs in simulation</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li>est. = calculated from datasheets; bench tests H1–H8 confirm it.</li>
+</ul>
+<p><strong>Part 2 · Economic feasibility · cost</strong></p>
+<ul>
+<li>₹20–32k</li>
+<li>two sleeves + three tool kits, prototype (est.)</li>
+<li>Sensors, drivers, switches</li>
+<li>₹3.3–5.6k</li>
+<li>Coin motors</li>
+<li>₹3–7k</li>
+<li>Hubs, power, storage</li>
+<li>₹4–5.7k</li>
+<li>Assembled circuit boards</li>
+<li>₹4–6k</li>
+<li>Housings, straps, fabric</li>
+<li>₹3–4k</li>
+<li>Three tool kits</li>
+<li>₹2.5–3.7k</li>
+<li>vs Teslasuit ≈ US$5,000 [6] · Xsens MVN US$12,430 [5]: over 10× cheaper. Volume target ₹5–7k per sleeve.</li>
+</ul>
+<p><strong>Part 3 · Proof ladder · done vs next</strong></p>
+<ul>
+<li><strong>DONE ✓</strong>  CAD and STEP for every housing · firmware core 27/27 checks · phone prototype, E2E PASS · pre-test on 7 real drummers</li>
+<li><strong>NEXT 8 WEEKS</strong>  bench tests H1–H8 · E0: sleeve doesn't change masters · E1: confound-proof fingerprint · E5a and E5 pilots (16 people)</li>
+<li><strong>NOT CLAIMED YET</strong>  a built sleeve · masters' fingerprints · a learning effect</li>
+</ul>
+<p><strong>Part 4 · Challenges → strategies → fallback</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Challenge or risk</th>
+<th>Strategy</th>
+<th>Fallback</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Masters not available in time</td>
+<td>Week-1 outreach: Zonal Cultural Centres, Weavers' Service Centres, music colleges</td>
+<td>Senior practitioners, stated clearly</td>
+</tr>
+<tr>
+<td>Sleeve changes how masters play</td>
+<td>Light rings fitted with the master; E0 equivalence test (± 10 ms) [26]</td>
+<td>Hand, wrist, elbow sensors only</td>
+</tr>
+<tr>
+<td>Fingerprint near pass mark (pre-test 66%)</td>
+<td>Add movement features; record 30 cycles</td>
+<td>Graded claim, fixed in advance</td>
+</tr>
+<tr>
+<td>Finger cues not felt while striking</td>
+<td>Cue before the movement; stronger pulse (E2)</td>
+<td>Move the cue to the wrist</td>
+</tr>
+<tr>
+<td>Assembled boards arrive late</td>
+<td>Order in week 1; breakout boards from day 1</td>
+<td>Larger rings on breakouts</td>
+</tr>
+<tr>
+<td>Radio trouble at the venue</td>
+<td>Full-rate microSD log; cues stored on the sleeve</td>
+<td>USB cable; backup video</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Part 5 · 8-week build plan</strong></p>
+<ul>
+<li>W1</li>
+<li>Order PCBs, print housings, E5a starts</li>
+<li>W2</li>
+<li>Hub firmware, tabla kit · H2 H3 H8</li>
+<li>W3</li>
+<li>Both sleeves built · H4–H7 · E2 E4</li>
+<li>W4</li>
+<li>Masters day 1 · E0 · fingerprint code</li>
+<li>W5</li>
+<li>Day 2, instruments swapped · E1</li>
+<li>W6</li>
+<li>Puppeteers and weavers · E0 E1</li>
+<li>W7</li>
+<li>Pilot E5: 16 beginners, 48 h test</li>
+<li>W8</li>
+<li>Full demo · 3 rehearsals · real numbers</li>
+</ul>
+<p><strong>Part 6 · Viability · who pays</strong></p>
+<ul>
+<li><strong>Institutions first</strong> (they already pay for teaching):</li>
+<li>• Guru-Shishya Parampara gurus (₹7,500 a month honorarium) [21]</li>
+<li>• 28 Weavers' Service Centres; 315-hour NSQF course [22, 23]</li>
+<li>• CBSE 036 schools and music colleges [24]</li>
+<li>• IGNCA's national archive, NCAA [3]</li>
+<li><strong>Model:</strong> kit + yearly licence; masters earn a share when their fingerprint is used; CSR and grants.</li>
+<li><strong>Year-1 test:</strong> 3 signed letters of intent (a hypothesis until signed).</li>
+</ul>
+<h3>Master prompt for this slide</h3>
+<p>Paste this whole block into ChatGPT (after uploading the images it names), or follow it by hand in Canva or PowerPoint.</p>
+<div class="promptbox"><div class="pbar"><span>Prompt</span><button class="copy" type="button" data-target="p4">Copy prompt</button></div><pre id="p4"><code>You are a senior presentation designer who builds hardware design-review slides. Build slide 4 of 6 of an SIH 2026 idea-submission deck (problem statement 26214, PARAMPARA). Make exactly ONE slide. Output a .pptx file (python-pptx) or, in Canva or Gamma, place everything by hand at the positions below.
+UPLOAD THESE IMAGES FIRST: none (from the PARAMPARA slide asset pack).
+
+GLOBAL STYLE (same on all six slides)
+- Canvas: 16:9, 13.333 × 7.5 in, white background (#FFFFFF). All positions are in inches from the top-left corner.
+- Keep the official SIH 2026 template header (y 0 to 0.95 in: team logo/name left, SIH logo right) and footer (y 6.98 to 7.5 in) exactly as the template has them. Put nothing of ours there except the slide title.
+- Slide title: text box x 1.75, y 0.13, 9.60 × 0.74 in, Poppins SemiBold 20 pt, #7A1F1F, left-aligned, vertically centred, at most 2 lines.
+- Panels (&quot;parts&quot;): white fill, 1 pt #D9CFC0 border, corner radius 0.06 in, no shadow. Gap between panels 0.15 in.
+- Panel header: a 0.27 in circle badge at (panel x + 0.12, panel y + 0.09) with the part number in white Poppins Bold 10 pt, filled with the panel colour; header text at (panel x + 0.47, panel y + 0.07), height 0.32 in, Poppins SemiBold 11 pt, UPPERCASE, letter spacing 0.4 pt, in the panel colour. Panel content starts 0.42 in below the panel top.
+- Fonts: Poppins (headings, big numbers) and Inter (everything else). If PowerPoint lacks them, install both from Google Fonts or use Calibri for both. Nothing smaller than 7.5 pt; body text 8.5 to 10 pt.
+- Colours: maroon #7A1F1F (idea, problem, risks), blue #1F4E79 (technical), brass #B8901A (money, value), green #2E6B3A (proof that works today), text #1E1E1E, muted #5A5A5A. Tints: #F6ECEC, #EAF1F8, #FBF5E6, #EEF6EF, #F4F4F4.
+- Images: transparent PNGs placed exactly as given, aspect ratio kept, never stretched or cropped. Every CAD image keeps a small &quot;CAD render&quot; tag; never present a render as a photograph.
+- Text: use the words given, word for word. &quot;**x**&quot; means bold, &quot; | &quot; means a line break. Do not add sentences, numbers, emojis or clip art.
+- Before finishing: no text overflows its box, nothing overlaps, every element sits inside its panel, all six (or five) parts are visible and evenly spaced.
+
+SLIDE TITLE: &quot;Feasibility &amp; viability: buildable now, and every risk has a fallback&quot;
+
+LAYOUT: 6 parts. Reading order: Row 1: can it be built (technical) → can it be afforded (cost) → how far along is it (proof ladder). Row 2: what could go wrong → when it happens → who pays.
+
+PART 1: TECHNICAL FEASIBILITY · BUDGETS  (answers: Feasibility analysis (technical))
+  Panel: x 0.40, y 1.05, 4.30 × 2.70 in; fill #FFFFFF; 1 pt #D9CFC0 border; badge #1F4E79; header text #1F4E79.
+  - Table at x 0.50, y 1.46, width 4.10 in, max height 1.97 in; column widths 0.78, 1.72, 1.60 in; Inter 9 pt; 0.75 pt #D9CFC0 line under every row, no vertical lines; cell margins 0.03 in top/bottom, 0.05 in left/right; first row is the header: fill #EAF1F8, bold, text #1F4E79; first column bold. Rows:
+      | Budget | Calculation | Result |
+      | Data | 9 IMUs × 12 B × 200 per s | 21.6 kB/s · hand bus 36% used ✓ |
+      | Battery | ≈ 142 mA from 1,000 mAh × 80% | ≈ 5.6 h (est.) vs ≥ 3 h ✓ |
+      | Mass | CAD volumes + parts | ≈ 160 g per arm, ≈ 30 g on hand (est.) |
+      | I2C load | 45 cm cable + 2 devices | &lt; 100 pF vs 400 pF limit ✓ |
+      | Sync | Timestamp exchange + drift fit | ≤ 2 ms target · 63 µs in simulation |
+  - Text at x 0.50, y 3.45, 4.10 × 0.25 in: &quot;est. = calculated from datasheets; bench tests H1–H8 confirm it.&quot; (Inter 8 pt, #5A5A5A, italic).
+
+PART 2: ECONOMIC FEASIBILITY · COST  (answers: Feasibility analysis (economic))
+  Panel: x 4.85, y 1.05, 3.90 × 2.70 in; fill #FFFFFF; 1 pt #D9CFC0 border; badge #B8901A; header text #B8901A.
+  - Text at x 4.97, y 1.44, 1.75 × 0.55 in: &quot;₹20–32k&quot; (Poppins Bold 24 pt, #7A1F1F, vertically centred).
+  - Text at x 6.74, y 1.46, 1.90 × 0.52 in: &quot;two sleeves + three tool kits, prototype (est.)&quot; (Inter 8.5 pt, #5A5A5A, vertically centred).
+  - Text at x 4.97, y 2.06, 1.62 × 0.20 in: &quot;Sensors, drivers, switches&quot; (Inter 8 pt, #1E1E1E, vertically centred).
+  - Shape (no text) at x 6.62, y 2.10, 0.89 × 0.13 in: fill #B8901A, corner radius 0.03 in.
+  - Text at x 7.98, y 2.06, 0.66 × 0.20 in: &quot;₹3.3–5.6k&quot; (Inter 8 pt, #5A5A5A, right-aligned, vertically centred).
+  - Text at x 4.97, y 2.27, 1.62 × 0.20 in: &quot;Coin motors&quot; (Inter 8 pt, #1E1E1E, vertically centred).
+  - Shape (no text) at x 6.62, y 2.31, 1.00 × 0.13 in: fill #B8901A, corner radius 0.03 in.
+  - Text at x 7.98, y 2.27, 0.66 × 0.20 in: &quot;₹3–7k&quot; (Inter 8 pt, #5A5A5A, right-aligned, vertically centred).
+  - Text at x 4.97, y 2.49, 1.62 × 0.20 in: &quot;Hubs, power, storage&quot; (Inter 8 pt, #1E1E1E, vertically centred).
+  - Shape (no text) at x 6.62, y 2.53, 0.97 × 0.13 in: fill #B8901A, corner radius 0.03 in.
+  - Text at x 7.98, y 2.49, 0.66 × 0.20 in: &quot;₹4–5.7k&quot; (Inter 8 pt, #5A5A5A, right-aligned, vertically centred).
+  - Text at x 4.97, y 2.71, 1.62 × 0.20 in: &quot;Assembled circuit boards&quot; (Inter 8 pt, #1E1E1E, vertically centred).
+  - Shape (no text) at x 6.62, y 2.74, 1.00 × 0.13 in: fill #B8901A, corner radius 0.03 in.
+  - Text at x 7.98, y 2.71, 0.66 × 0.20 in: &quot;₹4–6k&quot; (Inter 8 pt, #5A5A5A, right-aligned, vertically centred).
+  - Text at x 4.97, y 2.92, 1.62 × 0.20 in: &quot;Housings, straps, fabric&quot; (Inter 8 pt, #1E1E1E, vertically centred).
+  - Shape (no text) at x 6.62, y 2.96, 0.70 × 0.13 in: fill #B8901A, corner radius 0.03 in.
+  - Text at x 7.98, y 2.92, 0.66 × 0.20 in: &quot;₹3–4k&quot; (Inter 8 pt, #5A5A5A, right-aligned, vertically centred).
+  - Text at x 4.97, y 3.13, 1.62 × 0.20 in: &quot;Three tool kits&quot; (Inter 8 pt, #1E1E1E, vertically centred).
+  - Shape (no text) at x 6.62, y 3.17, 0.62 × 0.13 in: fill #B8901A, corner radius 0.03 in.
+  - Text at x 7.98, y 3.13, 0.66 × 0.20 in: &quot;₹2.5–3.7k&quot; (Inter 8 pt, #5A5A5A, right-aligned, vertically centred).
+  - Text at x 4.97, y 3.35, 3.66 × 0.34 in: &quot;vs Teslasuit ≈ US$5,000 [6] · Xsens MVN US$12,430 [5]: over 10× cheaper. Volume target ₹5–7k per sleeve.&quot; (Inter 8 pt, #1E1E1E).
+
+PART 3: PROOF LADDER · DONE VS NEXT  (answers: Feasibility analysis (stage of development))
+  Panel: x 8.90, y 1.05, 4.03 × 2.70 in; fill #FFFFFF; 1 pt #D9CFC0 border; badge #2E6B3A; header text #2E6B3A.
+  - Text at x 9.02, y 1.46, 3.79 × 0.80 in: &quot;**DONE ✓**  CAD and STEP for every housing · firmware core 27/27 checks · phone prototype, E2E PASS · pre-test on 7 real drummers&quot; (Inter 8.5 pt, #1E1E1E, fill #EEF6EF, 1 pt #2E6B3A border, corner radius 0.05 in, inner margin 0.06 in).
+  - Text at x 9.02, y 2.32, 3.79 × 0.78 in: &quot;**NEXT 8 WEEKS**  bench tests H1–H8 · E0: sleeve doesn't change masters · E1: confound-proof fingerprint · E5a and E5 pilots (16 people)&quot; (Inter 8.5 pt, #1E1E1E, fill #EAF1F8, 1 pt #1F4E79 border, corner radius 0.05 in, inner margin 0.06 in).
+  - Text at x 9.02, y 3.16, 3.79 × 0.52 in: &quot;**NOT CLAIMED YET**  a built sleeve · masters' fingerprints · a learning effect&quot; (Inter 8.5 pt, #1E1E1E, fill #F4F4F4, 1 pt #D9CFC0 border, corner radius 0.05 in, inner margin 0.06 in).
+
+PART 4: CHALLENGES → STRATEGIES → FALLBACK  (answers: Potential challenges and risks + strategies for overcoming them)
+  Panel: x 0.40, y 3.90, 6.10 × 3.05 in; fill #FFFFFF; 1 pt #D9CFC0 border; badge #7A1F1F; header text #7A1F1F.
+  - Table at x 0.50, y 4.31, width 5.90 in, max height 2.58 in; column widths 1.72, 2.48, 1.70 in; Inter 9 pt; 0.75 pt #D9CFC0 line under every row, no vertical lines; cell margins 0.03 in top/bottom, 0.05 in left/right; first row is the header: fill #F6ECEC, bold, text #7A1F1F; first column bold. Rows:
+      | Challenge or risk | Strategy | Fallback |
+      | Masters not available in time | Week-1 outreach: Zonal Cultural Centres, Weavers' Service Centres, music colleges | Senior practitioners, stated clearly |
+      | Sleeve changes how masters play | Light rings fitted with the master; E0 equivalence test (± 10 ms) [26] | Hand, wrist, elbow sensors only |
+      | Fingerprint near pass mark (pre-test 66%) | Add movement features; record 30 cycles | Graded claim, fixed in advance |
+      | Finger cues not felt while striking | Cue before the movement; stronger pulse (E2) | Move the cue to the wrist |
+      | Assembled boards arrive late | Order in week 1; breakout boards from day 1 | Larger rings on breakouts |
+      | Radio trouble at the venue | Full-rate microSD log; cues stored on the sleeve | USB cable; backup video |
+
+PART 5: 8-WEEK BUILD PLAN  (answers: Strategies (when each step happens))
+  Panel: x 6.65, y 3.90, 2.95 × 3.05 in; fill #FFFFFF; 1 pt #D9CFC0 border; badge #1F4E79; header text #1F4E79.
+  - Text at x 6.77, y 4.31, 0.40 × 0.25 in: &quot;W1&quot; (Inter Bold 8 pt, #FFFFFF, fill #1F4E79, corner radius 0.05 in, centred, vertically centred).
+  - Text at x 7.22, y 4.31, 2.30 × 0.27 in: &quot;Order PCBs, print housings, E5a starts&quot; (Inter 8 pt, #1E1E1E, vertically centred).
+  - Text at x 6.77, y 4.63, 0.40 × 0.25 in: &quot;W2&quot; (Inter Bold 8 pt, #FFFFFF, fill #1F4E79, corner radius 0.05 in, centred, vertically centred).
+  - Text at x 7.22, y 4.63, 2.30 × 0.27 in: &quot;Hub firmware, tabla kit · H2 H3 H8&quot; (Inter 8 pt, #1E1E1E, vertically centred).
+  - Text at x 6.77, y 4.95, 0.40 × 0.25 in: &quot;W3&quot; (Inter Bold 8 pt, #FFFFFF, fill #1F4E79, corner radius 0.05 in, centred, vertically centred).
+  - Text at x 7.22, y 4.95, 2.30 × 0.27 in: &quot;Both sleeves built · H4–H7 · E2 E4&quot; (Inter 8 pt, #1E1E1E, vertically centred).
+  - Text at x 6.77, y 5.27, 0.40 × 0.25 in: &quot;W4&quot; (Inter Bold 8 pt, #FFFFFF, fill #1F4E79, corner radius 0.05 in, centred, vertically centred).
+  - Text at x 7.22, y 5.27, 2.30 × 0.27 in: &quot;Masters day 1 · E0 · fingerprint code&quot; (Inter 8 pt, #1E1E1E, vertically centred).
+  - Text at x 6.77, y 5.59, 0.40 × 0.25 in: &quot;W5&quot; (Inter Bold 8 pt, #FFFFFF, fill #1F4E79, corner radius 0.05 in, centred, vertically centred).
+  - Text at x 7.22, y 5.59, 2.30 × 0.27 in: &quot;Day 2, instruments swapped · E1&quot; (Inter 8 pt, #1E1E1E, vertically centred).
+  - Text at x 6.77, y 5.91, 0.40 × 0.25 in: &quot;W6&quot; (Inter Bold 8 pt, #FFFFFF, fill #1F4E79, corner radius 0.05 in, centred, vertically centred).
+  - Text at x 7.22, y 5.91, 2.30 × 0.27 in: &quot;Puppeteers and weavers · E0 E1&quot; (Inter 8 pt, #1E1E1E, vertically centred).
+  - Text at x 6.77, y 6.23, 0.40 × 0.25 in: &quot;W7&quot; (Inter Bold 8 pt, #FFFFFF, fill #1F4E79, corner radius 0.05 in, centred, vertically centred).
+  - Text at x 7.22, y 6.23, 2.30 × 0.27 in: &quot;Pilot E5: 16 beginners, 48 h test&quot; (Inter 8 pt, #1E1E1E, vertically centred).
+  - Text at x 6.77, y 6.55, 0.40 × 0.25 in: &quot;W8&quot; (Inter Bold 8 pt, #FFFFFF, fill #1F4E79, corner radius 0.05 in, centred, vertically centred).
+  - Text at x 7.22, y 6.55, 2.30 × 0.27 in: &quot;Full demo · 3 rehearsals · real numbers&quot; (Inter 8 pt, #1E1E1E, vertically centred).
+
+PART 6: VIABILITY · WHO PAYS  (answers: Viability)
+  Panel: x 9.75, y 3.90, 3.18 × 3.05 in; fill #FFFFFF; 1 pt #D9CFC0 border; badge #B8901A; header text #B8901A.
+  - Text at x 9.87, y 4.31, 2.94 × 0.24 in: &quot;**Institutions first** (they already pay for teaching):&quot; (Inter 8.5 pt, #1E1E1E).
+  - Bullet list at x 9.87, y 4.58, 2.94 × 1.30 in, Inter 8.5 pt #1E1E1E, bullet character &quot;•&quot; in #1E1E1E, 3 pt after each item: (1) &quot;Guru-Shishya Parampara gurus (₹7,500 a month honorarium) [21]&quot; (2) &quot;28 Weavers' Service Centres; 315-hour NSQF course [22, 23]&quot; (3) &quot;CBSE 036 schools and music colleges [24]&quot; (4) &quot;IGNCA's national archive, NCAA [3]&quot;.
+  - Text at x 9.87, y 5.94, 2.94 × 0.48 in: &quot;**Model:** kit + yearly licence; masters earn a share when their fingerprint is used; CSR and grants.&quot; (Inter 8.5 pt, #1E1E1E).
+  - Text at x 9.87, y 6.46, 2.94 × 0.42 in: &quot;**Year-1 test:** 3 signed letters of intent (a hypothesis until signed).&quot; (Inter 8.5 pt, #1E1E1E, fill #FBF5E6, vertically centred, inner margin 0.05 in).
+
+DO NOT: Do not hide the 'not claimed yet' band; it is what makes the rest believable. Mark every estimate as est. Do not show revenue projections; there is no data for them yet.
+SPEAKER NOTES (put in the notes pane, not on the slide): Feasibility first: data, power, weight, bus load and timing all fit, with the calculation on the slide. The prototype costs about twenty to thirty-two thousand rupees for two sleeves and three tool kits, more than ten times cheaper than a commercial suit. Here is honestly where we are: what is done, what the next eight weeks prove, and what we do not claim yet. Each risk has a strategy and a fallback, and the eight-week plan shows when each test happens. Viability: institutions already pay gurus and training centres; we sell kits and licences, masters earn a share, and our first-year test is three signed letters of intent.
+</code></pre></div>
+<h3>Images for this slide</h3>
+<p>Use our own files listed in the prompt. Optional AI images (prompts in section 9): none needed.</p>
+<h3>Speaker notes (about 40 seconds)</h3>
+<p>Feasibility first: data, power, weight, bus load and timing all fit, with the calculation on the slide. The prototype costs about twenty to thirty-two thousand rupees for two sleeves and three tool kits, more than ten times cheaper than a commercial suit. Here is honestly where we are: what is done, what the next eight weeks prove, and what we do not claim yet. Each risk has a strategy and a fallback, and the eight-week plan shows when each test happens. Viability: institutions already pay gurus and training centres; we sell kits and licences, masters earn a share, and our first-year test is three signed letters of intent.</p>
+<h3>Don't</h3>
+<ul>
+<li>Do not hide the 'not claimed yet' band; it is what makes the rest believable.</li>
+<li>Mark every estimate as est.</li>
+<li>Do not show revenue projections; there is no data for them yet.</li>
+</ul>
+<h2 id="sec7">Slide 5 · Impact and benefits  (6 parts)</h2>
+<p><strong>The template asks:</strong> Potential impact on the target audience; Benefits of the solution (social, economic, environmental, etc.).</p>
+<p><strong>What a judge must take away in 5 seconds:</strong> Five groups gain something concrete, each benefit has a way to measure it, and the benefits are social, economic and environmental.</p>
+<p><strong>Reading order:</strong> Top: who gains (one card each). Middle: three benefit columns, exactly as the template names them. Bottom: SDGs and the scale-up path.</p>
+<figure><a href="helper/wireframes/slide5_wireframe.png" target="_blank" rel="noopener"><img alt="Slide 5 layout guide" src="helper/wireframes/slide5_wireframe.png" loading="lazy"></a><figcaption>Slide 5 layout guide · tap to open full size</figcaption></figure>
+<h3>Template question → where it is answered</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Template question</th>
+<th>Answered in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Potential impact on the target audience</td>
+<td>Part 1 (five stakeholder cards, each with a measure)</td>
+</tr>
+<tr>
+<td>Social benefits</td>
+<td>Part 2</td>
+</tr>
+<tr>
+<td>Economic benefits</td>
+<td>Part 3</td>
+</tr>
+<tr>
+<td>Environmental benefits</td>
+<td>Part 4</td>
+</tr>
+<tr>
+<td>(not asked, judges value it) Alignment and scale</td>
+<td>Part 5 (SDGs) + Part 6 (roadmap)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>The parts: position and purpose</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Name</th>
+<th>x, y (in)</th>
+<th>w × h (in)</th>
+<th>Colour</th>
+<th>What goes here and why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Target audience · who gains and how we measure it</td>
+<td>0.40, 1.05</td>
+<td>12.53 × 2.60</td>
+<td><code>#7A1F1F</code></td>
+<td>Five cards in one row, each with who, how many, the benefit and how we will measure it. A benefit with a measure reads as a plan, not a promise.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Social benefits</td>
+<td>0.40, 3.80</td>
+<td>4.08 × 2.00</td>
+<td><code>#7A1F1F</code></td>
+<td>Four social benefits; the untested one is labelled as such.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Economic benefits</td>
+<td>4.63, 3.80</td>
+<td>4.07 × 2.00</td>
+<td><code>#B8901A</code></td>
+<td>Cost advantage, value for existing schemes, income for masters, evidence for weavers.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Environmental benefits</td>
+<td>8.85, 3.80</td>
+<td>4.08 × 2.00</td>
+<td><code>#2E6B3A</code></td>
+<td>Reuse, repairability, low power and no tooling, all true from the design itself.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>SDG alignment</td>
+<td>0.40, 5.95</td>
+<td>4.70 × 1.00</td>
+<td><code>#1F4E79</code></td>
+<td>Three official SDG tiles in their official colours [28].</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Scale-up roadmap · each step only if its tests pass</td>
+<td>5.25, 5.95</td>
+<td>7.68 × 1.00</td>
+<td><code>#7A1F1F</code></td>
+<td>Three arrow stages; each starts only when its tests pass.</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Exact content (copy-ready)</h3>
+<p><strong>Slide title:</strong> Impact &amp; benefits: who gains, and how we will measure it</p>
+<p><strong>Part 1 · Target audience · who gains and how we measure it</strong></p>
+<ul>
+<li>1</li>
+<li>Masters &amp; gurus</li>
+<li>Tabla ustads, Guru-Shishya gurus</li>
+<li>Their own way of playing preserved, credited and shared on their terms</li>
+<li><strong>Measured by:</strong> masters recorded; their approval</li>
+<li>2</li>
+<li>Learners</li>
+<li>CBSE 036 students, music colleges</li>
+<li>Practise against a real master between lessons; see honest progress</li>
+<li><strong>Measured by:</strong> unaided score 48 h later</li>
+<li>3</li>
+<li>Weavers &amp; trainers</li>
+<li>35.22 lakh weavers · 28 WSCs</li>
+<li>Training aid with skill evidence; shoulder feedback (76% report pain [25])</li>
+<li><strong>Measured by:</strong> time with shoulder raised (to test)</li>
+<li>4</li>
+<li>Puppeteers</li>
+<li>Kathputli families and troupes</li>
+<li>A credited record of their technique and a kit for workshops</li>
+<li><strong>Measured by:</strong> puppeteers recorded; workshops run</li>
+<li>5</li>
+<li>Archives &amp; research</li>
+<li>IGNCA / NCAA, universities</li>
+<li>A new kind of record: how masters move, with consent</li>
+<li><strong>Measured by:</strong> consented fingerprints deposited</li>
+</ul>
+<p><strong>Part 2 · Social benefits</strong></p>
+<ul>
+<li>• Keeps living crafts teachable beyond one room and one lifetime</li>
+<li>• Masters stay in control: consent, approval, credit</li>
+<li>• A fair check of learning: the same device-off test for all</li>
+<li>• Possible, not yet tested: feeling the beat by vibration, for 50.7 lakh people with hearing disability [27]</li>
+</ul>
+<p><strong>Part 3 · Economic benefits</strong></p>
+<ul>
+<li>• Kit over 10× cheaper than mocap or haptic suits; ₹5–7k per sleeve at volume (target)</li>
+<li>• State-funded teaching (GSP, SAMARTH) leaves a reusable output</li>
+<li>• New income: masters share in every licensed use of their fingerprint</li>
+<li>• Skill evidence for weavers next to the 315-hour NSQF course</li>
+</ul>
+<p><strong>Part 4 · Environmental benefits</strong></p>
+<ul>
+<li>• One sleeve, three crafts: only the tool kit changes</li>
+<li>• Clip-out pods: repair one pod, not the whole sleeve; washable fabric</li>
+<li>• Low power: ≈ 142 mA, one 1,000 mAh cell, USB-C; no consumables</li>
+<li>• Open STEP/STL files: housings printed on demand, no moulds</li>
+</ul>
+<p><strong>Part 5 · SDG alignment</strong></p>
+<ul>
+<li><strong>SDG 4</strong> | Quality education</li>
+<li><strong>SDG 8</strong> | Decent work</li>
+<li><strong>SDG 11.4</strong> | Safeguard heritage</li>
+</ul>
+<p><strong>Part 6 · Scale-up roadmap · each step only if its tests pass</strong></p>
+<ul>
+<li>Arrow step: <strong>0–6 months</strong> 120-person tabla trial · handloom pilot · flexible sleeve</li>
+<li>Arrow step: <strong>6–12 months</strong> Style-level teaching · NCAA archive pilot</li>
+<li>Arrow step: <strong>12+ months</strong> Kathak footwork, pottery, glove and shadow puppetry</li>
+</ul>
+<h3>Master prompt for this slide</h3>
+<p>Paste this whole block into ChatGPT (after uploading the images it names), or follow it by hand in Canva or PowerPoint.</p>
+<div class="promptbox"><div class="pbar"><span>Prompt</span><button class="copy" type="button" data-target="p5">Copy prompt</button></div><pre id="p5"><code>You are a senior presentation designer who builds hardware design-review slides. Build slide 5 of 6 of an SIH 2026 idea-submission deck (problem statement 26214, PARAMPARA). Make exactly ONE slide. Output a .pptx file (python-pptx) or, in Canva or Gamma, place everything by hand at the positions below.
+UPLOAD THESE IMAGES FIRST: none (from the PARAMPARA slide asset pack).
+
+GLOBAL STYLE (same on all six slides)
+- Canvas: 16:9, 13.333 × 7.5 in, white background (#FFFFFF). All positions are in inches from the top-left corner.
+- Keep the official SIH 2026 template header (y 0 to 0.95 in: team logo/name left, SIH logo right) and footer (y 6.98 to 7.5 in) exactly as the template has them. Put nothing of ours there except the slide title.
+- Slide title: text box x 1.75, y 0.13, 9.60 × 0.74 in, Poppins SemiBold 20 pt, #7A1F1F, left-aligned, vertically centred, at most 2 lines.
+- Panels (&quot;parts&quot;): white fill, 1 pt #D9CFC0 border, corner radius 0.06 in, no shadow. Gap between panels 0.15 in.
+- Panel header: a 0.27 in circle badge at (panel x + 0.12, panel y + 0.09) with the part number in white Poppins Bold 10 pt, filled with the panel colour; header text at (panel x + 0.47, panel y + 0.07), height 0.32 in, Poppins SemiBold 11 pt, UPPERCASE, letter spacing 0.4 pt, in the panel colour. Panel content starts 0.42 in below the panel top.
+- Fonts: Poppins (headings, big numbers) and Inter (everything else). If PowerPoint lacks them, install both from Google Fonts or use Calibri for both. Nothing smaller than 7.5 pt; body text 8.5 to 10 pt.
+- Colours: maroon #7A1F1F (idea, problem, risks), blue #1F4E79 (technical), brass #B8901A (money, value), green #2E6B3A (proof that works today), text #1E1E1E, muted #5A5A5A. Tints: #F6ECEC, #EAF1F8, #FBF5E6, #EEF6EF, #F4F4F4.
+- Images: transparent PNGs placed exactly as given, aspect ratio kept, never stretched or cropped. Every CAD image keeps a small &quot;CAD render&quot; tag; never present a render as a photograph.
+- Text: use the words given, word for word. &quot;**x**&quot; means bold, &quot; | &quot; means a line break. Do not add sentences, numbers, emojis or clip art.
+- Before finishing: no text overflows its box, nothing overlaps, every element sits inside its panel, all six (or five) parts are visible and evenly spaced.
+
+SLIDE TITLE: &quot;Impact &amp; benefits: who gains, and how we will measure it&quot;
+
+LAYOUT: 6 parts. Reading order: Top: who gains (one card each). Middle: three benefit columns, exactly as the template names them. Bottom: SDGs and the scale-up path.
+
+PART 1: TARGET AUDIENCE · WHO GAINS AND HOW WE MEASURE IT  (answers: Potential impact on the target audience)
+  Panel: x 0.40, y 1.05, 12.53 × 2.60 in; fill #FFFFFF; 1 pt #D9CFC0 border; badge #7A1F1F; header text #7A1F1F.
+  - Shape (no text) at x 0.52, y 1.46, 2.37 × 2.10 in: fill #FAFAFA, 1 pt #D9CFC0 border, corner radius 0.05 in.
+  - Text at x 0.62, y 1.55, 0.40 × 0.40 in: &quot;1&quot; (Poppins SemiBold 11 pt, #FFFFFF, fill #7A1F1F, corner radius 0.20 in, centred, vertically centred).
+  - Text at x 1.10, y 1.55, 1.72 × 0.40 in: &quot;Masters &amp; gurus&quot; (Poppins SemiBold 11 pt, #7A1F1F, vertically centred).
+  - Text at x 0.62, y 2.01, 2.17 × 0.24 in: &quot;Tabla ustads, Guru-Shishya gurus&quot; (Inter 8 pt, #5A5A5A, italic).
+  - Text at x 0.62, y 2.28, 2.17 × 0.74 in: &quot;Their own way of playing preserved, credited and shared on their terms&quot; (Inter 10 pt, #1E1E1E).
+  - Text at x 0.62, y 3.06, 2.17 × 0.42 in: &quot;**Measured by:** masters recorded; their approval&quot; (Inter 8 pt, #1E1E1E, fill #F6ECEC, vertically centred, inner margin 0.05 in).
+  - Shape (no text) at x 3.01, y 1.46, 2.37 × 2.10 in: fill #FAFAFA, 1 pt #D9CFC0 border, corner radius 0.05 in.
+  - Text at x 3.11, y 1.55, 0.40 × 0.40 in: &quot;2&quot; (Poppins SemiBold 11 pt, #FFFFFF, fill #7A1F1F, corner radius 0.20 in, centred, vertically centred).
+  - Text at x 3.59, y 1.55, 1.72 × 0.40 in: &quot;Learners&quot; (Poppins SemiBold 11 pt, #7A1F1F, vertically centred).
+  - Text at x 3.11, y 2.01, 2.17 × 0.24 in: &quot;CBSE 036 students, music colleges&quot; (Inter 8 pt, #5A5A5A, italic).
+  - Text at x 3.11, y 2.28, 2.17 × 0.74 in: &quot;Practise against a real master between lessons; see honest progress&quot; (Inter 10 pt, #1E1E1E).
+  - Text at x 3.11, y 3.06, 2.17 × 0.42 in: &quot;**Measured by:** unaided score 48 h later&quot; (Inter 8 pt, #1E1E1E, fill #F6ECEC, vertically centred, inner margin 0.05 in).
+  - Shape (no text) at x 5.50, y 1.46, 2.37 × 2.10 in: fill #FAFAFA, 1 pt #D9CFC0 border, corner radius 0.05 in.
+  - Text at x 5.60, y 1.55, 0.40 × 0.40 in: &quot;3&quot; (Poppins SemiBold 11 pt, #FFFFFF, fill #7A1F1F, corner radius 0.20 in, centred, vertically centred).
+  - Text at x 6.08, y 1.55, 1.72 × 0.40 in: &quot;Weavers &amp; trainers&quot; (Poppins SemiBold 11 pt, #7A1F1F, vertically centred).
+  - Text at x 5.60, y 2.01, 2.17 × 0.24 in: &quot;35.22 lakh weavers · 28 WSCs&quot; (Inter 8 pt, #5A5A5A, italic).
+  - Text at x 5.60, y 2.28, 2.17 × 0.74 in: &quot;Training aid with skill evidence; shoulder feedback (76% report pain [25])&quot; (Inter 10 pt, #1E1E1E).
+  - Text at x 5.60, y 3.06, 2.17 × 0.42 in: &quot;**Measured by:** time with shoulder raised (to test)&quot; (Inter 8 pt, #1E1E1E, fill #F6ECEC, vertically centred, inner margin 0.05 in).
+  - Shape (no text) at x 7.99, y 1.46, 2.37 × 2.10 in: fill #FAFAFA, 1 pt #D9CFC0 border, corner radius 0.05 in.
+  - Text at x 8.09, y 1.55, 0.40 × 0.40 in: &quot;4&quot; (Poppins SemiBold 11 pt, #FFFFFF, fill #7A1F1F, corner radius 0.20 in, centred, vertically centred).
+  - Text at x 8.57, y 1.55, 1.72 × 0.40 in: &quot;Puppeteers&quot; (Poppins SemiBold 11 pt, #7A1F1F, vertically centred).
+  - Text at x 8.09, y 2.01, 2.17 × 0.24 in: &quot;Kathputli families and troupes&quot; (Inter 8 pt, #5A5A5A, italic).
+  - Text at x 8.09, y 2.28, 2.17 × 0.74 in: &quot;A credited record of their technique and a kit for workshops&quot; (Inter 10 pt, #1E1E1E).
+  - Text at x 8.09, y 3.06, 2.17 × 0.42 in: &quot;**Measured by:** puppeteers recorded; workshops run&quot; (Inter 8 pt, #1E1E1E, fill #F6ECEC, vertically centred, inner margin 0.05 in).
+  - Shape (no text) at x 10.48, y 1.46, 2.37 × 2.10 in: fill #FAFAFA, 1 pt #D9CFC0 border, corner radius 0.05 in.
+  - Text at x 10.58, y 1.55, 0.40 × 0.40 in: &quot;5&quot; (Poppins SemiBold 11 pt, #FFFFFF, fill #7A1F1F, corner radius 0.20 in, centred, vertically centred).
+  - Text at x 11.06, y 1.55, 1.72 × 0.40 in: &quot;Archives &amp; research&quot; (Poppins SemiBold 11 pt, #7A1F1F, vertically centred).
+  - Text at x 10.58, y 2.01, 2.17 × 0.24 in: &quot;IGNCA / NCAA, universities&quot; (Inter 8 pt, #5A5A5A, italic).
+  - Text at x 10.58, y 2.28, 2.17 × 0.74 in: &quot;A new kind of record: how masters move, with consent&quot; (Inter 10 pt, #1E1E1E).
+  - Text at x 10.58, y 3.06, 2.17 × 0.42 in: &quot;**Measured by:** consented fingerprints deposited&quot; (Inter 8 pt, #1E1E1E, fill #F6ECEC, vertically centred, inner margin 0.05 in).
+
+PART 2: SOCIAL BENEFITS  (answers: Benefits: social)
+  Panel: x 0.40, y 3.80, 4.08 × 2.00 in; fill #FFFFFF; 1 pt #D9CFC0 border; badge #7A1F1F; header text #7A1F1F.
+  - Bullet list at x 0.52, y 4.21, 3.84 × 1.52 in, Inter 10 pt #1E1E1E, bullet character &quot;•&quot; in #1E1E1E, 3 pt after each item: (1) &quot;Keeps living crafts teachable beyond one room and one lifetime&quot; (2) &quot;Masters stay in control: consent, approval, credit&quot; (3) &quot;A fair check of learning: the same device-off test for all&quot; (4) &quot;Possible, not yet tested: feeling the beat by vibration, for 50.7 lakh people with hearing disability [27]&quot;.
+
+PART 3: ECONOMIC BENEFITS  (answers: Benefits: economic)
+  Panel: x 4.63, y 3.80, 4.07 × 2.00 in; fill #FFFFFF; 1 pt #D9CFC0 border; badge #B8901A; header text #B8901A.
+  - Bullet list at x 4.75, y 4.21, 3.83 × 1.52 in, Inter 10 pt #1E1E1E, bullet character &quot;•&quot; in #1E1E1E, 3 pt after each item: (1) &quot;Kit over 10× cheaper than mocap or haptic suits; ₹5–7k per sleeve at volume (target)&quot; (2) &quot;State-funded teaching (GSP, SAMARTH) leaves a reusable output&quot; (3) &quot;New income: masters share in every licensed use of their fingerprint&quot; (4) &quot;Skill evidence for weavers next to the 315-hour NSQF course&quot;.
+
+PART 4: ENVIRONMENTAL BENEFITS  (answers: Benefits: environmental)
+  Panel: x 8.85, y 3.80, 4.08 × 2.00 in; fill #FFFFFF; 1 pt #D9CFC0 border; badge #2E6B3A; header text #2E6B3A.
+  - Bullet list at x 8.97, y 4.21, 3.84 × 1.52 in, Inter 10 pt #1E1E1E, bullet character &quot;•&quot; in #1E1E1E, 3 pt after each item: (1) &quot;One sleeve, three crafts: only the tool kit changes&quot; (2) &quot;Clip-out pods: repair one pod, not the whole sleeve; washable fabric&quot; (3) &quot;Low power: ≈ 142 mA, one 1,000 mAh cell, USB-C; no consumables&quot; (4) &quot;Open STEP/STL files: housings printed on demand, no moulds&quot;.
+
+PART 5: SDG ALIGNMENT  (answers: Impact alignment (extra))
+  Panel: x 0.40, y 5.95, 4.70 × 1.00 in; fill #FFFFFF; 1 pt #D9CFC0 border; badge #1F4E79; header text #1F4E79.
+  - Text at x 0.52, y 6.34, 1.44 × 0.54 in: &quot;**SDG 4** | Quality education&quot; (Inter 8.5 pt, #FFFFFF, fill #C5192D, corner radius 0.04 in, vertically centred, inner margin 0.05 in).
+  - Text at x 2.04, y 6.34, 1.44 × 0.54 in: &quot;**SDG 8** | Decent work&quot; (Inter 8.5 pt, #FFFFFF, fill #A21942, corner radius 0.04 in, vertically centred, inner margin 0.05 in).
+  - Text at x 3.56, y 6.34, 1.42 × 0.54 in: &quot;**SDG 11.4** | Safeguard heritage&quot; (Inter 8.5 pt, #FFFFFF, fill #FD9D24, corner radius 0.04 in, vertically centred, inner margin 0.05 in).
+
+PART 6: SCALE-UP ROADMAP · EACH STEP ONLY IF ITS TESTS PASS  (answers: Impact at scale (extra))
+  Panel: x 5.25, y 5.95, 7.68 × 1.00 in; fill #FFFFFF; 1 pt #D9CFC0 border; badge #7A1F1F; header text #7A1F1F.
+  - Pentagon arrow (flat left end) shape at x 5.37, y 6.34, 2.44 × 0.54 in, fill #F6ECEC, no outline; text &quot;**0–6 months** 120-person tabla trial · handloom pilot · flexible sleeve&quot; Inter 8 pt #1E1E1E, centred.
+  - Chevron arrow shape at x 7.87, y 6.34, 2.44 × 0.54 in, fill #FBF5E6, no outline; text &quot;**6–12 months** Style-level teaching · NCAA archive pilot&quot; Inter 8 pt #1E1E1E, centred.
+  - Chevron arrow shape at x 10.37, y 6.34, 2.44 × 0.54 in, fill #EEF6EF, no outline; text &quot;**12+ months** Kathak footwork, pottery, glove and shadow puppetry&quot; Inter 8 pt #1E1E1E, centred.
+
+DO NOT: Do not claim a learning improvement or a health effect; say 'to be tested'. Do not invent user numbers; use only the sourced figures. Use the official SDG colours and numbers only.
+SPEAKER NOTES (put in the notes pane, not on the slide): Five groups gain, and each benefit has a measure. Masters keep their own way of playing, credited. Learners practise against a real master and see honest progress. Weavers get a training aid and shoulder feedback. Puppeteers get a credited record, and archives get something they don't have: how masters move. Socially, crafts stay teachable and masters stay in control. Economically, the kit is over ten times cheaper than a suit and masters earn when their fingerprint is used. Environmentally, one sleeve serves three crafts, pods are repairable, and nothing needs moulds.
+</code></pre></div>
+<h3>Images for this slide</h3>
+<p>Use our own files listed in the prompt. Optional AI images (prompts in section 9): IMG-2 (context_guru_shishya.png), IMG-3 (concept_kathputli.png), IMG-4 (concept_handloom.png), IMG-6 (icons_set.png).</p>
+<h3>Speaker notes (about 40 seconds)</h3>
+<p>Five groups gain, and each benefit has a measure. Masters keep their own way of playing, credited. Learners practise against a real master and see honest progress. Weavers get a training aid and shoulder feedback. Puppeteers get a credited record, and archives get something they don't have: how masters move. Socially, crafts stay teachable and masters stay in control. Economically, the kit is over ten times cheaper than a suit and masters earn when their fingerprint is used. Environmentally, one sleeve serves three crafts, pods are repairable, and nothing needs moulds.</p>
+<h3>Don't</h3>
+<ul>
+<li>Do not claim a learning improvement or a health effect; say 'to be tested'.</li>
+<li>Do not invent user numbers; use only the sourced figures.</li>
+<li>Use the official SDG colours and numbers only.</li>
+</ul>
+<h2 id="sec8">Slide 6 · Research and references  (5 parts)</h2>
+<p><strong>The template asks:</strong> Details and links of the research and references.</p>
+<p><strong>What a judge must take away in 5 seconds:</strong> This team tested its own assumptions on real data, every claim has a checkable source, and everything can be re-run.</p>
+<p><strong>Reading order:</strong> Top: our own evidence (left) beside published evidence (right). Bottom: numbered sources by type, and a QR to reproduce everything.</p>
+<figure><a href="helper/wireframes/slide6_wireframe.png" target="_blank" rel="noopener"><img alt="Slide 6 layout guide" src="helper/wireframes/slide6_wireframe.png" loading="lazy"></a><figcaption>Slide 6 layout guide · tap to open full size</figcaption></figure>
+<h3>Template question → where it is answered</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Template question</th>
+<th>Answered in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Research we did ourselves</td>
+<td>Part 1 (real-data pre-test with its chart)</td>
+</tr>
+<tr>
+<td>Research by others</td>
+<td>Part 2 (key numbers from papers)</td>
+</tr>
+<tr>
+<td>References with links</td>
+<td>Parts 3 and 4 (numbered, hyperlinked) + Part 5 (repository QR)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>The parts: position and purpose</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Name</th>
+<th>x, y (in)</th>
+<th>w × h (in)</th>
+<th>Colour</th>
+<th>What goes here and why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Our own test on real performer data</td>
+<td>0.40, 1.05</td>
+<td>6.75 × 2.85</td>
+<td><code>#2E6B3A</code></td>
+<td>The chart from our pre-test on the public Groove MIDI Dataset. It shows the method works on real performers and why the sleeve is needed (timing alone sits near the pass mark).</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Published evidence · key numbers</td>
+<td>7.30, 1.05</td>
+<td>5.63 × 2.85</td>
+<td><code>#1F4E79</code></td>
+<td>Six findings with their key number, so judges see the science behind each design choice.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Equipment datasheets and science</td>
+<td>0.40, 4.05</td>
+<td>4.10 × 2.90</td>
+<td><code>#1F4E79</code></td>
+<td>Datasheets for every chip on slide 3 and the papers behind slide 6, numbered to match the [n] markers.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Problem, policy and method sources</td>
+<td>4.65, 4.05</td>
+<td>4.10 × 2.90</td>
+<td><code>#7A1F1F</code></td>
+<td>Government data, schemes and method papers behind slides 2, 4 and 5.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Open, reproducible proof</td>
+<td>8.90, 4.05</td>
+<td>4.03 × 2.90</td>
+<td><code>#B8901A</code></td>
+<td>A QR and the exact commands anyone can run to reproduce every number in the deck.</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Exact content (copy-ready)</h3>
+<p><strong>Slide title:</strong> Research &amp; references: what we tested, what science says, where facts come from</p>
+<p><strong>Part 1 · Our own test on real performer data</strong></p>
+<ul>
+<li>Image: <code>v5_gmd_results.png</code></li>
+<li>Our analysis of real data. 7 drummers, 4,118 units: named at ≈ 3× chance on a new session; same grooves 63% vs 26% (chance 25%) [7]</li>
+</ul>
+<p><strong>Part 2 · Published evidence · key numbers</strong></p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Finding</th>
+<th>Number</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Joint vibration suit, copying a teacher</td>
+<td>error −27%, learning +23% faster</td>
+<td>[4] 2007</td>
+</tr>
+<tr>
+<td>Haptic guidance in a drumming task</td>
+<td>−17% loudness, −18% early timing error</td>
+<td>[16] 2008</td>
+</tr>
+<tr>
+<td>Drum and strength cues felt on the body</td>
+<td>96.18% recognised</td>
+<td>[17]</td>
+</tr>
+<tr>
+<td>Piano: vibration vs visual cues (n = 14)</td>
+<td>timing error 12.1% vs 22.3%</td>
+<td>[18] 2024</td>
+</tr>
+<tr>
+<td>Feedback on fewer trials</td>
+<td>better retention</td>
+<td>[19] 1990</td>
+</tr>
+<tr>
+<td>Experts move shoulder → elbow → wrist</td>
+<td>expertise shows in joint order</td>
+<td>[20] 2007</td>
+</tr>
+<tr>
+<td>Tabla gharanas recognised from audio</td>
+<td>style leaves a measurable trace</td>
+<td>[29] 2021</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Part 3 · Equipment datasheets and science</strong></p>
+<ul>
+<li>[4] Lieberman &amp; Breazeal, TIKL, IEEE T-RO 2007 | [8] Bosch Sensortec, BMI270 datasheet | [9] Texas Instruments, DRV2605L datasheet | [10] Texas Instruments, TCA9548A datasheet | [11] Espressif, ESP32-S3-MINI-1 datasheet | [12] Precision Microdrives, C08-005 LRA | [13] Microchip, MCP73831 datasheet | [14] Murata, 7BB-27-4L0 piezo diaphragm | [15] NXP, UM10204 I2C-bus specification | [16] Grindlay, IEEE HAPTICS 2008 | [17] Lee &amp; Choi, vibrotactile drumming guidance | [18] Coscia &amp; Al Borno, arXiv 2406.06720 | [19] Winstein &amp; Schmidt, J Exp Psych 1990 | [20] Furuya &amp; Kinoshita, Neurosci Lett 2007 | [29] Gowriprasad et al., tabla gharanas, ISMIR 2021</li>
+</ul>
+<p><strong>Part 4 · Problem, policy and method sources</strong></p>
+<ul>
+<li>[1] Ministry of Textiles, Handloom Census 2019–20 | [2] PARI, Delhi's kathputli artists (2017) | [3] IGNCA, National Cultural Audiovisual Archives | [5] Xsens MVN Link price, CG Channel 2021 | [6] Teslasuit price, TweakTown | [7] Gillick et al., Groove MIDI Dataset, ICML 2019 | [21] Ministry of Culture, Guru-Shishya Parampara | [22] Rajya Sabha: Weavers' Service Centres | [23] Textiles Committee, NSQF TC HLM 06 | [24] CBSE, Hindustani music subject 036 | [25] Siddiqui et al., weavers' MSDs, 2021 | [26] Lakens, equivalence tests, 2017 | [27] Census of India 2011, disability | [28] United Nations, SDG targets 4, 8, 11.4</li>
+</ul>
+<p><strong>Part 5 · Open, reproducible proof</strong></p>
+<ul>
+<li>Image: <code>qr_parampara_lite.png</code></li>
+<li><strong>Scan to try PARAMPARA Lite</strong> on your phone. |  | <strong>Code, CAD, data:</strong> github.com/HarshDubey23/winner (PARAMPARA folder)</li>
+<li>› make -C firmware test → 27 checks, 0 failures</li>
+<li>› python3 lite/e2e_test.py → PASS</li>
+<li>› python3 sim/gmd_fingerprint.py → chart above</li>
+<li>› CAD: STEP and STL for every housing in /cad</li>
+<li>› Full dossier: 39 pages, 92 references</li>
+</ul>
+<h3>Master prompt for this slide</h3>
+<p>Paste this whole block into ChatGPT (after uploading the images it names), or follow it by hand in Canva or PowerPoint.</p>
+<div class="promptbox"><div class="pbar"><span>Prompt</span><button class="copy" type="button" data-target="p6">Copy prompt</button></div><pre id="p6"><code>You are a senior presentation designer who builds hardware design-review slides. Build slide 6 of 6 of an SIH 2026 idea-submission deck (problem statement 26214, PARAMPARA). Make exactly ONE slide. Output a .pptx file (python-pptx) or, in Canva or Gamma, place everything by hand at the positions below.
+UPLOAD THESE IMAGES FIRST: v5_gmd_results.png, qr_parampara_lite.png (from the PARAMPARA slide asset pack).
+
+GLOBAL STYLE (same on all six slides)
+- Canvas: 16:9, 13.333 × 7.5 in, white background (#FFFFFF). All positions are in inches from the top-left corner.
+- Keep the official SIH 2026 template header (y 0 to 0.95 in: team logo/name left, SIH logo right) and footer (y 6.98 to 7.5 in) exactly as the template has them. Put nothing of ours there except the slide title.
+- Slide title: text box x 1.75, y 0.13, 9.60 × 0.74 in, Poppins SemiBold 20 pt, #7A1F1F, left-aligned, vertically centred, at most 2 lines.
+- Panels (&quot;parts&quot;): white fill, 1 pt #D9CFC0 border, corner radius 0.06 in, no shadow. Gap between panels 0.15 in.
+- Panel header: a 0.27 in circle badge at (panel x + 0.12, panel y + 0.09) with the part number in white Poppins Bold 10 pt, filled with the panel colour; header text at (panel x + 0.47, panel y + 0.07), height 0.32 in, Poppins SemiBold 11 pt, UPPERCASE, letter spacing 0.4 pt, in the panel colour. Panel content starts 0.42 in below the panel top.
+- Fonts: Poppins (headings, big numbers) and Inter (everything else). If PowerPoint lacks them, install both from Google Fonts or use Calibri for both. Nothing smaller than 7.5 pt; body text 8.5 to 10 pt.
+- Colours: maroon #7A1F1F (idea, problem, risks), blue #1F4E79 (technical), brass #B8901A (money, value), green #2E6B3A (proof that works today), text #1E1E1E, muted #5A5A5A. Tints: #F6ECEC, #EAF1F8, #FBF5E6, #EEF6EF, #F4F4F4.
+- Images: transparent PNGs placed exactly as given, aspect ratio kept, never stretched or cropped. Every CAD image keeps a small &quot;CAD render&quot; tag; never present a render as a photograph.
+- Text: use the words given, word for word. &quot;**x**&quot; means bold, &quot; | &quot; means a line break. Do not add sentences, numbers, emojis or clip art.
+- Before finishing: no text overflows its box, nothing overlaps, every element sits inside its panel, all six (or five) parts are visible and evenly spaced.
+
+SLIDE TITLE: &quot;Research &amp; references: what we tested, what science says, where facts come from&quot;
+
+LAYOUT: 5 parts. Reading order: Top: our own evidence (left) beside published evidence (right). Bottom: numbered sources by type, and a QR to reproduce everything.
+
+PART 1: OUR OWN TEST ON REAL PERFORMER DATA  (answers: Research (our own))
+  Panel: x 0.40, y 1.05, 6.75 × 2.85 in; fill #FFFFFF; 1 pt #D9CFC0 border; badge #2E6B3A; header text #2E6B3A.
+  - Image `v5_gmd_results.png` at x 1.04, y 1.42, fitted inside 5.48 × 2.10 in (keep aspect ratio, no crop).
+  - Text at x 0.52, y 3.56, 6.51 × 0.30 in: &quot;Our analysis of real data. 7 drummers, 4,118 units: named at ≈ 3× chance on a new session; same grooves 63% vs 26% (chance 25%) [7]&quot; (Inter 8 pt, #5A5A5A, italic).
+
+PART 2: PUBLISHED EVIDENCE · KEY NUMBERS  (answers: Research (published))
+  Panel: x 7.30, y 1.05, 5.63 × 2.85 in; fill #FFFFFF; 1 pt #D9CFC0 border; badge #1F4E79; header text #1F4E79.
+  - Table at x 7.40, y 1.46, width 5.43 in, max height 2.38 in; column widths 2.40, 2.05, 0.98 in; Inter 9 pt; 0.75 pt #D9CFC0 line under every row, no vertical lines; cell margins 0.03 in top/bottom, 0.05 in left/right; first row is the header: fill #EAF1F8, bold, text #1F4E79. Rows:
+      | Finding | Number | Source |
+      | Joint vibration suit, copying a teacher | error −27%, learning +23% faster | [4] 2007 |
+      | Haptic guidance in a drumming task | −17% loudness, −18% early timing error | [16] 2008 |
+      | Drum and strength cues felt on the body | 96.18% recognised | [17] |
+      | Piano: vibration vs visual cues (n = 14) | timing error 12.1% vs 22.3% | [18] 2024 |
+      | Feedback on fewer trials | better retention | [19] 1990 |
+      | Experts move shoulder → elbow → wrist | expertise shows in joint order | [20] 2007 |
+      | Tabla gharanas recognised from audio | style leaves a measurable trace | [29] 2021 |
+
+PART 3: EQUIPMENT DATASHEETS AND SCIENCE  (answers: References (equipment and science), each hyperlinked)
+  Panel: x 0.40, y 4.05, 4.10 × 2.90 in; fill #FFFFFF; 1 pt #D9CFC0 border; badge #1F4E79; header text #1F4E79.
+  - Text at x 0.52, y 4.46, 3.86 × 2.44 in: &quot;[4] Lieberman &amp; Breazeal, TIKL, IEEE T-RO 2007 | [8] Bosch Sensortec, BMI270 datasheet | [9] Texas Instruments, DRV2605L datasheet | [10] Texas Instruments, TCA9548A datasheet | [11] Espressif, ESP32-S3-MINI-1 datasheet | [12] Precision Microdrives, C08-005 LRA | [13] Microchip, MCP73831 datasheet | [14] Murata, 7BB-27-4L0 piezo diaphragm | [15] NXP, UM10204 I2C-bus specification | [16] Grindlay, IEEE HAPTICS 2008 | [17] Lee &amp; Choi, vibrotactile drumming guidance | [18] Coscia &amp; Al Borno, arXiv 2406.06720 | [19] Winstein &amp; Schmidt, J Exp Psych 1990 | [20] Furuya &amp; Kinoshita, Neurosci Lett 2007 | [29] Gowriprasad et al., tabla gharanas, ISMIR 2021&quot; (Inter 8.5 pt, #1E1E1E).
+
+PART 4: PROBLEM, POLICY AND METHOD SOURCES  (answers: References (problem, policy and methods), each hyperlinked)
+  Panel: x 4.65, y 4.05, 4.10 × 2.90 in; fill #FFFFFF; 1 pt #D9CFC0 border; badge #7A1F1F; header text #7A1F1F.
+  - Text at x 4.77, y 4.46, 3.86 × 2.44 in: &quot;[1] Ministry of Textiles, Handloom Census 2019–20 | [2] PARI, Delhi's kathputli artists (2017) | [3] IGNCA, National Cultural Audiovisual Archives | [5] Xsens MVN Link price, CG Channel 2021 | [6] Teslasuit price, TweakTown | [7] Gillick et al., Groove MIDI Dataset, ICML 2019 | [21] Ministry of Culture, Guru-Shishya Parampara | [22] Rajya Sabha: Weavers' Service Centres | [23] Textiles Committee, NSQF TC HLM 06 | [24] CBSE, Hindustani music subject 036 | [25] Siddiqui et al., weavers' MSDs, 2021 | [26] Lakens, equivalence tests, 2017 | [27] Census of India 2011, disability | [28] United Nations, SDG targets 4, 8, 11.4&quot; (Inter 8.5 pt, #1E1E1E).
+
+PART 5: OPEN, REPRODUCIBLE PROOF  (answers: Links (repository and prototype))
+  Panel: x 8.90, y 4.05, 4.03 × 2.90 in; fill #FBF5E6; 1 pt #B8901A border; badge #B8901A; header text #B8901A.
+  - Image `qr_parampara_lite.png` at x 9.02, y 4.45, fitted inside 1.20 × 1.20 in (keep aspect ratio, no crop).
+  - Text at x 10.32, y 4.47, 2.49 × 1.18 in: &quot;**Scan to try PARAMPARA Lite** on your phone. |  | **Code, CAD, data:** github.com/HarshDubey23/winner (PARAMPARA folder)&quot; (Inter 8.5 pt, #1E1E1E).
+  - Bullet list at x 9.02, y 5.74, 3.79 × 1.16 in, Inter 8.5 pt #1E1E1E, bullet character &quot;›&quot; in #B8901A, 2 pt after each item: (1) &quot;make -C firmware test → 27 checks, 0 failures&quot; (2) &quot;python3 lite/e2e_test.py → PASS&quot; (3) &quot;python3 sim/gmd_fingerprint.py → chart above&quot; (4) &quot;CAD: STEP and STL for every housing in /cad&quot; (5) &quot;Full dossier: 39 pages, 92 references&quot;.
+
+DO NOT: Do not list sources you have not opened. Every [n] on slides 2–5 must appear here. Make the QR point to a public link (GitHub Pages), not a private one.
+SPEAKER NOTES (put in the notes pane, not on the slide): We did not only read: we tested our method on real performer data. Seven drummers were named at about three times chance on a new session, and with identical grooves, how they played named them while which notes they played did not. Published studies back each design choice: joint vibration speeds learning, drum cues are recognised 96% of the time, and feedback on fewer trials improves retention. Every chip has its datasheet and every number has a source, and the QR and commands let anyone re-run our tests.
+</code></pre></div>
+<h3>Images for this slide</h3>
+<p>Use our own files listed in the prompt. Optional AI images (prompts in section 9): none needed.</p>
+<h3>Speaker notes (about 40 seconds)</h3>
+<p>We did not only read: we tested our method on real performer data. Seven drummers were named at about three times chance on a new session, and with identical grooves, how they played named them while which notes they played did not. Published studies back each design choice: joint vibration speeds learning, drum cues are recognised 96% of the time, and feedback on fewer trials improves retention. Every chip has its datasheet and every number has a source, and the QR and commands let anyone re-run our tests.</p>
+<h3>Don't</h3>
+<ul>
+<li>Do not list sources you have not opened.</li>
+<li>Every [n] on slides 2–5 must appear here.</li>
+<li>Make the QR point to a public link (GitHub Pages), not a private one.</li>
+</ul>
+<h2 id="sec9">9. GPT image prompts (optional, for context and concept pictures only)</h2>
+<p>Rules: (1) the exact equipment pictures are our CAD renders; AI never replaces them. (2) For a concept picture of the device, upload the CAD renders named in the prompt so GPT keeps the real design. (3) Print the label given under each prompt on the slide, in Inter 7.5 pt #5A5A5A. (4) Generate 3 or 4 versions and keep the one with correct hands and no text. (5) Real photos beat AI: for context scenes, a CC-licensed photo from Wikimedia Commons with its credit line is stronger.</p>
+<h3>IMG-1 · <code>concept_tabla_sleeve.png</code> · slide 1 (Part 3, optional swap) or 2 (Part 2) · 16:9</h3>
+<p><strong>Upload first:</strong> <code>hand_iso_transparent.png</code>, <code>sleeve_iso_transparent.png</code><br />
+<strong>Label to print on the slide:</strong> Concept illustration (AI), based on our CAD design; not a photo of a built device</p>
+<div class="promptbox"><div class="pbar"><span>Prompt</span><button class="copy" type="button" data-target="p7">Copy prompt</button></div><pre id="p7"><code>Use the two attached CAD renders as the exact design reference for the device; keep its parts, colours and proportions. Create a photorealistic studio photograph of an adult Indian tabla player's right forearm and hand resting over a dayan (the small right-hand tabla), wearing this exact sensor sleeve: a slim charcoal-grey stretch-fabric sleeve from upper arm to wrist; a rounded dark-navy box (62 × 44 × 16 mm) strapped on the forearm with a small green status light; small navy pods at the wrist, elbow and shoulder; on the back of the hand a flat navy board (42 × 32 × 8 mm) on a grey silicone pad; on every finger, between the knuckles, a thin black silicone ring carrying a tiny navy pod (13 × 11 × 4.4 mm) and, nearer the hand, a small brass-coloured coin pod (12 mm); thin flat grey cables run from each finger to the hand board. The palm and fingertips are completely uncovered. Fingers poised just above the black centre of the drum head, about to strike. Background: softly out-of-focus music room with warm wood, shallow depth of field, 85 mm lens look at f/2.8, soft key light from upper left, gentle rim light, natural skin tones, neutral colour grade (not orange). 16:9, 3840 × 2160. Exactly five fingers, realistic hands, no jewellery, no text, no logos, no watermark.
+</code></pre></div>
+<h3>IMG-2 · <code>context_guru_shishya.png</code> · slide 2 (Part 1 background, at 15% opacity) or 5 (Part 1) · 3:2</h3>
+<p><strong>Upload first:</strong> nothing<br />
+<strong>Label to print on the slide:</strong> Illustration (AI); or replace with a real CC-licensed photo with credit</p>
+<div class="promptbox"><div class="pbar"><span>Prompt</span><button class="copy" type="button" data-target="p8">Copy prompt</button></div><pre id="p8"><code>Documentary-style photograph, natural window light: an elderly Indian tabla guru in a white kurta sits cross-legged on a cotton durrie facing a teenage student; the guru's hand lightly guides the student's right wrist above a tabla pair; a harmonium and a tanpura stand blurred in the background. Warm but realistic colours, 35 mm lens look, f/4, eye level, calm and respectful mood, both faces partly visible, nothing staged. 3:2, 3000 × 2000. No text, no logos, no watermark, realistic hands with five fingers.
+</code></pre></div>
+<h3>IMG-3 · <code>concept_kathputli.png</code> · slide 1 (Part 4) or 5 (Part 1, Puppeteers card) · 4:5</h3>
+<p><strong>Upload first:</strong> <code>puppet_iso_transparent.png</code>, <code>hand_iso_transparent.png</code><br />
+<strong>Label to print on the slide:</strong> Concept illustration (AI), based on our CAD design</p>
+<div class="promptbox"><div class="pbar"><span>Prompt</span><button class="copy" type="button" data-target="p9">Copy prompt</button></div><pre id="p9"><code>Use the attached renders as the exact reference for the puppet pod and the finger rings. Photorealistic photograph of a Rajasthani Kathputli string puppet, about 50 cm tall, in a red and gold costume with a carved wooden head, hanging in front of a plain dark-maroon cloth backdrop. The puppeteer's hand is visible at the top of the frame: the strings are looped directly over the fingers (no control bar), and each finger wears a thin black ring with a tiny navy pod, matching the reference. A small cut-away window in the puppet's costume at the chest shows a 30 × 20 × 10 mm navy sensor box inside the wooden torso. Soft stage spotlight from above, slight haze, 50 mm lens look. 4:5, 2400 × 3000. No text, no logos, no watermark.
+</code></pre></div>
+<h3>IMG-4 · <code>concept_handloom.png</code> · slide 1 (Part 4) or 5 (Part 1, Weavers card) · 4:3</h3>
+<p><strong>Upload first:</strong> <code>loom_iso_transparent.png</code><br />
+<strong>Label to print on the slide:</strong> Concept illustration (AI), based on our CAD design</p>
+<div class="promptbox"><div class="pbar"><span>Prompt</span><button class="copy" type="button" data-target="p10">Copy prompt</button></div><pre id="p10"><code>Use the attached render as the exact reference for where the sensors go. Photorealistic photograph of an Indian two-treadle wooden frame handloom in a weaving centre, cotton cloth with a red border on the loom. A weaver's hands hold the wooden beater; a small navy box (about 40 × 25 × 12 mm) is strapped to the centre of the beater bar; two thin black switch pads sit under the two treadles; a smartphone on a small clamp arm looks down at the woven cloth. Daylight from a side window, dust in the light, 35 mm lens look, f/4. 4:3, 3200 × 2400. No faces needed, no text, no logos, no watermark.
+</code></pre></div>
+<h3>IMG-5 · <code>studio_ring_pod.png</code> · slide 1 (Part 3 alternative) or 3 (Part 5) · 1:1</h3>
+<p><strong>Upload first:</strong> <code>ring_exploded_transparent.png</code><br />
+<strong>Label to print on the slide:</strong> Rendered from our CAD (image-to-image); same geometry</p>
+<div class="promptbox"><div class="pbar"><span>Prompt</span><button class="copy" type="button" data-target="p11">Copy prompt</button></div><pre id="p11"><code>Use the attached CAD render as the exact geometry: keep every part, its position, size and proportion identical, and add nothing. Re-render it as a premium studio product shot of an exploded finger-ring sensor pod: top to bottom, a matte navy-blue PA12 nylon lid, a tiny green circuit board (10 × 8 mm) with one small black chip and a white 4-pin connector, a matte black base with a curved finger saddle, and a black silicone ring strap. Pure white background, soft contact shadows, three-quarter view from above at 30°, even softbox lighting, crisp edges, subtle material texture. 1:1, 2048 × 2048. No text, no labels, no logos, no watermark.
+</code></pre></div>
+<h3>IMG-6 · <code>icons_set.png</code> · slide 2 (Part 3) and 5 (Part 1) · 3:1</h3>
+<p><strong>Upload first:</strong> nothing<br />
+<strong>Label to print on the slide:</strong> Icons (no label needed); free alternative: Lucide icons</p>
+<div class="promptbox"><div class="pbar"><span>Prompt</span><button class="copy" type="button" data-target="p12">Copy prompt</button></div><pre id="p12"><code>A set of 12 flat line icons in a 6 × 2 grid with equal spacing, on a pure white background. Uniform 2 px stroke, rounded line caps and joins, single colour #7A1F1F, no fills, no shadows, no text, same visual weight and the same 24 × 24 design grid for all. Row 1: (1) a forearm with three small signal arcs (sense); (2) a fingerprint drawn from wavy sound-wave lines (fingerprint); (3) a hand with small vibration arcs at one fingertip (teach); (4) three vertical bars getting shorter and lighter from left to right (fade); (5) a semicircular gauge with a check mark (measure); (6) a shield with a small person inside (own). Row 2: (7) a seated teacher figure; (8) a student figure with a book; (9) a simple handloom frame; (10) a string puppet; (11) an archive box; (12) a magnifier over a small bar chart. 3:1, 3000 × 1000.
+</code></pre></div>
+<p><strong>Free icon alternative (no AI needed):</strong> Lucide icons (lucide.dev, ISC licence), stroke 2 px, colour #7A1F1F: Sense → <code>activity</code>; Fingerprint → <code>fingerprint</code>; Teach → <code>hand</code>; Fade → <code>trending-down</code>; Measure → <code>gauge</code>; Own → <code>shield-check</code>; Masters &amp; gurus → <code>graduation-cap</code>; Learners → <code>book-open</code>; Weavers → <code>spool / scissors</code>; Puppeteers → <code>drama</code>; Archives → <code>archive</code>; Researchers → <code>microscope</code>.</p>
+<h2 id="sec10">10. Real equipment photos: the strongest proof you can add in 2 days</h2>
+<p>Judges trust a photo of real boards on a desk more than any render. These breakout boards carry the same chips as the sleeve. Approximate Indian retail prices; check current prices with your supplier.</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Buy</th>
+<th>Qty</th>
+<th>Approx. price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ESP32-S3 dev board (ESP32-S3-DevKitC-1 or any ESP32-S3 board)</td>
+<td>1</td>
+<td>₹700–1,200</td>
+</tr>
+<tr>
+<td>BMI270 breakout board</td>
+<td>2</td>
+<td>₹600–1,200 each</td>
+</tr>
+<tr>
+<td>DRV2605L haptic driver breakout</td>
+<td>2</td>
+<td>₹350–700 each</td>
+</tr>
+<tr>
+<td>TCA9548A I2C switch breakout</td>
+<td>1</td>
+<td>₹200–400</td>
+</tr>
+<tr>
+<td>8 mm coin LRA vibration motor (C08-005 or similar 235 Hz LRA)</td>
+<td>2</td>
+<td>₹150–450 each</td>
+</tr>
+<tr>
+<td>27 mm piezo disc (Murata 7BB-27-4L0 or similar)</td>
+<td>2</td>
+<td>₹20–60 each</td>
+</tr>
+<tr>
+<td>Breadboard, jumper wires, velcro strap, 3.7 V LiPo + charger board</td>
+<td>1 set</td>
+<td>₹400–700</td>
+</tr>
+</tbody>
+</table></div>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>Shot</th>
+<th>How to take it</th>
+<th>Where it goes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Flat lay of every board</td>
+<td>All boards in a row on a dark cutting mat with a steel ruler; label cards under each part number</td>
+<td>Slide 3, Part 2 (small row of real photos under the table) or a backup slide</td>
+</tr>
+<tr>
+<td>Breadboard prototype</td>
+<td>ESP32-S3 + TCA9548A + 2 BMI270 + 2 DRV2605L + 2 LRAs wired and powered; LED on</td>
+<td>Slide 3, Part 6 (next to the phone screenshot)</td>
+</tr>
+<tr>
+<td>Coin motor on a finger</td>
+<td>LRA on a velcro ring on a team member's index finger, close-up, shallow focus</td>
+<td>Slide 2, Part 2 or Slide 3, Part 1 inset</td>
+</tr>
+<tr>
+<td>Live data</td>
+<td>Laptop screen with the serial plot of IMU data while the finger taps the tabla</td>
+<td>Slide 3, Part 6</td>
+</tr>
+<tr>
+<td>Piezo on the tabla</td>
+<td>Piezo disc taped to the dayan shell (not the head), cable to the board</td>
+<td>Slide 3, Part 2 (tabla kit row)</td>
+</tr>
+<tr>
+<td>Team at work</td>
+<td>Two members soldering or testing, faces visible, real lab</td>
+<td>Slide 4, Part 3 (done band) or a closing slide</td>
+</tr>
+</tbody>
+</table></div>
+<p>Phone camera tips: daylight from a window, no flash, plain dark mat, phone held parallel to the table, tap to focus on the chip markings, take 5 shots of each and keep the sharpest. Tag these 'Photo: our breadboard prototype'.</p>
+<h2 id="sec11">11. Numbered references used on the slides</h2>
+<p>The numbers match the [n] markers on slides 2 to 6. Put each title on slide 6 as a hyperlink to its URL.</p>
+<ol>
+<li>Ministry of Textiles. Fourth All India Handloom Census 2019–20: 35.22 lakh handloom weavers and allied workers (43.32 lakh in the previous census) in 31.45 lakh households. <a href="https://ruralindiaonline.org/en/library/resource/fourth-all-india-handloom-census-2019-2020">https://ruralindiaonline.org/en/library/resource/fourth-all-india-handloom-census-2019-2020</a></li>
+<li>People's Archive of Rural India (PARI), 'Delhi's kathputli artists: puppeteers in limbo', and press reports: after the 2017 demolition of the Kathputli Colony at Shadipur, about 2,800 families of puppeteers and other folk artists were to move to a transit camp at Anand Parbat. <a href="https://ruralindiaonline.org/en/articles/delhis-kathputli-artists-puppeteers-in-limbo">https://ruralindiaonline.org/en/articles/delhis-kathputli-artists-puppeteers-in-limbo</a></li>
+<li>National Cultural Audiovisual Archives (NCAA), hosted by IGNCA since 2014: over 3,00,000 hours of audiovisual material identified in about 300 institutions, over 23,000 hours digitised; first trusted digital repository certified to ISO 16363. <a href="https://ncaa.gov.in/repository/common/about">https://ncaa.gov.in/repository/common/about</a></li>
+<li>Lieberman, J., &amp; Breazeal, C. (2007). TIKL: development of a wearable vibrotactile feedback suit for improved human motor learning. IEEE Transactions on Robotics. Teacher and student tracked by a Vicon optical system; vibration at the joints in error. Real-time error reduced by up to 27% and learning up to 23% faster (p ≤ 0.01). <a href="https://robots.media.mit.edu/tikl">https://robots.media.mit.edu/tikl</a></li>
+<li>Xsens MVN Link inertial motion-capture suit: US$12,430 (April 2021 list price); later entry-level estimates US$7,500–12,000; sold by quotation. <a href="https://www.cgchannel.com/2021/04/xsens-cuts-price-of-its-entry-level-inertial-mocap-systems/">https://www.cgchannel.com/2021/04/xsens-cuts-price-of-its-entry-level-inertial-mocap-systems/</a></li>
+<li>Teslasuit full-body haptic suit with motion capture and biometrics: about US$5,000 (press reports). <a href="https://www.tweaktown.com/news/69495/teslasuit-vr-gloves-go-perfectly-full-body-suit/index.html">https://www.tweaktown.com/news/69495/teslasuit-vr-gloves-go-perfectly-full-body-suit/index.html</a></li>
+<li>Gillick, J., Roberts, A., Engel, J., Eck, D., &amp; Bamman, D. (2019). Learning to groove with inverse sequence transformations. Proc. ICML 2019. Groove MIDI Dataset: 13.6 hours, 1,150 MIDI files, over 22,000 measures by 10 drummers on a Roland TD-11 electronic kit, played to a click; drummer, session and style labelled; licence CC BY 4.0. <a href="https://magenta.tensorflow.org/datasets/groove">https://magenta.tensorflow.org/datasets/groove</a></li>
+<li>Bosch Sensortec. BMI270 6-axis IMU datasheet (BST-BMI270-DS000). LGA package 2.5 × 3.0 × 0.83 mm; 16-bit accelerometer and gyroscope; 685 µA typical in full operation; 2 KB FIFO; I2C and SPI. <a href="https://cdn.sparkfun.com/assets/9/a/2/9/6/bst-bmi270-ds000.pdf">https://cdn.sparkfun.com/assets/9/a/2/9/6/bst-bmi270-ds000.pdf</a></li>
+<li>Texas Instruments. DRV2605L datasheet (SLOS854): 2–5.2 V supply; VSSOP-10 3.00 × 3.00 mm or DSBGA 1.50 × 1.50 mm; closed-loop LRA auto-resonance; fixed 7-bit I2C address 0x5A (as used in open driver code), so several drivers need an I2C switch. <a href="https://ti.com/lit/gpn/drv2605l">https://ti.com/lit/gpn/drv2605l</a></li>
+<li>Texas Instruments. TCA9548A low-voltage 8-channel I2C switch (SCPS207): addresses 0x70–0x77, Standard and Fast mode (100 and 400 kHz), one control register enables each channel. <a href="https://www.ti.com/document-viewer/lit/html/SCPS207H/GUID-170D1E15-60B5-418E-AEF2-45D0CB1F14A2">https://www.ti.com/document-viewer/lit/html/SCPS207H/GUID-170D1E15-60B5-418E-AEF2-45D0CB1F14A2</a></li>
+<li>Espressif. ESP32-S3-MINI-1 module datasheet: 15.4 × 20.5 × 2.4 mm; Xtensa LX7 dual core up to 240 MHz; 2.4 GHz Wi-Fi and Bluetooth 5 (LE); PCB antenna. <a href="https://www.espressif.com/sites/default/files/documentation/esp32-s3-mini-1_mini-1u_datasheet_en.pdf">https://www.espressif.com/sites/default/files/documentation/esp32-s3-mini-1_mini-1u_datasheet_en.pdf</a></li>
+<li>Precision Microdrives. C08-005 8 mm coin linear resonant actuator (LRA): 235 Hz resonance; 8.0 mm diameter × 3.3 mm; 1.8 V rated; 75 mA typical, 102 mA maximum; 1.28 G typical vibration amplitude. <a href="https://www.precisionmicrodrives.com/?p=12426">https://www.precisionmicrodrives.com/?p=12426</a></li>
+<li>Microchip. MCP73831 single-cell Li-ion/Li-polymer charge management controller: SOT-23-5 or 2 × 3 mm DFN; charge current programmable from 15 to 500 mA; 4.20 V regulation option (±0.75%); thermal regulation. <a href="https://www.radiolocman.com/datasheet/data.html?di=430997">https://www.radiolocman.com/datasheet/data.html?di=430997</a></li>
+<li>Murata. 7BB-27-4L0 piezoelectric diaphragm: 27 mm diameter × 0.54 mm; resonant frequency 4.6 kHz; capacitance 20 nF. <a href="https://nz.element14.com/murata/7bb-27-4/piezo-diaphragm-4-6khz-27mm/dp/2443198">https://nz.element14.com/murata/7bb-27-4/piezo-diaphragm-4-6khz-27mm/dp/2443198</a></li>
+<li>NXP Semiconductors. UM10204, I2C-bus specification and user manual: maximum bus capacitance 400 pF per line for Standard and Fast mode (550 pF for Fast-mode Plus); rise time up to 300 ns in Fast mode. <a href="https://www.nxp.com/docs/en/user-guide/UM10204.pdf">https://www.nxp.com/docs/en/user-guide/UM10204.pdf</a></li>
+<li>Grindlay, G. (2008). Haptic guidance benefits musical motor learning. Proc. IEEE Symposium on Haptic Interfaces for Virtual Environment and Teleoperator Systems (HAPTICS 2008). Finding used: adding haptic guidance to audio training reduced final velocity error by 17% and early-stage timing error by 18% compared with audio alone. <a href="https://www.ee.columbia.edu/~grindlay/pubs/Haptics_2008.pdf">https://www.ee.columbia.edu/~grindlay/pubs/Haptics_2008.pdf</a></li>
+<li>Lee, I., &amp; Choi, S. Vibrotactile guidance for drumming learning: method and perceptual assessment. IEEE haptics conference paper (IEEE Xplore document 6548471); and Lee, I. (2015). Vibrotactile guidance for motor skill learning and its application to drumming learning. PhD thesis, POSTECH. Finding: 96.18% accuracy (0.77 s) for identifying the target drum plus one of two strength levels per strike. <a href="https://remotecenter.postech.ac.kr/handle/2014.oak/93484">https://remotecenter.postech.ac.kr/handle/2014.oak/93484</a></li>
+<li>Coscia, M. A., &amp; Al Borno, M. (2024). Vibrotactile versus visual stimulation in learning the piano. arXiv:2406.06720. Finding (n = 14, 14-note tune): timing error 12.1% (SD 6.0) with vibrotactile cues vs 22.3% (SD 10.3) with visual cues; note accuracy not significantly different. <a href="https://arxiv.org/abs/2406.06720">https://arxiv.org/abs/2406.06720</a></li>
+<li>Winstein, C. J., &amp; Schmidt, R. A. (1990). Reduced frequency of knowledge of results enhances motor skill learning. Journal of Experimental Psychology: Learning, Memory, and Cognition, 16(4), 677–691. Finding: 50% feedback gave better retention than 100% feedback, although acquisition performance was worse.</li>
+<li>Furuya, S., &amp; Kinoshita, H. (2007). Roles of proximal-to-distal sequential organization of the upper limb segments in striking the keys by expert pianists. Neuroscience Letters. 7 expert and 7 novice pianists: peak speeds of shoulder, elbow and wrist followed a clear shoulder-to-hand sequence in experts but not in novices.</li>
+<li>Ministry of Culture. Guru-Shishya Parampara scheme run by seven Zonal Cultural Centres (Prayagraj, Patiala, Nagpur, Udaipur, Kolkata, Dimapur, Thanjavur). Honoraria cited in Rajya Sabha answers: guru ₹7,500/month, one accompanist ₹3,750/month, four shishyas ₹1,500/month each, for one year. <a href="https://rsdebate.nic.in/bitstream/123456789/734815/1/PQ_258_22122022_U1778_p148_p170.pdf">https://rsdebate.nic.in/bitstream/123456789/734815/1/PQ_258_22122022_U1778_p148_p170.pdf</a></li>
+<li>Ministry of Textiles, Rajya Sabha answers: training for handloom workers runs through 28 Weavers' Service Centres; skill upgradation under SAMARTH reached 56,934 weavers from 2015–16 to 2020–21. <a href="https://rsdebate.nic.in/bitstream/123456789/719227/1/PQ_254_22072021_U441_p355_p355.pdf">https://rsdebate.nic.in/bitstream/123456789/719227/1/PQ_254_22072021_U441_p355_p355.pdf</a></li>
+<li>Textiles Committee. Qualification 'Handloom Weaving – Two Treadles' (TC HLM 06, NSQF Level 3): 315 hours of hands-on training, covering motions of weaving, two-treadle weaving and quality maintenance. <a href="https://textilescommittee.nic.in/sites/default/files/2021-07/Handloom_Weaving_Two_Treadles.pdf">https://textilescommittee.nic.in/sites/default/files/2021-07/Handloom_Weaving_Two_Treadles.pdf</a></li>
+<li>CBSE. Hindustani Music Percussion Instruments, subject code 036 (tabla and pakhawaj), secondary and senior secondary curriculum. <a href="https://www.cbseacademic.nic.in/web_material/CurriculumMain24/Sec/Hindustani_Music_Percussion_Sec_2023-24.pdf">https://www.cbseacademic.nic.in/web_material/CurriculumMain24/Sec/Hindustani_Music_Percussion_Sec_2023-24.pdf</a></li>
+<li>Siddiqui, L. A., Banerjee, A., Chokhandre, P., &amp; Unisa, S. (2021). Prevalence and predictors of musculoskeletal disorders (MSDs) among weavers of Varanasi, India: a cross-sectional study. Clinical Epidemiology and Global Health. n = 364; 12-month prevalence in handloom vs powerloom weavers: upper back 84% vs 45%, lower back 82% vs 50%, shoulder 76% vs 42%. <a href="https://oalib-perpustakaan.upi.edu/Record/doaj_18bf152015c74b8aae5783c503ac2069">https://oalib-perpustakaan.upi.edu/Record/doaj_18bf152015c74b8aae5783c503ac2069</a></li>
+<li>Lakens, D. (2017). Equivalence tests: a practical primer for t tests, correlations, and meta-analyses. Social Psychological and Personality Science. Two one-sided tests (TOST) to show that an effect is smaller than a pre-set bound. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5502906/">https://pmc.ncbi.nlm.nih.gov/articles/PMC5502906/</a></li>
+<li>Census of India 2011: 2.68 crore persons with disabilities; 50.71 lakh persons with hearing disability. <a href="https://aikosh.indiaai.gov.in/home/datasets/details/population_of_persons_with_disabilities_census_2011.html">https://aikosh.indiaai.gov.in/home/datasets/details/population_of_persons_with_disabilities_census_2011.html</a></li>
+<li>United Nations. Sustainable Development Goals: Goal 4 (target 4.4, skills), Goal 8 (decent work), Goal 11 (target 11.4, safeguard cultural heritage). <a href="https://sdgs.un.org/goals">https://sdgs.un.org/goals</a></li>
+<li>Gowriprasad, R., Venkatesh, V., Murthy, H. A., Aravind, R., &amp; Murty, K. S. R. (2021). Tabla gharana recognition from audio music recordings of tabla solo performances. Proc. ISMIR 2021. Gharana recognised from audio using pattern search and CNN-LSTM models; dataset of over 38 hours of tabla solos. <a href="https://publications.iith.ac.in/publication/tabla-gharana-recognition-from-tabla-solo-recordings">https://publications.iith.ac.in/publication/tabla-gharana-recognition-from-tabla-solo-recordings</a></li>
+</ol>
+<h2 id="sec12">12. Final check before you export the PDF</h2>
+<ul>
+<li class="todo"> Exactly 6 slides, in the template order: Title, Idea, Technical approach, Feasibility &amp; viability, Impact &amp; benefits, Research &amp; references.</li>
+<li class="todo"> Official header and footer untouched; logos sharp; slide titles at the same place on every slide.</li>
+<li class="todo"> Title slide fields copied exactly from the portal (PS title, theme, Team ID, Team Name).</li>
+<li class="todo"> Every part from the part tables is present; every template question is answered (check the mapping tables).</li>
+<li class="todo"> No text smaller than 7.5 pt; no text overflowing; panels aligned on the same edges; 0.15 in gaps.</li>
+<li class="todo"> Every CAD image tagged 'CAD render'; every AI image tagged 'Concept illustration (AI)'; every screenshot tagged.</li>
+<li class="todo"> Every number has its [n] marker, and every [n] is listed on slide 6.</li>
+<li class="todo"> QR codes open a public link on a phone that is not yours.</li>
+<li class="todo"> Banned words absent: 'validated end to end', 'proven', 'improves learning', 'guaranteed'.</li>
+<li class="todo"> Export as PDF (File → Export → PDF, 'Standard' quality) and open it once on a phone to check readability.</li>
+</ul>
+<p>Overflow check of this layout (Poppins/Inter, Chromium): no text box overflows.</p>
+</div>
+<script>
+document.querySelectorAll('.copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var pre = document.getElementById(b.dataset.target), text = pre.innerText;
+    function ok() { b.textContent = 'Copied'; b.classList.add('done'); setTimeout(function () { b.textContent = 'Copy prompt'; b.classList.remove('done'); }, 1500); }
+    function fallback() { var r = document.createRange(); r.selectNodeContents(pre); var s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Selected: press Ctrl+C'; }
+    try { navigator.clipboard.writeText(text).then(ok, fallback); } catch (e) { fallback(); }
+  });
+});
+</script>
